@@ -18,11 +18,11 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <span className="font-display text-3xl font-semibold">
-              Altagsteam
+              Alltagsteam
             </span>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
-              Altagsteam bietet professionelle Unterstützung für
-              Pflegebedürftige im Landkreis Gießen. Unser engagiertes Team
+              Alltagsteam bietet professionelle Unterstützung für
+              Pflegebedürftige im Landkreis Marburg. Unser engagiertes Team
               sorgt für eine einfache Haushaltsführung und Betreuung, damit der
               Alltag leichter wird.
             </p>
@@ -70,7 +70,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 sm:flex-row">
           <p className="text-xs text-white/50">
-            &copy; {new Date().getFullYear()} Altagsteam. Alle Rechte
+            &copy; {new Date().getFullYear()} Alltagsteam. Alle Rechte
             vorbehalten.
           </p>
           <div className="flex gap-6">

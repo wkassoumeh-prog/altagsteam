@@ -17,7 +17,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <a href="#" className="group flex flex-col">
           <span className="font-display text-2xl font-semibold tracking-tight text-primary lg:text-3xl">
-            Altagsteam
+            Alltagsteam
           </span>
           <span className="text-[10px] uppercase tracking-[0.25em] text-muted">
             Alltagshilfe

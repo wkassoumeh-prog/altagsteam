@@ -11,8 +11,8 @@ export default function Home() {
         <PhotoSection
           id="start"
           image="/images/hero.jpg"
-          alt="Altagsteam – herzliche Unterstützung im Alltag"
-          eyebrow="Altagsteam Gießen"
+          alt="Alltagsteam – herzliche Unterstützung im Alltag"
+          eyebrow="Alltagsteam Marburg"
           title="Herzliche Unterstützung im Alltag"
           subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige im Landkreis Marburg Biedenkopf."
           priority
@@ -26,7 +26,7 @@ export default function Home() {
             Ihr Partner für entlastenden Alltag
           </h2>
           <p className="mt-6 text-muted leading-relaxed">
-            Altagsteam bietet professionelle Unterstützung für Pflegebedürftige
+            Alltagsteam bietet professionelle Unterstützung für Pflegebedürftige
             und Angehörige. Unser engagiertes Team sorgt für eine einfache
             Haushaltsführung und Betreuung, damit der Alltag leichter wird.
           </p>
@@ -53,9 +53,9 @@ export default function Home() {
         <PhotoSection
           id="about"
           image="/images/company.jpg"
-          alt="Das Altagsteam bei der Arbeit"
+          alt="Das Alltagsteam bei der Arbeit"
           eyebrow="Über uns"
-          title="Altagsteam im Marburg Biedenkopf"
+          title="Alltagsteam im Marburg Biedenkopf"
           subtitle="Professionelle Unterstützung für Pflegebedürftige und Angehörige – herzlich, kompetent und zuverlässig."
         />
 
@@ -67,7 +67,7 @@ export default function Home() {
             Vertrauen durch Anerkennung und Erfahrung
           </h2>
           <p className="mt-6 text-muted leading-relaxed">
-            Altagsteam bietet professionelle Unterstützung für
+            Alltagsteam bietet professionelle Unterstützung für
             Pflegebedürftige und Angehörige im Landkreis Marburg Biedenkopf.
             Unser engagiertes Team sorgt für eine einfache Haushaltsführung und
             Betreuung, damit der Alltag leichter wird.
@@ -204,7 +204,7 @@ export default function Home() {
         <PhotoSection
           id="team"
           image="/images/team.png"
-          alt="Das engagierte Altagsteam"
+          alt="Das engagierte Alltagsteam"
           eyebrow="Unser Team"
           title="Herzliche Unterstützung, auf die Sie zählen können"
           subtitle="Flexibel und zuverlässig mit kurzen Wartezeiten – schnelle Lösungen für Ihren Alltag."
@@ -225,7 +225,7 @@ export default function Home() {
 
           <blockquote className="mt-10 border-l-4 border-accent bg-cream px-6 py-6">
             <p className="text-lg italic leading-relaxed text-primary">
-              „Die Unterstützung von Altagsteam hat unseren Alltag erheblich
+              „Die Unterstützung von Alltagsteam hat unseren Alltag erheblich
               erleichtert. Einfühlsame Betreuung und schnelle Hilfe, die uns
               sehr entlastet hat.“
             </p>
@@ -241,10 +241,10 @@ export default function Home() {
               </dt>
               <dd className="mt-1">
                 <a
-                  href="mailto:info@altagsteam.com"
+                  href="mailto:info@alltagsteam.com"
                   className="font-medium text-primary hover:underline"
                 >
-                  info@altagsteam.com
+                  info@alltagsteam.com
                 </a>
               </dd>
             </div>
@@ -266,7 +266,7 @@ export default function Home() {
                 Einsatzgebiet
               </dt>
               <dd className="mt-1 text-muted">
-                Landkreis Marburg Biedenkopf · Landkreis Gießen ·
+                Landkreis Marburg Biedenkopf · Landkreis Marburg ·
                 Lahn-Dill-Kreis
               </dd>
             </div>
@@ -274,7 +274,7 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
-              href="mailto:info@altagsteam.com"
+              href="mailto:info@alltagsteam.com"
               className="rounded-full bg-primary px-8 py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-light"
             >
               E-Mail senden

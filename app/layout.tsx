@@ -15,9 +15,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Altagsteam Gießen – Unterstützung für Pflegebedürftige",
+  title: "Alltagsteam Marburg – Unterstützung für Pflegebedürftige",
   description:
-    "Altagsteam bietet professionelle Unterstützung für Pflegebedürftige im Landkreis Gießen. Unser engagiertes Team sorgt für eine einfache Haushaltsführung und Betreuung, damit der Alltag leichter wird. Vertrauen Sie auf unsere herzliche und kompetente Hilfe.",
+    "Alltagsteam bietet professionelle Unterstützung für Pflegebedürftige im Landkreis Marburg. Unser engagiertes Team sorgt für eine einfache Haushaltsführung und Betreuung, damit der Alltag leichter wird. Vertrauen Sie auf unsere herzliche und kompetente Hilfe.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

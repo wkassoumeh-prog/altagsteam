@@ -36,7 +36,7 @@ export default function PhotoSection({
 
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-20 pt-28 lg:px-16 lg:pb-28">
         {eyebrow && (
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-accent">
+          <p className="mb-4 text-xl font-extrabold uppercase tracking-[0.35em] text-amber-300 sm:text-2xl">
             {eyebrow}
           </p>
         )}
