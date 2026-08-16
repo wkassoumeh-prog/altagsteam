@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 sm:flex-row">
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 pb-[env(safe-area-inset-bottom)] sm:flex-row">
           <p className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} Alltagsteam. Alle Rechte
             vorbehalten.

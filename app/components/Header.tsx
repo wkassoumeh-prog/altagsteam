@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { label: "Über uns", href: "#about" },
@@ -12,10 +12,17 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-cream/90 pt-[env(safe-area-inset-top)] backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <a href="#" className="group flex flex-col">
+        <a href="#start" className="group flex flex-col">
           <span className="font-display text-2xl font-semibold tracking-tight text-primary lg:text-3xl">
             Alltagsteam
           </span>
@@ -44,9 +51,9 @@ export default function Header() {
 
         <button
           type="button"
-          className="flex flex-col gap-1.5 md:hidden"
+          className="-mr-2 flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 p-2 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menü öffnen"
+          aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={menuOpen}
         >
           <span
@@ -62,13 +69,16 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-border bg-cream px-6 py-6 md:hidden">
-          <div className="flex flex-col gap-4">
+        <nav
+          className="max-h-[calc(100dvh-4.5rem-env(safe-area-inset-top))] overflow-y-auto border-t border-border bg-cream px-6 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:hidden"
+          aria-label="Mobile Navigation"
+        >
+          <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-lg font-medium text-foreground/80"
+                className="rounded-lg px-2 py-3 text-lg font-medium text-foreground/80 active:bg-primary/5"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -76,7 +86,7 @@ export default function Header() {
             ))}
             <a
               href="#contact"
-              className="mt-2 rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-white"
+              className="mt-2 rounded-full bg-primary px-6 py-3.5 text-center text-sm font-semibold text-white active:bg-primary-light"
               onClick={() => setMenuOpen(false)}
             >
               Kontakt

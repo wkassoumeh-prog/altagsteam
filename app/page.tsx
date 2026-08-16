@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="snap-y snap-mandatory">
+      <main>
         <PhotoSection
           id="start"
           image="/images/hero.jpg"
@@ -15,6 +15,7 @@ export default function Home() {
           eyebrow="Alltagsteam Marburg"
           title="Herzliche Unterstützung im Alltag"
           subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige im Landkreis Marburg Biedenkopf."
+          imageClassName="object-[70%_35%] sm:object-center"
           priority
         />
 
@@ -57,6 +58,7 @@ export default function Home() {
           eyebrow="Über uns"
           title="Alltagsteam im Marburg Biedenkopf"
           subtitle="Professionelle Unterstützung für Pflegebedürftige und Angehörige – herzlich, kompetent und zuverlässig."
+          imageClassName="object-[65%_center] sm:object-center"
         />
 
         <ContentCard>
@@ -208,6 +210,7 @@ export default function Home() {
           eyebrow="Unser Team"
           title="Herzliche Unterstützung, auf die Sie zählen können"
           subtitle="Flexibel und zuverlässig mit kurzen Wartezeiten – schnelle Lösungen für Ihren Alltag."
+          imageClassName="object-[80%_center] sm:object-center"
         />
 
         <ContentCard id="contact">
