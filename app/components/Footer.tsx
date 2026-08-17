@@ -1,3 +1,5 @@
+import FadeIn from "./FadeIn";
+import FadeInGroup from "./FadeInGroup";
 import Logo from "./Logo";
 
 const footerLinks = {
@@ -17,19 +19,26 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-4">
-          <div className="lg:col-span-2">
+        <FadeInGroup
+          className="grid gap-12 lg:grid-cols-5"
+          staggerMs={90}
+          duration={550}
+        >
+          <div>
             <a href="#start" className="inline-block">
-              <Logo className="h-14 w-auto" />
+              <Logo className="h-20 w-auto brightness-0 invert sm:h-24 lg:h-28" />
             </a>
+          </div>
+
+          <div className="lg:col-span-2">
+            <p className="text-xs uppercase tracking-[0.2em] text-accent">
+              Herzliche Unterstützung im Alltag
+            </p>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
               Alltagsteam bietet professionelle Unterstützung für
               Pflegebedürftige in Marburg und ganz Hessen. Unser engagiertes Team
               sorgt für eine einfache Haushaltsführung und Betreuung, damit der
               Alltag leichter wird.
-            </p>
-            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-accent">
-              Herzliche Unterstützung im Alltag
             </p>
           </div>
 
@@ -68,30 +77,32 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-        </div>
+        </FadeInGroup>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 pb-[env(safe-area-inset-bottom)] sm:flex-row">
-          <p className="text-xs text-white/50">
-            &copy; {new Date().getFullYear()} Alltagsteam. Alle Rechte
-            vorbehalten.
-          </p>
-          <div className="flex gap-6">
-            <a
-              href="#"
-              className="text-xs text-white/50 transition-colors hover:text-white"
-              aria-label="Datenschutz"
-            >
-              Datenschutz
-            </a>
-            <a
-              href="#"
-              className="text-xs text-white/50 transition-colors hover:text-white"
-              aria-label="Impressum"
-            >
-              Impressum
-            </a>
+        <FadeIn delay={200} duration={550}>
+          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 pb-[env(safe-area-inset-bottom)] sm:flex-row">
+            <p className="text-xs text-white/50">
+              &copy; {new Date().getFullYear()} Alltagsteam. Alle Rechte
+              vorbehalten.
+            </p>
+            <div className="flex gap-6">
+              <a
+                href="#"
+                className="text-xs text-white/50 transition-colors hover:text-white"
+                aria-label="Datenschutz"
+              >
+                Datenschutz
+              </a>
+              <a
+                href="#"
+                className="text-xs text-white/50 transition-colors hover:text-white"
+                aria-label="Impressum"
+              >
+                Impressum
+              </a>
+            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </footer>
   );

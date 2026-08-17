@@ -1,6 +1,7 @@
 import ContentCard from "./components/ContentCard";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import HesseStatsSection from "./components/HesseStatsSection";
 import PhotoSection from "./components/PhotoSection";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
           title="Herzliche Unterstützung im Alltag"
           subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige in Marburg und ganz Hessen."
           imageClassName="object-[70%_35%] sm:object-center"
+          showLogo
           priority
         />
 
@@ -212,6 +214,8 @@ export default function Home() {
           subtitle="Flexibel und zuverlässig mit kurzen Wartezeiten – schnelle Lösungen für Ihren Alltag."
           imageClassName="object-[80%_center] sm:object-center"
         />
+
+        <HesseStatsSection />
 
         <ContentCard id="contact">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
