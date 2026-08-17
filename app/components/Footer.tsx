@@ -1,3 +1,5 @@
+import Logo from "./Logo";
+
 const footerLinks = {
   services: [
     { label: "Pflanzenpflege & Alltagshilfe", href: "#gardening" },
@@ -17,12 +19,12 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <span className="font-display text-3xl font-semibold">
-              Alltagsteam
-            </span>
+            <a href="#start" className="inline-block">
+              <Logo className="h-14 w-auto" />
+            </a>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
               Alltagsteam bietet professionelle Unterstützung für
-              Pflegebedürftige im Landkreis Marburg. Unser engagiertes Team
+              Pflegebedürftige in Marburg und ganz Hessen. Unser engagiertes Team
               sorgt für eine einfache Haushaltsführung und Betreuung, damit der
               Alltag leichter wird.
             </p>

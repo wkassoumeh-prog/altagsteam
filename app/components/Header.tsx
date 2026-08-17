@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Logo from "./Logo";
 
 const navLinks = [
   { label: "Über uns", href: "#about" },
@@ -21,14 +22,9 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-cream/90 pt-[env(safe-area-inset-top)] backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <a href="#start" className="group flex flex-col">
-          <span className="font-display text-2xl font-semibold tracking-tight text-primary lg:text-3xl">
-            Alltagsteam
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-muted">
-            Alltagshilfe
-          </span>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
+        <a href="#start" className="group block shrink-0 leading-none">
+          <Logo className="block h-10 w-auto sm:h-24" priority />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -70,7 +66,7 @@ export default function Header() {
 
       {menuOpen && (
         <nav
-          className="max-h-[calc(100dvh-4.5rem-env(safe-area-inset-top))] overflow-y-auto border-t border-border bg-cream px-6 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:hidden"
+          className="max-h-[calc(100dvh-2.5rem-env(safe-area-inset-top))] overflow-y-auto border-t border-border bg-cream px-6 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] md:hidden"
           aria-label="Mobile Navigation"
         >
           <div className="flex flex-col gap-2">

@@ -12,9 +12,9 @@ export default function Home() {
           id="start"
           image="/images/hero.jpg"
           alt="Alltagsteam – herzliche Unterstützung im Alltag"
-          eyebrow="Alltagsteam Marburg"
+          eyebrow="Alltagsteam Marburg und ganz Hessen"
           title="Herzliche Unterstützung im Alltag"
-          subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige im Landkreis Marburg Biedenkopf."
+          subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige in Marburg und ganz Hessen."
           imageClassName="object-[70%_35%] sm:object-center"
           priority
         />
@@ -33,7 +33,7 @@ export default function Home() {
           </p>
           <p className="mt-4 text-muted leading-relaxed">
             Vertrauen Sie auf unsere herzliche und kompetente Hilfe – flexibel,
-            zuverlässig und anerkannt durch den Landkreis Marburg Biedenkopf.
+            zuverlässig und tätig in Marburg und ganz Hessen.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
@@ -56,7 +56,7 @@ export default function Home() {
           image="/images/company.jpg"
           alt="Das Alltagsteam bei der Arbeit"
           eyebrow="Über uns"
-          title="Alltagsteam im Marburg Biedenkopf"
+          title="Alltagsteam in Marburg und ganz Hessen"
           subtitle="Professionelle Unterstützung für Pflegebedürftige und Angehörige – herzlich, kompetent und zuverlässig."
           imageClassName="object-[65%_center] sm:object-center"
         />
@@ -70,7 +70,7 @@ export default function Home() {
           </h2>
           <p className="mt-6 text-muted leading-relaxed">
             Alltagsteam bietet professionelle Unterstützung für
-            Pflegebedürftige und Angehörige im Landkreis Marburg Biedenkopf.
+            Pflegebedürftige und Angehörige in Marburg und ganz Hessen.
             Unser engagiertes Team sorgt für eine einfache Haushaltsführung und
             Betreuung, damit der Alltag leichter wird.
           </p>
@@ -205,7 +205,7 @@ export default function Home() {
 
         <PhotoSection
           id="team"
-          image="/images/team.png"
+          image="/images/team.jpg"
           alt="Das engagierte Alltagsteam"
           eyebrow="Unser Team"
           title="Herzliche Unterstützung, auf die Sie zählen können"
@@ -222,8 +222,8 @@ export default function Home() {
           </h2>
           <p className="mt-6 text-muted leading-relaxed">
             Ob Haushaltsführung, Pflanzenpflege oder Begleitung zu Terminen –
-            unser Team unterstützt Pflegebedürftige und Angehörige im Landkreis
-            Marburg Biedenkopf. Nehmen Sie noch heute Kontakt mit uns auf.
+            unser Team unterstützt Pflegebedürftige und Angehörige in Marburg
+            und ganz Hessen. Nehmen Sie noch heute Kontakt mit uns auf.
           </p>
 
           <blockquote className="mt-10 border-l-4 border-accent bg-cream px-6 py-6">
@@ -253,14 +253,27 @@ export default function Home() {
             </div>
             <div>
               <dt className="text-xs font-bold uppercase tracking-wider text-accent">
-                Telefon
+                Festnetz
               </dt>
               <dd className="mt-1">
                 <a
-                  href="tel:+496421234567"
+                  href="tel:+4964132051318"
                   className="font-medium text-primary hover:underline"
                 >
-                  (+49) 6421 123 4567
+                  0641 32051318
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-bold uppercase tracking-wider text-accent">
+                Mobil
+              </dt>
+              <dd className="mt-1">
+                <a
+                  href="tel:+491792248163"
+                  className="font-medium text-primary hover:underline"
+                >
+                  +49 179 2248163
                 </a>
               </dd>
             </div>
@@ -268,10 +281,7 @@ export default function Home() {
               <dt className="text-xs font-bold uppercase tracking-wider text-accent">
                 Einsatzgebiet
               </dt>
-              <dd className="mt-1 text-muted">
-                Landkreis Marburg Biedenkopf · Landkreis Marburg ·
-                Lahn-Dill-Kreis
-              </dd>
+              <dd className="mt-1 text-muted">Marburg und ganz Hessen</dd>
             </div>
           </dl>
 
@@ -283,7 +293,7 @@ export default function Home() {
               E-Mail senden
             </a>
             <a
-              href="tel:+496421234567"
+              href="tel:+4964132051318"
               className="rounded-full border border-primary px-8 py-3.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
             >
               Jetzt anrufen
