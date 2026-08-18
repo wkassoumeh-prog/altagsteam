@@ -32,6 +32,10 @@ html {
   overflow-x: clip;
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -43,44 +47,33 @@ body {
   font-family: var(--font-cormorant), Georgia, serif;
 }
 
-@keyframes site-fade-in {
-  from {
-    opacity: 0;
+@keyframes float {
+  0% {
+    transform: translateY(0px);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
 
-.fade-in:not(.fade-in--visible) {
-  opacity: 0;
-}
-
-.fade-in.fade-in--visible {
-  animation: site-fade-in var(--fade-duration, 600ms) ease-out
-    var(--fade-delay, 0ms) both;
-}
-
-.fade-group:not(.fade-group--visible) > .fade-item {
-  opacity: 0;
-}
-
-.fade-group.fade-group--visible > .fade-item {
-  animation: site-fade-in var(--fade-duration, 600ms) ease-out both;
-  animation-delay: calc(
-    var(--fade-index, 0) * var(--fade-stagger, 80ms)
-  );
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade-in:not(.fade-in--visible),
-  .fade-group:not(.fade-group--visible) > .fade-item {
-    opacity: 1;
+  .animate-float {
+    animation: none;
   }
+}
 
-  .fade-in.fade-in--visible,
-  .fade-group.fade-group--visible > .fade-item {
-    animation: none !important;
-    opacity: 1 !important;
-  }
+html[data-motion="disabled"] *,
+html[data-motion="disabled"] *::before,
+html[data-motion="disabled"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }

@@ -1,27 +1,27 @@
+import ContactSection from "./components/ContactSection";
 import ContentCard from "./components/ContentCard";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 import HesseStatsSection from "./components/HesseStatsSection";
-import PhotoSection from "./components/PhotoSection";
+import ImageBanner from "./components/ImageBanner";
+import { StatItem } from "./components/StatItem";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        <PhotoSection
-          id="start"
+      <main className="min-h-screen bg-white">
+        <Hero
           image="/images/hero.jpg"
           alt="Alltagsteam – herzliche Unterstützung im Alltag"
           eyebrow="Alltagsteam Marburg und ganz Hessen"
           title="Herzliche Unterstützung im Alltag"
           subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige in Marburg und ganz Hessen."
           imageClassName="object-[70%_35%] sm:object-center"
-          showLogo
-          priority
         />
 
-        <ContentCard>
+        <ContentCard variant="cream">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
             Willkommen
           </p>
@@ -40,20 +40,23 @@ export default function Home() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               href="#gardening"
-              className="rounded-full bg-primary px-8 py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+              className="rounded-full bg-primary px-8 py-3.5 text-center text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-lg"
             >
               Unsere Leistungen
             </a>
             <a
               href="#contact"
-              className="rounded-full border border-primary px-8 py-3.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+              className="group rounded-full border border-primary px-8 py-3.5 text-center text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-white"
             >
               Kontakt aufnehmen
+              <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">
+                →
+              </span>
             </a>
           </div>
         </ContentCard>
 
-        <PhotoSection
+        <ImageBanner
           id="about"
           image="/images/company.jpg"
           alt="Das Alltagsteam bei der Arbeit"
@@ -72,8 +75,8 @@ export default function Home() {
           </h2>
           <p className="mt-6 text-muted leading-relaxed">
             Alltagsteam bietet professionelle Unterstützung für
-            Pflegebedürftige und Angehörige in Marburg und ganz Hessen.
-            Unser engagiertes Team sorgt für eine einfache Haushaltsführung und
+            Pflegebedürftige und Angehörige in Marburg und ganz Hessen. Unser
+            engagiertes Team sorgt für eine einfache Haushaltsführung und
             Betreuung, damit der Alltag leichter wird.
           </p>
           <p className="mt-4 font-semibold text-primary">
@@ -85,16 +88,17 @@ export default function Home() {
           </p>
         </ContentCard>
 
-        <PhotoSection
+        <ImageBanner
           id="gardening"
           image="/images/gardening.jpg"
           alt="Pflanzenpflege und Alltagshilfe"
           eyebrow="Leistungen"
           title="Pflanzenpflege & Alltagshilfe"
           subtitle="Fürsorge für Ihr Zuhause und Ihren Alltag."
+          className="bg-cream py-12 lg:py-24"
         />
 
-        <ContentCard>
+        <ContentCard variant="cream">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
             Pflanzenpflege
           </p>
@@ -110,20 +114,12 @@ export default function Home() {
             sind an Ihrer Seite und entlasten Sie im Alltag.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="border-l-4 border-accent pl-4">
-              <p className="text-3xl font-bold text-primary">131 €</p>
-              <p className="mt-1 text-sm text-muted">
-                Entlastungsbetrag monatlich
-              </p>
-            </div>
-            <div className="border-l-4 border-accent pl-4">
-              <p className="text-3xl font-bold text-primary">§45</p>
-              <p className="mt-1 text-sm text-muted">Anerkannt nach SGB XI</p>
-            </div>
+            <StatItem value="131 €" label="Entlastungsbetrag monatlich" />
+            <StatItem value="§45" label="Anerkannt nach SGB XI" />
           </div>
         </ContentCard>
 
-        <PhotoSection
+        <ImageBanner
           id="cleaning"
           image="/images/cleaning.jpg"
           alt="Reinigung und Pflege"
@@ -148,31 +144,22 @@ export default function Home() {
             Unkomplizierte Abrechnung mit allen Pflegekassen.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="border-l-4 border-accent pl-4">
-              <p className="text-3xl font-bold text-primary">131 €</p>
-              <p className="mt-1 text-sm text-muted">
-                Entlastungsbetrag monatlich
-              </p>
-            </div>
-            <div className="border-l-4 border-accent pl-4">
-              <p className="text-3xl font-bold text-primary">100%</p>
-              <p className="mt-1 text-sm text-muted">
-                Abrechnung mit Pflegekassen
-              </p>
-            </div>
+            <StatItem value="131 €" label="Entlastungsbetrag monatlich" />
+            <StatItem value="100%" label="Abrechnung mit Pflegekassen" />
           </div>
         </ContentCard>
 
-        <PhotoSection
+        <ImageBanner
           id="laundry"
           image="/images/laundry.jpg"
           alt="Betten und Bettwäsche"
           eyebrow="Leistungen"
           title="Betten & Bettwäsche"
           subtitle="Frische Bettwäsche und gepflegte Betten."
+          className="bg-cream py-12 lg:py-24"
         />
 
-        <ContentCard>
+        <ContentCard variant="cream">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
             Bettwäsche
           </p>
@@ -190,22 +177,12 @@ export default function Home() {
             Angeboten zur Unterstützung im Alltag nach §45a Abs.).
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="border-l-4 border-accent pl-4">
-              <p className="text-3xl font-bold text-primary">131 €</p>
-              <p className="mt-1 text-sm text-muted">
-                Entlastungsbetrag monatlich
-              </p>
-            </div>
-            <div className="border-l-4 border-accent pl-4">
-              <p className="text-3xl font-bold text-primary">§45a</p>
-              <p className="mt-1 text-sm text-muted">
-                Anerkennung Lahn-Dill-Kreis
-              </p>
-            </div>
+            <StatItem value="131 €" label="Entlastungsbetrag monatlich" />
+            <StatItem value="§45a" label="Anerkennung Lahn-Dill-Kreis" />
           </div>
         </ContentCard>
 
-        <PhotoSection
+        <ImageBanner
           id="team"
           image="/images/team.jpg"
           alt="Das engagierte Alltagsteam"
@@ -217,93 +194,7 @@ export default function Home() {
 
         <HesseStatsSection />
 
-        <ContentCard id="contact">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
-            Kontakt
-          </p>
-          <h2 className="mt-4 text-3xl font-bold leading-tight text-primary lg:text-4xl">
-            Wir sind für Sie da
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed">
-            Ob Haushaltsführung, Pflanzenpflege oder Begleitung zu Terminen –
-            unser Team unterstützt Pflegebedürftige und Angehörige in Marburg
-            und ganz Hessen. Nehmen Sie noch heute Kontakt mit uns auf.
-          </p>
-
-          <blockquote className="mt-10 border-l-4 border-accent bg-cream px-6 py-6">
-            <p className="text-lg italic leading-relaxed text-primary">
-              „Die Unterstützung von Alltagsteam hat unseren Alltag erheblich
-              erleichtert. Einfühlsame Betreuung und schnelle Hilfe, die uns
-              sehr entlastet hat.“
-            </p>
-            <footer className="mt-4 text-sm font-semibold text-muted">
-              — Kundenstimme
-            </footer>
-          </blockquote>
-
-          <dl className="mt-10 space-y-5">
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-accent">
-                E-Mail
-              </dt>
-              <dd className="mt-1">
-                <a
-                  href="mailto:info@alltagsteam.com"
-                  className="font-medium text-primary hover:underline"
-                >
-                  info@alltagsteam.com
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-accent">
-                Festnetz
-              </dt>
-              <dd className="mt-1">
-                <a
-                  href="tel:+4964132051318"
-                  className="font-medium text-primary hover:underline"
-                >
-                  0641 32051318
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-accent">
-                Mobil
-              </dt>
-              <dd className="mt-1">
-                <a
-                  href="tel:+491792248163"
-                  className="font-medium text-primary hover:underline"
-                >
-                  +49 179 2248163
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-bold uppercase tracking-wider text-accent">
-                Einsatzgebiet
-              </dt>
-              <dd className="mt-1 text-muted">Marburg und ganz Hessen</dd>
-            </div>
-          </dl>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="mailto:info@alltagsteam.com"
-              className="rounded-full bg-primary px-8 py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-light"
-            >
-              E-Mail senden
-            </a>
-            <a
-              href="tel:+4964132051318"
-              className="rounded-full border border-primary px-8 py-3.5 text-center text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
-            >
-              Jetzt anrufen
-            </a>
-          </div>
-        </ContentCard>
+        <ContactSection />
       </main>
       <Footer />
     </>
