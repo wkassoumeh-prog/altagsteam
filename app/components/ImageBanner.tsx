@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { isSiteMotionEnabled } from "../config/motion";
 import Reveal from "./Reveal";
 
 type ImageBannerProps = {
@@ -75,7 +76,11 @@ export default function ImageBanner({
               src={image}
               alt={alt}
               fill
-              className={`object-cover transition-transform duration-[2000ms] group-hover:scale-105 ${imageClassName}`}
+              className={`object-cover ${imageClassName} ${
+                isSiteMotionEnabled()
+                  ? "transition-transform duration-[2000ms] group-hover:scale-105"
+                  : ""
+              }`}
               sizes="100vw"
             />
             <div className="absolute inset-0 hidden bg-gradient-to-t from-black/70 via-black/30 to-transparent sm:block" />

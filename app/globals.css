@@ -77,3 +77,9 @@ html[data-motion="disabled"] *::after {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
+
+html[data-motion="disabled"] .group:hover *,
+html[data-motion="disabled"] .group:hover *::before,
+html[data-motion="disabled"] .group:hover *::after {
+  transform: none !important;
+}
