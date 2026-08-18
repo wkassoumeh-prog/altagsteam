@@ -49,8 +49,9 @@ export default function Hero({
         alt={alt}
         fill
         priority
+        quality={90}
         className={`object-cover ${imageClassName}`}
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 1920px"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/20" />
 
