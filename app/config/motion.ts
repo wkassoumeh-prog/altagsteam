@@ -9,7 +9,7 @@ export enum SiteMotion {
  *
  * Set to `SiteMotion.Disabled` to turn everything off instantly.
  */
-export const SITE_MOTION: SiteMotion = SiteMotion.Disabled;
+export const SITE_MOTION: SiteMotion = SiteMotion.Enabled;
 
 export function isSiteMotionEnabled(): boolean {
   return SITE_MOTION === SiteMotion.Enabled;
