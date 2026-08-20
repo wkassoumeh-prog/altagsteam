@@ -95,7 +95,7 @@ export default function Home() {
           eyebrow="Leistungen"
           title="Pflanzenpflege & Alltagshilfe"
           subtitle="Fürsorge für Ihr Zuhause und Ihren Alltag."
-          className="bg-cream py-12 lg:py-24"
+          className="bg-cream"
         />
 
         <ContentCard variant="cream">
@@ -156,7 +156,7 @@ export default function Home() {
           eyebrow="Leistungen"
           title="Betten & Bettwäsche"
           subtitle="Frische Bettwäsche und gepflegte Betten."
-          className="bg-cream py-12 lg:py-24"
+          className="bg-cream"
         />
 
         <ContentCard variant="cream">

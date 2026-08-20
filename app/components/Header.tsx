@@ -88,8 +88,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-500 ${
         showSolid
-          ? "border-b border-border/60 bg-cream/90 py-3 shadow-sm backdrop-blur-md"
-          : "border-b border-transparent bg-transparent py-6"
+          ? "border-b border-border/60 bg-cream/90 shadow-sm backdrop-blur-md"
+          : "border-b border-transparent bg-transparent py-3"
       } ${isPastHero && showSolid ? "shadow-md" : ""}`}
     >
       <div className="container mx-auto my-3 flex items-center justify-between px-6">

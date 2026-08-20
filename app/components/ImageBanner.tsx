@@ -65,13 +65,13 @@ export default function ImageBanner({
   title,
   subtitle,
   imageClassName = "object-center",
-  className = "bg-white py-12 lg:py-24",
+  className = "bg-white",
 }: ImageBannerProps) {
   return (
-    <section id={id} className={className}>
-      <Reveal variant="scale" duration={1}>
-        <div className="group relative w-full overflow-hidden">
-          <div className="relative aspect-[4/3] w-full sm:aspect-[21/9]">
+    <section id={id} className={`h-dvh overflow-hidden ${className}`}>
+      <Reveal variant="scale" duration={1} className="h-full">
+        <div className="group relative flex h-full w-full flex-col overflow-hidden">
+          <div className="relative min-h-0 flex-1 overflow-hidden">
             <Image
               src={image}
               alt={alt}
@@ -84,12 +84,27 @@ export default function ImageBanner({
               sizes="100vw"
             />
             <div className="absolute inset-0 hidden bg-gradient-to-t from-black/70 via-black/30 to-transparent sm:block" />
+
+            <Reveal
+              variant="up-sm"
+              delay={0.5}
+              className="absolute inset-x-0 bottom-0 hidden sm:block"
+            >
+              <div className="container mx-auto px-6 pb-10 lg:px-8 lg:pb-12">
+                <BannerText
+                  eyebrow={eyebrow}
+                  title={title}
+                  subtitle={subtitle}
+                  variant="desktop"
+                />
+              </div>
+            </Reveal>
           </div>
 
           <Reveal
             variant="up-sm"
             delay={0.5}
-            className="bg-primary px-6 py-5 sm:hidden"
+            className="shrink-0 bg-primary px-6 py-5 sm:hidden"
           >
             <BannerText
               eyebrow={eyebrow}
@@ -97,21 +112,6 @@ export default function ImageBanner({
               subtitle={subtitle}
               variant="mobile"
             />
-          </Reveal>
-
-          <Reveal
-            variant="up-sm"
-            delay={0.5}
-            className="absolute inset-x-0 bottom-0 hidden sm:block"
-          >
-            <div className="container mx-auto px-6 pb-10 lg:px-8 lg:pb-12">
-              <BannerText
-                eyebrow={eyebrow}
-                title={title}
-                subtitle={subtitle}
-                variant="desktop"
-              />
-            </div>
           </Reveal>
         </div>
       </Reveal>
