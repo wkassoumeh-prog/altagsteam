@@ -112,7 +112,7 @@ export default function HesseStatsSection() {
           </Reveal>
 
           <Reveal variant="up" delay={0.1}>
-            <h2 className="mt-4 max-w-3xl text-3xl font-bold leading-tight text-primary lg:text-4xl">
+            <h2 className="font-display mt-4 max-w-3xl text-4xl font-semibold leading-tight text-primary lg:text-5xl">
               Alltagsteam in ganz Hessen – Zahlen, die Vertrauen schaffen
             </h2>
           </Reveal>

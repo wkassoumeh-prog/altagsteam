@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import FontCompareToggle from "./components/FontCompareToggle";
 import MotionRoot from "./components/MotionRoot";
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <MotionRoot />
+        <FontCompareToggle />
         {children}
       </body>
     </html>

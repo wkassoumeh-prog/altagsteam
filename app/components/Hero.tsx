@@ -65,14 +65,14 @@ export default function Hero({
         </LogoLink>
 
         <Eyebrow
-          className="mb-4 text-lg font-extrabold uppercase tracking-[0.2em] text-amber-300 sm:text-xl sm:tracking-[0.35em] lg:text-2xl"
+          className="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-amber-300 sm:text-base sm:tracking-[0.35em]"
           {...fadeUp(0, 20)}
         >
           {eyebrow}
         </Eyebrow>
 
         <Title
-          className="max-w-4xl text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl sm:leading-[1.05] lg:text-7xl"
+          className="font-display max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl"
           {...fadeUp(0.2, 30)}
         >
           {title}
@@ -97,12 +97,9 @@ export default function Hero({
           </a>
           <a
             href="#contact"
-            className="group rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-center text-sm font-semibold text-white backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-white/20"
+            className="rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-center text-sm font-semibold text-white backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-white/20"
           >
             Kontakt aufnehmen
-            <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">
-              →
-            </span>
           </a>
         </Actions>
       </div>

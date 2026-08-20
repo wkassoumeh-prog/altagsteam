@@ -38,8 +38,8 @@ function BannerText({
       <h2
         className={
           isMobile
-            ? "text-xl font-bold leading-tight text-white"
-            : "max-w-2xl text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl"
+            ? "font-display text-2xl font-semibold leading-tight text-white"
+            : "font-display max-w-2xl text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
         }
       >
         {title}

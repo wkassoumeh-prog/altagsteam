@@ -22,7 +22,7 @@ export default function ContactSection() {
           </Reveal>
 
           <Reveal variant="up" delay={0.1}>
-            <h2 className="mt-4 text-3xl font-bold leading-tight lg:text-4xl">
+            <h2 className="font-display mt-4 text-4xl font-semibold leading-tight lg:text-5xl">
               Wir sind für Sie da
             </h2>
           </Reveal>
@@ -105,12 +105,9 @@ export default function ContactSection() {
                   </a>
                   <a
                     href="tel:+4964132051318"
-                    className="group rounded-full border border-white/30 px-8 py-3.5 text-center text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
+                    className="rounded-full border border-white/30 px-8 py-3.5 text-center text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
                   >
                     Jetzt anrufen
-                    <span className="ml-1 inline-block transition-transform group-hover:translate-x-1">
-                      →
-                    </span>
                   </a>
                 </div>
               </Reveal>

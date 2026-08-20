@@ -1,15 +1,16 @@
+import Link from "next/link";
 import Logo from "./Logo";
 
 const footerLinks = {
   services: [
-    { label: "Pflanzenpflege & Alltagshilfe", href: "#gardening" },
-    { label: "Reinigung & Pflege", href: "#cleaning" },
-    { label: "Betten & Bettwäsche", href: "#laundry" },
+    { label: "Pflanzenpflege & Alltagshilfe", href: "/#gardening" },
+    { label: "Reinigung & Pflege", href: "/#cleaning" },
+    { label: "Betten & Bettwäsche", href: "/#laundry" },
   ],
   company: [
-    { label: "Über uns", href: "#about" },
-    { label: "Team", href: "#team" },
-    { label: "Kontakt", href: "#contact" },
+    { label: "Über uns", href: "/#about" },
+    { label: "Team", href: "/#team" },
+    { label: "Kontakt", href: "/#contact" },
   ],
 };
 
@@ -19,9 +20,9 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-5">
           <div>
-            <a href="#start" className="inline-block">
+            <Link href="/" className="inline-block">
               <Logo className="h-20 w-auto brightness-0 invert sm:h-24 lg:h-28" />
-            </a>
+            </Link>
           </div>
 
           <div className="lg:col-span-2">
@@ -43,12 +44,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -61,12 +62,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -79,20 +80,18 @@ export default function Footer() {
             vorbehalten.
           </p>
           <div className="flex gap-6">
-            <a
-              href="#"
+            <Link
+              href="/datenschutz"
               className="text-xs text-white/50 transition-colors hover:text-white"
-              aria-label="Datenschutz"
             >
               Datenschutz
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/impressum"
               className="text-xs text-white/50 transition-colors hover:text-white"
-              aria-label="Impressum"
             >
               Impressum
-            </a>
+            </Link>
           </div>
         </div>
       </div>
