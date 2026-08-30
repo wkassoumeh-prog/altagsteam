@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Logo from "./Logo";
 import { useSiteMotion } from "./useSiteMotion";
 
 type HeroProps = {
@@ -13,6 +12,31 @@ type HeroProps = {
   subtitle: string;
   imageClassName?: string;
 };
+
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5 shrink-0" aria-hidden>
+      <path d="M12 20.5s-7-4.6-7-9.5a4 4 0 0 1 7-2.5 4 4 0 0 1 7 2.5c0 4.9-7 9.5-7 9.5Z" />
+    </svg>
+  );
+}
+
+function LeafIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5 shrink-0" aria-hidden>
+      <path d="M12 21c-4-3.5-6-7.5-6-11a6 6 0 0 1 12 0c0 3.5-2 7.5-6 11Z" />
+      <path d="M12 21V10" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4 shrink-0" aria-hidden>
+      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function Hero({
   image,
@@ -33,7 +57,6 @@ export default function Hero({
         }
       : {};
 
-  const LogoLink = enabled ? motion.a : "a";
   const Eyebrow = enabled ? motion.p : "p";
   const Title = enabled ? motion.h1 : "h1";
   const Subtitle = enabled ? motion.p : "p";
@@ -53,53 +76,54 @@ export default function Hero({
         className={`object-cover ${imageClassName}`}
         sizes="(max-width: 768px) 100vw, 1920px"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/20" />
+      <div className="hero-overlay absolute inset-0" />
+      <div className="hero-overlay-top absolute inset-0" aria-hidden="true" />
 
       <div className="relative z-10 container mx-auto w-full px-6 pb-[max(5rem,env(safe-area-inset-bottom))] pt-32 lg:pb-28">
-        <LogoLink href="#start" className="mb-6 block w-fit" {...fadeUp(0, 20)}>
-          <Logo
-            variant="hero"
-            className="h-20 w-auto sm:h-24 lg:h-32"
-            priority
-          />
-        </LogoLink>
-
         <Eyebrow
-          className="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-amber-300 sm:text-base sm:tracking-[0.35em]"
+          className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-accent sm:mb-4 sm:text-xs sm:tracking-[0.25em]"
           {...fadeUp(0, 20)}
         >
           {eyebrow}
         </Eyebrow>
 
         <Title
-          className="font-display max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl"
-          {...fadeUp(0.2, 30)}
+          className="font-display max-w-4xl text-[2rem] font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl sm:leading-[1.08] md:text-6xl lg:text-7xl"
+          {...fadeUp(0.15, 30)}
         >
           {title}
         </Title>
 
         <Subtitle
-          className="mt-4 max-w-2xl text-base font-semibold leading-relaxed text-white/90 sm:mt-5 sm:text-lg lg:text-2xl"
-          {...fadeUp(0.4, 30)}
+          className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/95 sm:mt-5 sm:max-w-2xl sm:text-base lg:text-lg"
+          {...fadeUp(0.3, 30)}
         >
           {subtitle}
         </Subtitle>
 
         <Actions
-          className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row"
-          {...fadeUp(0.6, 30)}
+          className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4"
+          {...fadeUp(0.45, 30)}
         >
           <a
-            href="#gardening"
-            className="rounded-full bg-white px-8 py-3.5 text-center text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-lg"
+            href="#contact"
+            className="flex items-center justify-between gap-3 rounded-full bg-accent px-5 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg sm:px-6 sm:py-4"
           >
-            Unsere Leistungen
+            <span className="flex items-center gap-3">
+              <HeartIcon />
+              Persönlich beraten lassen
+            </span>
+            <ArrowIcon />
           </a>
           <a
-            href="#contact"
-            className="rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-center text-sm font-semibold text-white backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-white/20"
+            href="#gardening"
+            className="flex items-center justify-between gap-3 rounded-full border border-white/70 bg-white/5 px-5 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/15 sm:px-6 sm:py-4"
           >
-            Kontakt aufnehmen
+            <span className="flex items-center gap-3">
+              <LeafIcon />
+              Leistungen entdecken
+            </span>
+            <ArrowIcon />
           </a>
         </Actions>
       </div>

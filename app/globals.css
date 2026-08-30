@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f6f2;
+  --background: #fdfbf7;
   --foreground: #1a1a1a;
-  --primary: #1a3c34;
-  --primary-light: #2d5a4e;
-  --accent: #c4a962;
-  --accent-light: #d4bc7a;
-  --cream: #f8f6f2;
+  --primary: #1a4d3e;
+  --primary-light: #236b57;
+  --accent: #e87722;
+  --accent-light: #f08a3a;
+  --cream: #fdfbf7;
   --muted: #6b7280;
-  --border: #e5e0d8;
+  --border: #e8e2d9;
 }
 
 @theme inline {
@@ -89,6 +89,101 @@ html[data-motion="disabled"] *::after {
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--primary) 92%, transparent) 0%,
+    color-mix(in srgb, var(--primary) 62%, transparent) 38%,
+    color-mix(in srgb, var(--primary) 28%, transparent) 58%,
+    transparent 78%
+  );
+}
+
+.hero-overlay-top {
+  pointer-events: none;
+  background: linear-gradient(
+    30deg,
+    transparent 0%,
+    transparent 36%,
+    color-mix(in srgb, var(--primary) 20%, transparent) 44%,
+    color-mix(in srgb, var(--primary) 43%, transparent) 58%,
+    color-mix(in srgb, var(--primary) 64%, transparent) 76%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 11%,
+    transparent 26%
+  );
+  mask-image: linear-gradient(to bottom, #000 0%, #000 11%, transparent 26%);
+}
+
+@media (min-width: 768px) {
+  .hero-overlay-top {
+    background: linear-gradient(
+      30deg,
+      transparent 0%,
+      transparent 40%,
+      color-mix(in srgb, var(--primary) 20%, transparent) 46%,
+      color-mix(in srgb, var(--primary) 43%, transparent) 58%,
+      color-mix(in srgb, var(--primary) 64%, transparent) 74%
+    );
+  }
+}
+
+.welcome-wave {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--primary) 18%, transparent) 0%,
+    color-mix(in srgb, var(--primary) 8%, transparent) 55%,
+    transparent 100%
+  );
+  clip-path: ellipse(120% 100% at 85% 100%);
+}
+
+.about-wave-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4.5rem;
+  transform: translateY(-50%);
+  background: var(--cream);
+  clip-path: ellipse(72% 100% at 50% 100%);
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .about-viewport-top {
+    min-height: 58dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .about-viewport-bottom {
+    min-height: 42dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .about-top-grid {
+    align-items: center;
+  }
+
+  .about-image-frame {
+    min-height: min(72dvh, 42rem);
+    aspect-ratio: auto;
+    height: 100%;
+  }
 }
 
 html[data-motion="disabled"] .group:hover *,

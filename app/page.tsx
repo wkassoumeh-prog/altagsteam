@@ -1,3 +1,4 @@
+import AboutSection from "./components/AboutSection";
 import ContactSection from "./components/ContactSection";
 import ContentCard from "./components/ContentCard";
 import Footer from "./components/Footer";
@@ -53,37 +54,7 @@ export default function Home() {
           </div>
         </ContentCard>
 
-        <ImageBanner
-          id="about"
-          image="/images/company.jpg"
-          alt="Das Alltagsteam bei der Arbeit"
-          eyebrow="Über uns"
-          title="Alltagsteam in Marburg und ganz Hessen"
-          subtitle="Professionelle Unterstützung für Pflegebedürftige und Angehörige – herzlich, kompetent und zuverlässig."
-          imageClassName="object-[65%_center] sm:object-center"
-        />
-
-        <ContentCard>
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
-            Über uns
-          </p>
-          <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-primary lg:text-5xl">
-            Vertrauen durch Anerkennung und Erfahrung
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed">
-            Alltagsteam bietet professionelle Unterstützung für
-            Pflegebedürftige und Angehörige in Marburg und ganz Hessen. Unser
-            engagiertes Team sorgt für eine einfache Haushaltsführung und
-            Betreuung, damit der Alltag leichter wird.
-          </p>
-          <p className="mt-4 font-semibold text-primary">
-            Anerkannt durch den Landkreis Marburg Biedenkopf
-          </p>
-          <p className="mt-4 text-muted leading-relaxed">
-            Wir stehen Ihnen mit flexibler und zuverlässiger Unterstützung zur
-            Seite – einfühlsam, kompetent und immer an Ihrer Seite.
-          </p>
-        </ContentCard>
+        <AboutSection />
 
         <ImageBanner
           id="gardening"

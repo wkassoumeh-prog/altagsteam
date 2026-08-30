@@ -32,7 +32,7 @@ function mobileNavLinks(onNavigate: (href: string) => void) {
       ))}
       <a
         href="#contact"
-        className="mt-2 rounded-full bg-primary px-6 py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+        className="mt-2 rounded-full bg-accent px-6 py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-light"
         onClick={(e) => {
           e.preventDefault();
           onNavigate("#contact");
@@ -78,6 +78,7 @@ export default function Header() {
 
   const onHero = !isPastHero;
   const showSolid = isScrolled || menuOpen;
+  const onHeroTransparent = onHero && !showSolid;
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
@@ -92,28 +93,21 @@ export default function Header() {
           : "border-b border-transparent bg-transparent py-6"
       } ${isPastHero && showSolid ? "shadow-md" : ""}`}
     >
-      <div className="container mx-auto my-3 flex items-center justify-between px-6">
+      <div className="container mx-auto my-3 flex items-center justify-between px-4 sm:px-6">
         <a
           href="#start"
-          className="group flex flex-col"
+          className="group flex min-w-0 flex-col"
           onClick={(e) => {
             e.preventDefault();
             handleNavClick("#start");
           }}
         >
-          <span
-            className={`font-display text-2xl font-semibold tracking-tight transition-colors duration-500 lg:text-3xl ${
-              onHero && !showSolid ? "text-white" : "text-primary"
-            }`}
-          >
-            Alltagsteam
+          <span className="truncate text-base font-bold tracking-tight text-primary sm:text-lg">
+            Alltags
+            <span className="text-accent">Team</span>
           </span>
-          <span
-            className={`text-[10px] uppercase tracking-[0.25em] transition-colors duration-500 ${
-              onHero && !showSolid ? "text-white/70" : "text-muted"
-            }`}
-          >
-            Alltagshilfe
+          <span className="truncate text-[9px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
+            GEMEINSAM. MENSCHLICH. NAH.
           </span>
         </a>
 
@@ -123,7 +117,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               className={`text-base font-medium transition-colors ${
-                onHero && !showSolid
+                onHeroTransparent
                   ? "text-white/85 hover:text-white"
                   : "text-foreground/80 hover:text-primary"
               }`}
@@ -138,9 +132,9 @@ export default function Header() {
           <a
             href="#contact"
             className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 ${
-              onHero && !showSolid
+              onHeroTransparent
                 ? "bg-white text-primary hover:bg-white/90 hover:shadow-lg"
-                : "bg-primary text-white hover:bg-primary-light hover:shadow-lg"
+                : "bg-accent text-white hover:bg-accent-light hover:shadow-md"
             }`}
             onClick={(e) => {
               e.preventDefault();
@@ -153,24 +147,24 @@ export default function Header() {
 
         <button
           type="button"
-          className="-mr-2 flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 p-2 md:hidden"
+          className="-mr-1 flex min-h-11 min-w-11 flex-col items-center justify-center gap-1.5 p-2 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={menuOpen}
         >
           <span
             className={`block h-0.5 w-6 transition-transform duration-300 ${
-              onHero && !showSolid ? "bg-white" : "bg-primary"
+              onHeroTransparent ? "bg-white" : "bg-primary"
             } ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
           />
           <span
             className={`block h-0.5 w-6 transition-opacity duration-300 ${
-              onHero && !showSolid ? "bg-white" : "bg-primary"
+              onHeroTransparent ? "bg-white" : "bg-primary"
             } ${menuOpen ? "opacity-0" : ""}`}
           />
           <span
             className={`block h-0.5 w-6 transition-transform duration-300 ${
-              onHero && !showSolid ? "bg-white" : "bg-primary"
+              onHeroTransparent ? "bg-white" : "bg-primary"
             } ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
           />
         </button>
