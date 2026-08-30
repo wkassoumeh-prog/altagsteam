@@ -61,40 +61,88 @@ function TeamHeartGraphic({ className }: { className?: string }) {
   );
 }
 
+function BadgeArcText({
+  text,
+  radius,
+  startAngle,
+  endAngle,
+  fontSize,
+  invert = false,
+}: {
+  text: string;
+  radius: number;
+  startAngle: number;
+  endAngle: number;
+  fontSize: number;
+  invert?: boolean;
+}) {
+  const chars = Array.from(text);
+
+  return (
+    <g
+      fill="#1a4d3e"
+      fontSize={fontSize}
+      fontWeight="700"
+      style={{ fontFamily: "var(--font-dm-sans), system-ui, sans-serif" }}
+    >
+      {chars.map((char, index) => {
+        const t = chars.length === 1 ? 0.5 : index / (chars.length - 1);
+        const angle = startAngle + (endAngle - startAngle) * t;
+        const rad = (angle * Math.PI) / 180;
+        const x = 100 + radius * Math.sin(rad);
+        const y = 100 - radius * Math.cos(rad);
+        const rotate = invert ? angle - 180 : angle;
+
+        return (
+          <text
+            key={`${index}-${char}`}
+            x={x}
+            y={y}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            transform={`rotate(${rotate} ${x} ${y})`}
+          >
+            {char}
+          </text>
+        );
+      })}
+    </g>
+  );
+}
+
 function QualificationBadge() {
   return (
     <div className="relative mx-auto flex h-44 w-44 items-center justify-center sm:h-52 sm:w-52">
       <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
-        <circle cx="100" cy="100" r="96" fill="none" stroke="#1a4d3e" strokeWidth="1.5" opacity="0.25" />
-        <circle cx="100" cy="100" r="78" fill="none" stroke="#1a4d3e" strokeWidth="1" opacity="0.2" />
-        <defs>
-          <path
-            id="team-badge-top"
-            d="M 100,24 A 76,76 0 1,1 99.9,24"
-            fill="none"
-          />
-          <path
-            id="team-badge-bottom"
-            d="M 100,176 A 76,76 0 1,0 100.1,176"
-            fill="none"
-          />
-        </defs>
-        <text fill="#1a4d3e" fontSize="11" fontWeight="700" letterSpacing="2.5">
-          <textPath href="#team-badge-top" startOffset="50%" textAnchor="middle">
-            QUALIFIZIERT & GEPRÜFT
-          </textPath>
-        </text>
-        <text fill="#1a4d3e" fontSize="9" fontWeight="600" letterSpacing="2" opacity="0.85">
-          <textPath href="#team-badge-bottom" startOffset="50%" textAnchor="middle">
-            FACHKUNDIG & ZUVERLÄSSIG
-          </textPath>
-        </text>
+        <circle cx="100" cy="100" r="97" fill="none" stroke="#1a4d3e" strokeWidth="1.5" />
+        <circle cx="100" cy="100" r="68" fill="none" stroke="#1a4d3e" strokeWidth="1.5" />
+        <circle cx="100" cy="100" r="48" fill="#1a4d3e" />
+        <path
+          d="M82 101 94 113 121 86"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <BadgeArcText
+          text="QUALIFIZIERT & GEPRÜFT"
+          radius={82.5}
+          startAngle={-74}
+          endAngle={74}
+          fontSize={12.75}
+        />
+        <BadgeArcText
+          text="FACHKUNDIG & ZUVERLÄSSIG"
+          radius={82.5}
+          startAngle={254}
+          endAngle={106}
+          fontSize={12}
+          invert
+        />
+        <path d="M15.5 100 L18 97.5 L20.5 100 L18 102.5Z" fill="#1a4d3e" />
+        <path d="M179.5 100 L182 97.5 L184.5 100 L182 102.5Z" fill="#1a4d3e" />
       </svg>
-      <div className="absolute flex h-20 w-20 items-center justify-center rounded-full bg-primary text-white sm:h-24 sm:w-24">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-8 w-8 sm:h-10 sm:w-10" aria-hidden>
-          <path d="m6 12 4 4 8-8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
     </div>
   );
 }

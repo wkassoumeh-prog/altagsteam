@@ -34,52 +34,30 @@ const stats = [
   },
 ];
 
-const cities = [
+const cities: Array<{
+  name: string;
+  image?: string;
+  icon?: React.ReactNode;
+}> = [
   {
     name: "Marburg",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-        <path d="M8 34V18l6-6h20l6 6v16" />
-        <path d="M14 34V24h6v10M28 34V24h6v10" />
-        <path d="M8 34h32" />
-      </svg>
-    ),
+    image: "/Marburg.png",
   },
   {
     name: "Gießen",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-        <path d="M24 8v28M18 14h12M16 36h16" />
-        <path d="M20 8h8l2 6H18l2-6Z" />
-      </svg>
-    ),
+    image: "/Gießen.png",
   },
   {
     name: "Wetzlar",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-        <path d="M10 34V20l14-10 14 10v14H10Z" />
-        <path d="M18 34v-8h12v8" />
-      </svg>
-    ),
+    image: "/Wetzler.png",
   },
   {
     name: "Frankfurt",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-        <path d="M10 34V22h6v12M18 34V16h4v18M26 34V12h4v22M34 34V20h4v14" />
-        <path d="M8 34h32" />
-      </svg>
-    ),
+    image: "/Frankfurt.png",
   },
   {
     name: "Kassel",
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-        <path d="M24 6v28M18 12l6-6 6 6" />
-        <path d="M14 34h20M16 34V22h16v12" />
-      </svg>
-    ),
+    image: "/Kassel.png",
   },
   {
     name: "weitere Regionen",
@@ -92,6 +70,19 @@ const cities = [
     ),
   },
 ];
+
+function cityLogoSize(name: string) {
+  if (name === "Wetzlar") {
+    return { width: 80, height: 80, className: "h-16 w-auto object-contain sm:h-20" };
+  }
+  if (name === "Marburg") {
+    return { width: 92, height: 92, className: "h-[4.62rem] w-auto object-contain sm:h-[5.775rem]" };
+  }
+  if (name === "Frankfurt" || name === "Kassel") {
+    return { width: 86, height: 86, className: "h-[4.32rem] w-auto object-contain sm:h-[5.4rem]" };
+  }
+  return { width: 96, height: 96, className: "h-[4.8rem] w-auto object-contain sm:h-24" };
+}
 
 export default function HesseStatsSection() {
   return (
@@ -169,16 +160,32 @@ export default function HesseStatsSection() {
           </div>
 
           <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-6 sm:gap-3">
-            {cities.map((city) => (
+            {cities.map((city) => {
+              const logoSize = city.image ? cityLogoSize(city.name) : null;
+
+              return (
               <div key={city.name} className="flex flex-col items-center text-center">
-                <div className="mb-2 flex h-12 w-12 items-center justify-center text-primary sm:h-14 sm:w-14">
-                  {city.icon}
-                </div>
-                <p className="text-[11px] font-semibold leading-tight text-primary sm:text-xs">
-                  {city.name}
-                </p>
+                {city.image && logoSize ? (
+                  <Image
+                    src={city.image}
+                    alt={city.name}
+                    width={logoSize.width}
+                    height={logoSize.height}
+                    className={logoSize.className}
+                  />
+                ) : (
+                  <>
+                    <div className="mb-2 flex h-12 w-12 items-center justify-center text-primary sm:h-14 sm:w-14">
+                      {city.icon}
+                    </div>
+                    <p className="text-[11px] font-semibold leading-tight text-primary sm:text-xs">
+                      {city.name}
+                    </p>
+                  </>
+                )}
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
