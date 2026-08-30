@@ -32,10 +32,17 @@ function validateForm(data: FormData): FieldErrors {
 }
 
 const inputClassName =
-  "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-60";
+  "w-full rounded-xl border border-border bg-white px-4 py-3 text-foreground placeholder:text-muted/70 transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-60";
 
-const labelClassName =
-  "text-xs font-bold uppercase tracking-wider text-accent";
+const labelClassName = "text-sm font-medium text-foreground/85";
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden>
+      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
@@ -95,19 +102,19 @@ export default function ContactForm() {
   if (state === "success") {
     return (
       <div
-        className="rounded-2xl border border-accent/30 bg-accent/10 px-6 py-8 text-center"
+        className="rounded-2xl border border-primary/20 bg-primary/5 px-6 py-8 text-center"
         role="status"
       >
-        <p className="text-lg font-semibold text-white">
+        <p className="font-display text-xl font-semibold text-primary">
           Vielen Dank für Ihre Nachricht!
         </p>
-        <p className="mt-2 text-white/80">
+        <p className="mt-2 text-foreground/80">
           Wir melden uns in Kürze bei Ihnen.
         </p>
         <button
           type="button"
           onClick={() => setState("idle")}
-          className="mt-6 text-sm font-semibold text-accent transition-colors hover:text-accent-light"
+          className="mt-6 text-sm font-semibold text-primary transition-colors hover:text-primary-light"
         >
           Weitere Nachricht senden
         </button>
@@ -128,47 +135,49 @@ export default function ContactForm() {
         />
       </div>
 
-      <div>
-        <label htmlFor="name" className={labelClassName}>
-          Name *
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          autoComplete="name"
-          disabled={state === "submitting"}
-          className={`${inputClassName} mt-2 ${fieldErrors.name ? "border-red-400/60" : ""}`}
-          placeholder="Ihr Name"
-        />
-        {fieldErrors.name && (
-          <p className="mt-1.5 text-sm text-red-300">{fieldErrors.name}</p>
-        )}
-      </div>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className={labelClassName}>
+            Name *
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            disabled={state === "submitting"}
+            className={`${inputClassName} mt-2 ${fieldErrors.name ? "border-red-400" : ""}`}
+            placeholder="Ihr Name"
+          />
+          {fieldErrors.name && (
+            <p className="mt-1.5 text-sm text-red-600">{fieldErrors.name}</p>
+          )}
+        </div>
 
-      <div>
-        <label htmlFor="email" className={labelClassName}>
-          E-Mail *
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          disabled={state === "submitting"}
-          className={`${inputClassName} mt-2 ${fieldErrors.email ? "border-red-400/60" : ""}`}
-          placeholder="ihre@email.de"
-        />
-        {fieldErrors.email && (
-          <p className="mt-1.5 text-sm text-red-300">{fieldErrors.email}</p>
-        )}
+        <div>
+          <label htmlFor="email" className={labelClassName}>
+            E-Mail *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            disabled={state === "submitting"}
+            className={`${inputClassName} mt-2 ${fieldErrors.email ? "border-red-400" : ""}`}
+            placeholder="ihre@email.de"
+          />
+          {fieldErrors.email && (
+            <p className="mt-1.5 text-sm text-red-600">{fieldErrors.email}</p>
+          )}
+        </div>
       </div>
 
       <div>
         <label htmlFor="phone" className={labelClassName}>
-          Telefon
+          Telefon (optional)
         </label>
         <input
           id="phone"
@@ -177,13 +186,13 @@ export default function ContactForm() {
           autoComplete="tel"
           disabled={state === "submitting"}
           className={`${inputClassName} mt-2`}
-          placeholder="Optional"
+          placeholder="Ihre Telefonnummer"
         />
       </div>
 
       <div>
         <label htmlFor="message" className={labelClassName}>
-          Nachricht *
+          Ihre Nachricht *
         </label>
         <textarea
           id="message"
@@ -191,27 +200,37 @@ export default function ContactForm() {
           required
           rows={5}
           disabled={state === "submitting"}
-          className={`${inputClassName} mt-2 resize-y ${fieldErrors.message ? "border-red-400/60" : ""}`}
+          className={`${inputClassName} mt-2 resize-y ${fieldErrors.message ? "border-red-400" : ""}`}
           placeholder="Wie können wir Ihnen helfen?"
         />
         {fieldErrors.message && (
-          <p className="mt-1.5 text-sm text-red-300">{fieldErrors.message}</p>
+          <p className="mt-1.5 text-sm text-red-600">{fieldErrors.message}</p>
         )}
       </div>
 
       {state === "error" && errorMessage && (
-        <p className="rounded-xl border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-200">
+        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {errorMessage}
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={state === "submitting"}
-        className="w-full rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-lg disabled:translate-y-0 disabled:opacity-70 disabled:hover:shadow-none sm:w-auto"
-      >
-        {state === "submitting" ? "Wird gesendet …" : "Nachricht senden"}
-      </button>
+      <div>
+        <button
+          type="submit"
+          disabled={state === "submitting"}
+          className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-70 sm:min-w-[220px]"
+        >
+          {state === "submitting" ? "Wird gesendet …" : "Anfrage senden"}
+          {state !== "submitting" && <ArrowIcon />}
+        </button>
+        <p className="mt-4 flex items-center gap-2 text-xs text-muted">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4 shrink-0" aria-hidden>
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" strokeLinecap="round" />
+          </svg>
+          Ihre Daten werden selbstverständlich vertraulich behandelt.
+        </p>
+      </div>
     </form>
   );
 }

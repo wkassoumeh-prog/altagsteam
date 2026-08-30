@@ -1,12 +1,16 @@
 import AboutSection from "./components/AboutSection";
 import ContactSection from "./components/ContactSection";
-import ContentCard from "./components/ContentCard";
+import FinanzierungSection from "./components/FinanzierungSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import HeroFeatures from "./components/HeroFeatures";
 import HesseStatsSection from "./components/HesseStatsSection";
-import ImageBanner from "./components/ImageBanner";
-import { StatItem } from "./components/StatItem";
+import KarriereSection from "./components/KarriereSection";
+import LeistungenSection from "./components/LeistungenSection";
+import PflegeboxSection from "./components/PflegeboxSection";
+import TeamSection from "./components/TeamSection";
+import WelcomeSection from "./components/WelcomeSection";
 
 export default function Home() {
   return (
@@ -15,152 +19,30 @@ export default function Home() {
       <main className="min-h-screen bg-white">
         <Hero
           image="/images/hero.jpg"
-          alt="Alltagsteam – herzliche Unterstützung im Alltag"
-          eyebrow="Alltagsteam Marburg und ganz Hessen"
-          title="Herzliche Unterstützung im Alltag"
-          subtitle="Professionelle Alltagshilfe für Pflegebedürftige und Angehörige in Marburg und ganz Hessen."
+          alt="AlltagsTeam – Gemeinsam. Für Ihren Alltag."
+          eyebrow="ALLTAGSTEAM • MARBURG & HESSEN"
+          title="Gemeinsam. Für Ihren Alltag."
+          subtitle="Persönliche Unterstützung, die entlastet und Ihnen mehr Zeit für das gibt, was wirklich zählt."
           imageClassName="object-[70%_35%] sm:object-center"
         />
 
-        <ContentCard variant="cream">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
-            Willkommen
-          </p>
-          <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-primary lg:text-5xl">
-            Ihr Partner für entlastenden Alltag
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed">
-            Alltagsteam bietet professionelle Unterstützung für Pflegebedürftige
-            und Angehörige. Unser engagiertes Team sorgt für eine einfache
-            Haushaltsführung und Betreuung, damit der Alltag leichter wird.
-          </p>
-          <p className="mt-4 text-muted leading-relaxed">
-            Vertrauen Sie auf unsere herzliche und kompetente Hilfe – flexibel,
-            zuverlässig und tätig in Marburg und ganz Hessen.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="#gardening"
-              className="rounded-full bg-primary px-8 py-3.5 text-center text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-lg"
-            >
-              Unsere Leistungen
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full border border-primary px-8 py-3.5 text-center text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:bg-primary hover:text-white"
-            >
-              Kontakt aufnehmen
-            </a>
-          </div>
-        </ContentCard>
+        <HeroFeatures />
+
+        <WelcomeSection />
 
         <AboutSection />
 
-        <ImageBanner
-          id="gardening"
-          image="/images/gardening.jpg"
-          alt="Pflanzenpflege und Alltagshilfe"
-          eyebrow="Leistungen"
-          title="Pflanzenpflege & Alltagshilfe"
-          subtitle="Fürsorge für Ihr Zuhause und Ihren Alltag."
-          className="bg-cream py-12 lg:py-24"
-        />
-
-        <ContentCard variant="cream">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
-            Pflanzenpflege
-          </p>
-          <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-primary lg:text-5xl">
-            Fürsorge für Ihr Zuhause
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed">
-            Wir kümmern uns um Ihre Pflanzen und unterstützen Sie bei
-            alltäglichen Aufgaben – damit Sie sich in Ihrem Zuhause wohlfühlen.
-          </p>
-          <p className="mt-4 text-muted leading-relaxed">
-            Ob regelmäßige Pflanzenpflege oder praktische Hilfe im Haushalt: Wir
-            sind an Ihrer Seite und entlasten Sie im Alltag.
-          </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <StatItem value="131 €" label="Entlastungsbetrag monatlich" />
-            <StatItem value="§45" label="Anerkannt nach SGB XI" />
-          </div>
-        </ContentCard>
-
-        <ImageBanner
-          id="cleaning"
-          image="/images/cleaning.jpg"
-          alt="Reinigung und Pflege"
-          eyebrow="Leistungen"
-          title="Reinigung & Pflege"
-          subtitle="Sauberkeit und Wohlbefinden in Ihrem Zuhause."
-        />
-
-        <ContentCard>
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
-            Reinigung
-          </p>
-          <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-primary lg:text-5xl">
-            Sauberkeit, die entlastet
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed">
-            Wir unterstützen Sie bei der Haushaltsführung, damit der Alltag
-            einfacher und angenehmer wird.
-          </p>
-          <p className="mt-4 text-muted leading-relaxed">
-            Dies rechnen wir mit dem Entlastungsbetrag Ihrer Pflegekasse ab.
-            Unkomplizierte Abrechnung mit allen Pflegekassen.
-          </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <StatItem value="131 €" label="Entlastungsbetrag monatlich" />
-            <StatItem value="100%" label="Abrechnung mit Pflegekassen" />
-          </div>
-        </ContentCard>
-
-        <ImageBanner
-          id="laundry"
-          image="/images/laundry.jpg"
-          alt="Betten und Bettwäsche"
-          eyebrow="Leistungen"
-          title="Betten & Bettwäsche"
-          subtitle="Frische Bettwäsche und gepflegte Betten."
-          className="bg-cream py-12 lg:py-24"
-        />
-
-        <ContentCard variant="cream">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent">
-            Bettwäsche
-          </p>
-          <h2 className="font-display mt-4 text-4xl font-semibold leading-tight text-primary lg:text-5xl">
-            Frische und Gemütlichkeit
-          </h2>
-          <p className="mt-6 text-muted leading-relaxed">
-            Wir wechseln Bettwäsche und sorgen für ein sauberes, gemütliches
-            Schlafzimmer – eine wichtige Entlastung im Alltag.
-          </p>
-          <p className="mt-4 text-muted leading-relaxed">
-            Unsere Leistungen werden mit dem Entlastungsbetrag Ihrer
-            Pflegekasse abgerechnet. Anerkannt durch den Landkreis Marburg
-            Biedenkopf nach §45 SGB XI und im Lahn-Dill-Kreis (Anerkennung von
-            Angeboten zur Unterstützung im Alltag nach §45a Abs.).
-          </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <StatItem value="131 €" label="Entlastungsbetrag monatlich" />
-            <StatItem value="§45a" label="Anerkennung Lahn-Dill-Kreis" />
-          </div>
-        </ContentCard>
-
-        <ImageBanner
-          id="team"
-          image="/images/team.jpg"
-          alt="Das engagierte Alltagsteam"
-          eyebrow="Unser Team"
-          title="Herzliche Unterstützung, auf die Sie zählen können"
-          subtitle="Flexibel und zuverlässig mit kurzen Wartezeiten – schnelle Lösungen für Ihren Alltag."
-          imageClassName="object-[80%_center] sm:object-center"
-        />
-
         <HesseStatsSection />
+
+        <LeistungenSection />
+
+        <PflegeboxSection />
+
+        <FinanzierungSection />
+
+        <TeamSection />
+
+        <KarriereSection />
 
         <ContactSection />
       </main>

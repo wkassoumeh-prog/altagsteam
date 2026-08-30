@@ -6,7 +6,7 @@ import { useSiteMotion } from "./useSiteMotion";
 
 const navLinks = [
   { label: "Über uns", href: "#about" },
-  { label: "Leistungen", href: "#gardening" },
+  { label: "Leistungen", href: "#leistungen" },
   { label: "Team", href: "#team" },
   { label: "Hessen", href: "#region" },
   { label: "Kontakt", href: "#contact" },

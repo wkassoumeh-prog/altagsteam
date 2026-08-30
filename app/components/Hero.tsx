@@ -116,7 +116,7 @@ export default function Hero({
             <ArrowIcon />
           </a>
           <a
-            href="#gardening"
+            href="#leistungen"
             className="flex items-center justify-between gap-3 rounded-full border border-white/70 bg-white/5 px-5 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/15 sm:px-6 sm:py-4"
           >
             <span className="flex items-center gap-3">

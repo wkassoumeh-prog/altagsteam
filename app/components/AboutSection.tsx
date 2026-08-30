@@ -27,7 +27,7 @@ const highlights = [
 const pillars = [
   {
     title: "Persönlich beraten lassen",
-    text: "Wir nehmen uns Zeit für Ihr Anliegen und beraten Sie einfühlsam.",
+    text: "Wir nehmen uns Zeit für Ihr Anliegen und finden gemeinsam die passende Unterstützung für Sie.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
         <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
@@ -36,7 +36,7 @@ const pillars = [
   },
   {
     title: "Unterstützung, die zu Ihnen passt",
-    text: "Individuelle Hilfe, abgestimmt auf Ihre Bedürfnisse und Ihren Tagesrhythmus.",
+    text: "Individuelle Hilfe im Alltag – flexibel, zuverlässig und auf Ihre Bedürfnisse abgestimmt.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
         <path d="M12 20.5s-7-4.6-7-9.5a4 4 0 0 1 7-2.5 4 4 0 0 1 7 2.5c0 4.9-7 9.5-7 9.5Z" />
@@ -45,7 +45,7 @@ const pillars = [
   },
   {
     title: "Vertrauen, das bleibt",
-    text: "Langfristige Begleitung mit vertrauten Gesichtern und festen Ansprechpartnern.",
+    text: "Mit Herz, Erfahrung und Verlässlichkeit sind wir an Ihrer Seite – in Marburg und ganz Hessen.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
         <circle cx="8" cy="9" r="2.5" />
@@ -93,14 +93,15 @@ export default function AboutSection() {
 
               <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-muted sm:mt-6 sm:text-base lg:max-w-xl">
                 <p>
-                  AlltagsTeam bietet professionelle Unterstützung für
-                  Pflegebedürftige und Angehörige in Marburg und ganz Hessen.
-                  Unser engagiertes Team sorgt für eine einfache Haushaltsführung
-                  und Betreuung, damit der Alltag leichter wird.
+                  AlltagsTeam steht für professionelle und persönliche Unterstützung
+                  im Alltag – in Marburg und ganz Hessen. Wir begleiten Menschen in
+                  ihrem vertrauten Zuhause und entlasten Angehörige dort, wo
+                  Unterstützung gebraucht wird.
                 </p>
                 <p>
-                  Wir stehen Ihnen mit flexibler und zuverlässiger Unterstützung
-                  zur Seite – einfühlsam, kompetent und immer an Ihrer Seite.
+                  Dabei stehen Ihre individuellen Bedürfnisse im Mittelpunkt. Mit
+                  Einfühlungsvermögen, Verlässlichkeit und Respekt sind wir persönlich
+                  für Sie da – auf Augenhöhe und mit Zeit für das, was Ihnen wichtig ist.
                 </p>
               </div>
 
@@ -169,7 +170,7 @@ export default function AboutSection() {
 
           <div className="mt-10 flex justify-center sm:mt-14">
             <a
-              href="#gardening"
+              href="#leistungen"
               className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white sm:px-10 sm:py-4 sm:text-base"
             >
               Unsere Leistungen entdecken
