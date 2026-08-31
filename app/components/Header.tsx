@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSiteMotion } from "./useSiteMotion";
 
@@ -57,6 +58,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const [isLogoFlipped, setIsLogoFlipped] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,19 +98,67 @@ export default function Header() {
       <div className="container mx-auto my-3 flex items-center justify-between px-4 sm:px-6">
         <a
           href="#start"
-          className="group flex min-w-0 flex-col"
+          className="group flex items-center gap-2.5 sm:gap-3"
           onClick={(e) => {
             e.preventDefault();
+            setIsLogoFlipped((prev) => !prev);
             handleNavClick("#start");
           }}
+          title="Klicken, um das Logo zu wechseln"
         >
-          <span className="truncate text-base font-bold tracking-tight text-primary sm:text-lg">
-            Alltags
-            <span className="text-accent">Team</span>
-          </span>
-          <span className="truncate text-[9px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
-            GEMEINSAM. MENSCHLICH. NAH.
-          </span>
+          <div
+            className="relative h-10 shrink-0 sm:h-12"
+            style={{ perspective: 1000 }}
+          >
+            <motion.div
+              className="relative h-full"
+              animate={{ rotateY: isLogoFlipped ? 180 : 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <div
+                className="h-full"
+                style={{
+                  backfaceVisibility: "hidden",
+                  visibility: isLogoFlipped ? "hidden" : "visible",
+                }}
+              >
+                <Image
+                  src="/logo-icon.png"
+                  alt="Alltagsteam Logo"
+                  width={565}
+                  height={484}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </div>
+              <div
+                className="absolute inset-0 flex h-full items-center justify-center"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)",
+                }}
+              >
+                <Image
+                  src="/Logo Familie mit Hause.png"
+                  alt="Alltagsteam Familie mit Haus Logo"
+                  width={817}
+                  height={802}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
+          <div className="flex min-w-0 flex-col">
+            <span className="truncate text-base font-bold tracking-tight text-primary sm:text-lg">
+              Alltags
+              <span className="text-accent">Team</span>
+            </span>
+            <span className="truncate text-[9px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
+              GEMEINSAM. MENSCHLICH. NAH.
+            </span>
+          </div>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
