@@ -3,6 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import {
+  FLIPPING_LOGOS,
+  FLIPPING_LOGO_CONTAINER_CLASS,
+  getNextLogoIndex,
+  type FlippingLogo,
+} from "./flippingLogoConfig";
 
 type LogoProps = {
   className?: string;
@@ -12,29 +18,60 @@ type LogoProps = {
 };
 
 const variantClasses = {
-  default: "",
+  default: "logo-tint-primary",
   hero: "brightness-0 invert drop-shadow-[0_2px_20px_rgba(0,0,0,0.45)]",
 };
 
+function logoImageClassName(logo: FlippingLogo, variant: "default" | "hero") {
+  if (variant === "default") {
+    return logo.imageClassName;
+  }
+
+  const scaleMatch = logo.imageClassName.match(/\bscale-\S+/);
+  const scaleClass = scaleMatch ? scaleMatch[0] : "";
+
+  return `${variantClasses.hero} max-h-full max-w-full object-contain ${scaleClass}`.trim();
+}
+
 export default function Logo({
-  className = "h-12 w-auto",
+  className = "",
   priority = false,
   variant = "default",
   interactive = true,
 }: LogoProps) {
+  const [logoIndex, setLogoIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const frontLogo = FLIPPING_LOGOS[logoIndex];
+  const backLogo = FLIPPING_LOGOS[getNextLogoIndex(logoIndex)];
+
+  const handleFlipComplete = () => {
+    if (!isFlipping) return;
+
+    setLogoIndex((index) => getNextLogoIndex(index));
+    setIsFlipped(false);
+    setIsFlipping(false);
+  };
 
   return (
     <div
-      className={`relative inline-block ${className} ${interactive ? "cursor-pointer" : ""}`}
-      onClick={() => interactive && setIsFlipped((prev) => !prev)}
+      className={`${FLIPPING_LOGO_CONTAINER_CLASS} ${className} ${interactive ? "cursor-pointer" : ""}`}
+      onClick={() => {
+        if (!interactive || isFlipping) return;
+        setIsFlipping(true);
+        setIsFlipped(true);
+      }}
       style={{ perspective: 1000 }}
       title={interactive ? "Klicken, um das Logo zu wechseln" : undefined}
     >
       <motion.div
-        className="relative h-full w-full"
+        className="absolute inset-0"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        transition={{
+          duration: isFlipped ? 0.6 : 0,
+          ease: "easeInOut",
+        }}
+        onAnimationComplete={handleFlipComplete}
         style={{ transformStyle: "preserve-3d" }}
       >
         <div
@@ -42,11 +79,11 @@ export default function Logo({
           style={{ backfaceVisibility: "hidden" }}
         >
           <Image
-            src="/logo-icon.png"
-            alt="Alltagsteam"
-            width={565}
-            height={484}
-            className={`${variantClasses[variant]} h-full w-auto object-contain`}
+            src={frontLogo.src}
+            alt={frontLogo.alt}
+            width={frontLogo.width}
+            height={frontLogo.height}
+            className={logoImageClassName(frontLogo, variant)}
             priority={priority}
           />
         </div>
@@ -58,11 +95,11 @@ export default function Logo({
           }}
         >
           <Image
-            src="/Logo Familie mit Hause.png"
-            alt="Alltagsteam Familie mit Haus"
-            width={817}
-            height={802}
-            className={`${variantClasses[variant]} h-full w-auto object-contain`}
+            src={backLogo.src}
+            alt={backLogo.alt}
+            width={backLogo.width}
+            height={backLogo.height}
+            className={logoImageClassName(backLogo, variant)}
             priority={priority}
           />
         </div>

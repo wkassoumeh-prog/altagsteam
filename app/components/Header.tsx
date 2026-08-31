@@ -4,6 +4,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSiteMotion } from "./useSiteMotion";
+import {
+  FLIPPING_LOGOS,
+  FLIPPING_LOGO_CONTAINER_CLASS,
+  getNextLogoIndex,
+} from "./flippingLogoConfig";
 
 const navLinks = [
   { label: "Über uns", href: "#about" },
@@ -58,7 +63,19 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
-  const [isLogoFlipped, setIsLogoFlipped] = useState(false);
+  const [logoIndex, setLogoIndex] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const frontLogo = FLIPPING_LOGOS[logoIndex];
+  const backLogo = FLIPPING_LOGOS[getNextLogoIndex(logoIndex)];
+
+  const handleLogoFlipComplete = () => {
+    if (!isFlipping) return;
+
+    setLogoIndex((index) => getNextLogoIndex(index));
+    setIsFlipped(false);
+    setIsFlipping(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,71 +112,77 @@ export default function Header() {
           : "border-b border-transparent bg-transparent py-6"
       } ${isPastHero && showSolid ? "shadow-md" : ""}`}
     >
-      <div className="container mx-auto my-3 flex items-center justify-between px-4 sm:px-6">
-        <a
-          href="#start"
-          className="group flex items-center gap-2.5 sm:gap-3"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsLogoFlipped((prev) => !prev);
-            handleNavClick("#start");
-          }}
-          title="Klicken, um das Logo zu wechseln"
-        >
-          <div
-            className="relative h-10 shrink-0 sm:h-12"
-            style={{ perspective: 1000 }}
+      <div className="container mx-auto mt-3 mb-1.5 flex items-center justify-between px-4 sm:px-6">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <button
+            type="button"
+            className="group shrink-0"
+            onClick={() => {
+              if (!isFlipping) {
+                setIsFlipping(true);
+                setIsFlipped(true);
+              }
+              handleNavClick("#start");
+            }}
+            title="Klicken, um das Logo zu wechseln"
+            aria-label="Logo wechseln und zur Startseite"
           >
-            <motion.div
-              className="relative h-full"
-              animate={{ rotateY: isLogoFlipped ? 180 : 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              style={{ transformStyle: "preserve-3d" }}
+            <div
+              className={FLIPPING_LOGO_CONTAINER_CLASS}
+              style={{ perspective: 1000 }}
             >
-              <div
-                className="h-full"
-                style={{
-                  backfaceVisibility: "hidden",
-                  visibility: isLogoFlipped ? "hidden" : "visible",
+              <motion.div
+                className="absolute inset-0"
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{
+                  duration: isFlipped ? 0.6 : 0,
+                  ease: "easeInOut",
                 }}
+                onAnimationComplete={handleLogoFlipComplete}
+                style={{ transformStyle: "preserve-3d" }}
               >
-                <Image
-                  src="/logo-icon.png"
-                  alt="Alltagsteam Logo"
-                  width={565}
-                  height={484}
-                  className="h-full w-auto object-contain"
-                  priority
-                />
-              </div>
-              <div
-                className="absolute inset-0 flex h-full items-center justify-center"
-                style={{
-                  backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                }}
-              >
-                <Image
-                  src="/Logo Familie mit Hause.png"
-                  alt="Alltagsteam Familie mit Haus Logo"
-                  width={817}
-                  height={802}
-                  className="h-full w-auto object-contain"
-                  priority
-                />
-              </div>
-            </motion.div>
-          </div>
+                <div
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <Image
+                    src={frontLogo.src}
+                    alt={frontLogo.alt}
+                    width={frontLogo.width}
+                    height={frontLogo.height}
+                    className={frontLogo.imageClassName}
+                    priority
+                  />
+                </div>
+                <div
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  <Image
+                    src={backLogo.src}
+                    alt={backLogo.alt}
+                    width={backLogo.width}
+                    height={backLogo.height}
+                    className={backLogo.imageClassName}
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </button>
           <div className="flex min-w-0 flex-col">
-            <span className="truncate text-base font-bold tracking-tight text-primary sm:text-lg">
+            <span className="font-compare-target font-display truncate text-[1.43rem] font-bold tracking-tight text-primary sm:text-[1.609rem]">
               Alltags
               <span className="text-accent">Team</span>
             </span>
-            <span className="truncate text-[9px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
+            <span className="truncate text-[9.9px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-[11px] sm:tracking-[0.22em]">
               GEMEINSAM. MENSCHLICH. NAH.
             </span>
           </div>
-        </a>
+        </div>
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
