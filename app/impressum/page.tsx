@@ -28,15 +28,15 @@ function Section({
 export default function ImpressumPage() {
   return (
     <LegalPage title="Impressum">
-      <Section heading="Angaben gemäß § 5 TMG">
+      <Section heading="Angaben gemäß § 5 DDG">
         <p>
           Alltagsteam
           <br />
-          [Vor- und Nachname der Inhaberin / des Inhabers]
+          Inhaberin: Halisa Gecer
           <br />
-          [Straße und Hausnummer]
+          Ludwig Weisel Straße 19
           <br />
-          [PLZ] Marburg
+          35452 Heuchelheim
         </p>
       </Section>
 
@@ -76,24 +76,25 @@ export default function ImpressumPage() {
         </p>
       </Section>
 
-      <Section heading="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV">
+      <Section heading="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
         <p>
-          [Vor- und Nachname]
+          Halisa Gecer
           <br />
-          [Straße und Hausnummer]
+          Ludwig Weisel Straße 19
           <br />
-          [PLZ] Marburg
+          35452 Heuchelheim
         </p>
       </Section>
 
       <Section heading="Haftung für Inhalte">
         <p>
-          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte
-          auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach
-          §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
-          verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
-          überwachen oder nach Umständen zu forschen, die auf eine
-          rechtswidrige Tätigkeit hinweisen.
+          Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten
+          nach den allgemeinen Gesetzen verantwortlich. Nach Art. 6 bis 8 der
+          Verordnung (EU) 2022/2065 (Digital Services Act) in Verbindung mit
+          dem Digitale-Dienste-Gesetz (DDG) sind wir als Diensteanbieter
+          jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+          Informationen zu überwachen oder nach Umständen zu forschen, die auf
+          eine rechtswidrige Tätigkeit hinweisen.
         </p>
         <p>
           Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
@@ -115,10 +116,13 @@ export default function ImpressumPage() {
         </p>
       </Section>
 
-      <p className="text-sm text-muted/80">
-        Hinweis: Die in eckigen Klammern stehenden Angaben müssen noch durch
-        die tatsächlichen Daten ersetzt werden.
-      </p>
+      <Section heading="Verbraucherstreitbeilegung">
+        <p>
+          Wir sind nicht bereit und nicht verpflichtet, an
+          Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+          teilzunehmen (§ 36 VSBG).
+        </p>
+      </Section>
     </LegalPage>
   );
 }

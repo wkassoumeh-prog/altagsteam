@@ -36,11 +36,19 @@ export default function DatenschutzPage() {
         <p>
           Alltagsteam
           <br />
-          [Vor- und Nachname der Inhaberin / des Inhabers]
+          Inhaberin: Halisa Gecer
           <br />
-          [Straße und Hausnummer]
+          Ludwig Weisel Straße 19
           <br />
-          [PLZ] Marburg
+          35452 Heuchelheim
+          <br />
+          Telefon:{" "}
+          <a
+            href="tel:+4964132051318"
+            className="font-medium text-primary transition-colors hover:text-primary-light"
+          >
+            0641 32051318
+          </a>
           <br />
           E-Mail:{" "}
           <a
@@ -75,6 +83,13 @@ export default function DatenschutzPage() {
           (berechtigtes Interesse an der technisch fehlerfreien Darstellung und
           Optimierung der Website).
         </p>
+        <p>
+          {/* TODO: Sobald der Hosting-Anbieter feststeht, hier Name und
+              Anschrift des Anbieters eintragen. */}
+          Unser Hosting-Anbieter verarbeitet diese Daten in unserem Auftrag
+          auf Grundlage eines Vertrags über Auftragsverarbeitung gemäß
+          Art. 28 DSGVO.
+        </p>
       </Section>
 
       <Section heading="4. Kontaktformular und Kontaktaufnahme">
@@ -89,6 +104,23 @@ export default function DatenschutzPage() {
           Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung
           vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO
           (berechtigtes Interesse an der Beantwortung Ihrer Anfrage).
+        </p>
+        <p>
+          Für den Versand der Nachrichten aus dem Kontaktformular setzen wir
+          den E-Mail-Dienst Resend der Plus Five Five, Inc., 2261 Market
+          Street #5039, San Francisco, CA 94114, USA, als Auftragsverarbeiter
+          gemäß Art. 28 DSGVO ein. Dabei werden die von Ihnen im Formular
+          angegebenen Daten (Name, E-Mail-Adresse, ggf. Telefonnummer und
+          Nachrichteninhalt) an Server von Resend übermittelt, die sich auch
+          in den USA befinden können.
+        </p>
+        <p>
+          Die Übermittlung in die USA erfolgt auf Grundlage der
+          EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO), die
+          Bestandteil des mit Resend geschlossenen
+          Auftragsverarbeitungsvertrags sind. Resend ist zudem unter dem
+          EU-US Data Privacy Framework zertifiziert, sodass insoweit ein
+          Angemessenheitsbeschluss der EU-Kommission besteht (Art. 45 DSGVO).
         </p>
       </Section>
 
@@ -113,6 +145,10 @@ export default function DatenschutzPage() {
           <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
           <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
           <li>Widerspruchsrecht gegen die Verarbeitung (Art. 21 DSGVO)</li>
+          <li>
+            Recht auf Widerruf erteilter Einwilligungen mit Wirkung für die
+            Zukunft (Art. 7 Abs. 3 DSGVO)
+          </li>
         </ul>
         <p>
           Zudem haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde
@@ -131,11 +167,7 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <p className="text-sm text-muted/80">
-        Hinweis: Die in eckigen Klammern stehenden Angaben müssen noch durch
-        die tatsächlichen Daten ersetzt werden. Diese Vorlage ersetzt keine
-        rechtliche Beratung.
-      </p>
+      <p className="text-sm text-muted/80">Stand: September 2026</p>
     </LegalPage>
   );
 }

@@ -56,8 +56,11 @@ const supportLinks = [
 
 const companyLinks = [
   { label: "Über uns", href: "/#about" },
+  { label: "Pflegebox", href: "/#pflegebox" },
+  { label: "Finanzierung", href: "/#finanzierung" },
   { label: "Einsatzgebiet", href: "/#region" },
   { label: "Unser Team", href: "/#team" },
+  { label: "Karriere", href: "/#karriere" },
   { label: "Kontakt", href: "/#contact" },
 ];
 

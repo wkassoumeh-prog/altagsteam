@@ -32,13 +32,13 @@ export default function Home() {
 
         <AboutSection />
 
-        <HesseStatsSection />
-
         <LeistungenSection />
 
         <PflegeboxSection />
 
         <FinanzierungSection />
+
+        <HesseStatsSection />
 
         <TeamSection />
 

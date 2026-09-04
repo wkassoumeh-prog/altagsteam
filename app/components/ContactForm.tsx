@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -223,12 +224,23 @@ export default function ContactForm() {
           {state === "submitting" ? "Wird gesendet …" : "Anfrage senden"}
           {state !== "submitting" && <ArrowIcon />}
         </button>
-        <p className="mt-4 flex items-center gap-2 text-xs text-muted">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4 shrink-0" aria-hidden>
+        <p className="mt-4 flex items-start gap-2 text-xs text-muted">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mt-0.5 h-4 w-4 shrink-0" aria-hidden>
             <rect x="5" y="11" width="14" height="10" rx="2" />
             <path d="M8 11V8a4 4 0 0 1 8 0v3" strokeLinecap="round" />
           </svg>
-          Ihre Daten werden selbstverständlich vertraulich behandelt.
+          <span>
+            Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage
+            verarbeitet (Art. 6 Abs. 1 lit. b DSGVO). Weitere Informationen
+            finden Sie in unserer{" "}
+            <Link
+              href="/datenschutz"
+              className="font-medium text-primary underline-offset-2 transition-colors hover:text-primary-light hover:underline"
+            >
+              Datenschutzerklärung
+            </Link>
+            .
+          </span>
         </p>
       </div>
     </form>

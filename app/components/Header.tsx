@@ -7,15 +7,17 @@ import { useSiteMotion } from "./useSiteMotion";
 import {
   FLIPPING_LOGOS,
   FLIPPING_LOGO_CONTAINER_CLASS,
-  getNextLogoIndex,
 } from "./flippingLogoConfig";
+
+const DEFAULT_LOGO = FLIPPING_LOGOS[1];
 
 const navLinks = [
   { label: "Über uns", href: "#about" },
   { label: "Leistungen", href: "#leistungen" },
+  { label: "Finanzierung", href: "#finanzierung" },
+  { label: "Einsatzgebiet", href: "#region" },
   { label: "Team", href: "#team" },
-  { label: "Hessen", href: "#region" },
-  { label: "Kontakt", href: "#contact" },
+  { label: "Karriere", href: "#karriere" },
 ];
 
 const SCROLL_OFFSET = 80;
@@ -63,19 +65,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
-  const [logoIndex, setLogoIndex] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isFlipping, setIsFlipping] = useState(false);
-  const frontLogo = FLIPPING_LOGOS[logoIndex];
-  const backLogo = FLIPPING_LOGOS[getNextLogoIndex(logoIndex)];
-
-  const handleLogoFlipComplete = () => {
-    if (!isFlipping) return;
-
-    setLogoIndex((index) => getNextLogoIndex(index));
-    setIsFlipped(false);
-    setIsFlipping(false);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,64 +106,24 @@ export default function Header() {
           <button
             type="button"
             className="group shrink-0"
-            onClick={() => {
-              if (!isFlipping) {
-                setIsFlipping(true);
-                setIsFlipped(true);
-              }
-              handleNavClick("#start");
-            }}
-            title="Klicken, um das Logo zu wechseln"
-            aria-label="Logo wechseln und zur Startseite"
+            onClick={() => handleNavClick("#start")}
+            aria-label="Zur Startseite"
           >
-            <div
-              className={FLIPPING_LOGO_CONTAINER_CLASS}
-              style={{ perspective: 1000 }}
-            >
-              <motion.div
-                className="absolute inset-0"
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{
-                  duration: isFlipped ? 0.6 : 0,
-                  ease: "easeInOut",
-                }}
-                onAnimationComplete={handleLogoFlipComplete}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <div
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{ backfaceVisibility: "hidden" }}
-                >
-                  <Image
-                    src={frontLogo.src}
-                    alt={frontLogo.alt}
-                    width={frontLogo.width}
-                    height={frontLogo.height}
-                    className={frontLogo.imageClassName}
-                    priority
-                  />
-                </div>
-                <div
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{
-                    backfaceVisibility: "hidden",
-                    transform: "rotateY(180deg)",
-                  }}
-                >
-                  <Image
-                    src={backLogo.src}
-                    alt={backLogo.alt}
-                    width={backLogo.width}
-                    height={backLogo.height}
-                    className={backLogo.imageClassName}
-                    priority
-                  />
-                </div>
-              </motion.div>
+            <div className={FLIPPING_LOGO_CONTAINER_CLASS}>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Image
+                  src={DEFAULT_LOGO.src}
+                  alt={DEFAULT_LOGO.alt}
+                  width={DEFAULT_LOGO.width}
+                  height={DEFAULT_LOGO.height}
+                  className={DEFAULT_LOGO.imageClassName}
+                  priority
+                />
+              </div>
             </div>
           </button>
           <div className="flex min-w-0 flex-col">
-            <span className="font-compare-target font-display truncate text-[1.43rem] font-bold tracking-tight text-primary sm:text-[1.609rem]">
+            <span className="font-display truncate text-[1.43rem] font-bold tracking-tight text-primary sm:text-[1.609rem]">
               Alltags
               <span className="text-accent">Team</span>
             </span>
