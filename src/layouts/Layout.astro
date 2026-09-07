@@ -1,0 +1,38 @@
+---
+import "@fontsource-variable/cormorant-garamond/wght.css";
+import "@fontsource-variable/dm-sans/wght.css";
+import "../styles/globals.css";
+import { SITE_MOTION } from "../config/motion";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Alltagsteam Marburg und ganz Hessen – Unterstützung für Pflegebedürftige",
+  description = "Alltagsteam bietet professionelle Unterstützung für Pflegebedürftige in Marburg und ganz Hessen. Unser engagiertes Team sorgt für eine einfache Haushaltsführung und Betreuung, damit der Alltag leichter wird. Vertrauen Sie auf unsere herzliche und kompetente Hilfe.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de" class="h-full antialiased" data-motion={SITE_MOTION}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <noscript>
+      <style is:inline>
+        [style*="opacity:0"], [style*="opacity: 0"] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="min-h-full flex flex-col">
+    <slot />
+  </body>
+</html>

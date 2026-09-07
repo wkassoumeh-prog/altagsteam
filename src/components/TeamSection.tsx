@@ -1,0 +1,251 @@
+import Image from "./Image";
+
+const values = [
+  {
+    title: "Persönlich",
+    text: "Wir begegnen jedem Menschen mit Respekt und auf Augenhöhe.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+        <circle cx="9" cy="8" r="2.5" />
+        <circle cx="15" cy="8" r="2.5" />
+        <path d="M5.5 18c.8-2.2 2.4-3.5 3.5-3.5S11.7 15.8 12 18M12 18c.3-2.2 1.9-3.5 3-3.5s2.7 1.3 3.5 3.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    title: "Zuverlässig",
+    text: "Auf Absprachen und unsere Unterstützung können Sie sich verlassen.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+        <path d="M12 3 4 7v6c0 4.4 3.4 8.5 8 9 4.6-.5 8-4.6 8-9V7l-8-4Z" />
+        <path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    title: "Mit Herz",
+    text: "Wir möchten nicht nur Aufgaben erledigen, sondern den Alltag spürbar erleichtern.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+        <path d="M12 20.5s-7-4.6-7-9.5a4 4 0 0 1 7-2.5 4 4 0 0 1 7 2.5c0 4.9-7 9.5-7 9.5Z" />
+      </svg>
+    ),
+  },
+];
+
+const qualifications = [
+  "Qualifikation gemäß §45a SGB XI (Entlastungsleistungen)",
+  "Regelmäßige Schulungen und Weiterbildungen",
+  "Erfahrung, Einfühlungsvermögen und ein hohes Maß an Verantwortung",
+  "Verschwiegenheit und ein respektvoller Umgang sind für uns selbstverständlich",
+];
+
+function BadgeArcText({
+  text,
+  radius,
+  startAngle,
+  endAngle,
+  fontSize,
+  invert = false,
+}: {
+  text: string;
+  radius: number;
+  startAngle: number;
+  endAngle: number;
+  fontSize: number;
+  invert?: boolean;
+}) {
+  const chars = Array.from(text);
+
+  return (
+    <g
+      fill="#1a4d3e"
+      fontSize={fontSize}
+      fontWeight="700"
+      style={{ fontFamily: "var(--font-dm-sans), system-ui, sans-serif" }}
+    >
+      {chars.map((char, index) => {
+        const t = chars.length === 1 ? 0.5 : index / (chars.length - 1);
+        const angle = startAngle + (endAngle - startAngle) * t;
+        const rad = (angle * Math.PI) / 180;
+        const x = 100 + radius * Math.sin(rad);
+        const y = 100 - radius * Math.cos(rad);
+        const rotate = invert ? angle - 180 : angle;
+
+        return (
+          <text
+            key={`${index}-${char}`}
+            x={x}
+            y={y}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            transform={`rotate(${rotate} ${x} ${y})`}
+          >
+            {char}
+          </text>
+        );
+      })}
+    </g>
+  );
+}
+
+function QualificationBadge() {
+  return (
+    <div className="relative mx-auto flex h-44 w-44 items-center justify-center sm:h-52 sm:w-52">
+      <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
+        <circle cx="100" cy="100" r="97" fill="none" stroke="#1a4d3e" strokeWidth="1.5" />
+        <circle cx="100" cy="100" r="68" fill="none" stroke="#1a4d3e" strokeWidth="1.5" />
+        <circle cx="100" cy="100" r="48" fill="#1a4d3e" />
+        <path
+          d="M82 101 94 113 121 86"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <BadgeArcText
+          text="QUALIFIZIERT & GEPRÜFT"
+          radius={82.5}
+          startAngle={-74}
+          endAngle={74}
+          fontSize={12.75}
+        />
+        <BadgeArcText
+          text="FACHKUNDIG & ZUVERLÄSSIG"
+          radius={82.5}
+          startAngle={254}
+          endAngle={106}
+          fontSize={12}
+          invert
+        />
+        <path d="M15.5 100 L18 97.5 L20.5 100 L18 102.5Z" fill="#1a4d3e" />
+        <path d="M179.5 100 L182 97.5 L184.5 100 L182 102.5Z" fill="#1a4d3e" />
+      </svg>
+    </div>
+  );
+}
+
+function TeamIntro() {
+  return (
+    <div>
+      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#b4904d] sm:text-xs">
+        UNSER TEAM
+      </p>
+      <h2 className="font-display mt-3 text-[2rem] font-semibold leading-[1.12] sm:mt-4 sm:text-4xl lg:text-3xl xl:text-4xl">
+        Menschen, die mit Herz unterstützen.
+      </h2>
+      <div className="mt-5 max-w-2xl space-y-4 text-[15px] leading-relaxed text-white/85 sm:mt-6 sm:text-base lg:text-sm xl:text-[15px]">
+        <p>
+          Bei AlltagsTeam geht es um mehr als praktische Hilfe. Es geht um
+          Menschen, die zuhören, mitdenken und verlässlich an Ihrer Seite sind.
+        </p>
+        <p>
+          Unsere Mitarbeitenden unterstützen Sie persönlich und respektvoll in
+          Ihrem gewohnten Umfeld – mit Zeit, Aufmerksamkeit und einem offenen Ohr.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function TeamSection() {
+  return (
+    <section id="team" className="scroll-mt-20 bg-cream">
+      <div className="container mx-auto px-6 pt-12 sm:pt-16 lg:pt-20">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl sm:aspect-[16/9] lg:aspect-[21/9]">
+          <Image
+            src="/images/team.jpg"
+            alt="Das AlltagsTeam – engagierte Mitarbeitende"
+            fill
+            quality={95}
+            className="object-cover object-[60%_35%]"
+            sizes="100vw"
+            priority={false}
+          />
+          <div className="absolute inset-y-0 left-0 hidden w-[32%] items-center bg-primary/90 px-8 text-white lg:flex xl:px-10">
+            <TeamIntro />
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 lg:hidden">
+        <div className="mt-6 rounded-3xl bg-primary px-6 py-10 text-white sm:mt-8 sm:px-8 sm:py-12">
+          <TeamIntro />
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 py-10 sm:py-12 lg:py-14">
+        <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">
+          {values.map((value) => (
+            <article
+              key={value.title}
+              className="rounded-2xl border border-border/50 bg-white px-5 py-6 text-center shadow-sm sm:px-6 sm:py-8"
+            >
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 text-primary">
+                <span className="h-5 w-5">{value.icon}</span>
+              </div>
+              <h3 className="mt-4 font-display text-lg font-semibold text-primary sm:text-xl">
+                {value.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/75">
+                {value.text}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-12 grid items-center gap-10 sm:mt-14 lg:mt-16 lg:grid-cols-2 lg:gap-14">
+          <QualificationBadge />
+
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#b4904d] sm:text-xs">
+              QUALIFIZIERT & GEPRÜFT
+            </p>
+            <h3 className="font-display mt-3 text-2xl font-semibold text-primary sm:mt-4 sm:text-3xl">
+              Qualität, auf die Sie vertrauen können.
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/80 sm:text-[15px]">
+              Unsere Mitarbeitenden sind sorgfältig ausgewählt, geschult und
+              fachlich qualifiziert.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {qualifications.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-relaxed text-foreground/85 sm:text-[15px]">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3" aria-hidden>
+                      <path d="m5 12 4 4 8-8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-10 flex items-start gap-3 rounded-2xl bg-[#e8ede4] px-5 py-4 sm:mt-12 sm:px-6 sm:py-5">
+          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-3.5 w-3.5" aria-hidden>
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 10v5M12 7h.01" strokeLinecap="round" />
+            </svg>
+          </span>
+          <p className="text-sm leading-relaxed text-foreground/85 sm:text-[15px]">
+            Unsere Leistungen können im Rahmen der Entlastungsleistungen nach §45b
+            SGB XI über die Pflegekasse abgerechnet werden.
+          </p>
+        </div>
+
+        <div className="mt-10 flex items-center justify-center gap-4 rounded-2xl bg-primary px-6 py-5 text-center text-white sm:mt-12 sm:px-8 sm:py-6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 shrink-0 text-white/90" aria-hidden>
+            <path d="M12 20.5s-7-4.6-7-9.5a4 4 0 0 1 7-2.5 4 4 0 0 1 7 2.5c0 4.9-7 9.5-7 9.5Z" />
+          </svg>
+          <p className="font-display text-lg font-semibold sm:text-xl">
+            Vertrauen entsteht dort, wo man sich gut aufgehoben fühlt.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

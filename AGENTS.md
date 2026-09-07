@@ -1,13 +1,28 @@
+## Framework
+
+This project uses Astro with the React integration and the standalone Node adapter.
+Routes live in `src/pages`, the shared document in `src/layouts/Layout.astro`,
+and React components in `src/components`. Pages are prerendered; `/api/contact`
+is rendered on demand. Read the current Astro documentation before changing
+framework APIs or conventions.
+
 ## Images
 
-Always set `quality={95}` on every `next/image` `<Image>` component (photos, banners, logos, maps). Configure allowed qualities in `next.config.ts` (`images.qualities` must include `95`).
+Always set `quality={95}` on the shared `Image` component (photos, banners,
+logos, maps). `scripts/prepare-images.mjs` generates responsive WebP assets at
+quality 95 before development, checking, and builds. Preserve original assets
+in `public`; do not commit generated images or their generated manifest.
 
-<!-- BEGIN:nextjs-agent-rules -->
+## Interactivity
 
-# This is NOT the Next.js you know
+React components containing hooks or Framer Motion need an Astro `client:*`
+directive at their top-level page boundary. Use `client:load` for the header
+and hero, and `client:visible` for the contact area. Static sections, legal
+pages, and the footer should render without client JavaScript.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Validation
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+Run `npm run check`, `npm run lint`, `npm test`, and `npm run build` after
+framework or functional changes. Keep contact tests isolated from real email
+delivery and keep email credentials server-side.
+After building, run `npm run test:smoke` to verify the production routes and assets.
