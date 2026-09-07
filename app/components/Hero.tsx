@@ -72,7 +72,7 @@ export default function Hero({
         alt={alt}
         fill
         priority
-        quality={90}
+        quality={95}
         className={`object-cover ${imageClassName}`}
         sizes="(max-width: 768px) 100vw, 1920px"
       />

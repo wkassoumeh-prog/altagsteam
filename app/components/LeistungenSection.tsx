@@ -348,6 +348,7 @@ export default function LeistungenSection() {
                   src={service.image}
                   alt={service.alt}
                   fill
+                  quality={95}
                   className="object-cover"
                   sizes="(max-width: 640px) 72vw, (max-width: 1024px) 45vw, 20vw"
                 />
@@ -444,6 +445,7 @@ export default function LeistungenSection() {
                 src="/images/hero.jpg"
                 alt="Persönliche Beratung bei AlltagsTeam"
                 fill
+                quality={95}
                 className="object-cover"
                 sizes="(max-width: 640px) 100vw, 45vw"
               />

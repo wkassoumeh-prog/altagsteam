@@ -88,7 +88,7 @@ export default function HesseStatsSection() {
   return (
     <section id="region" className="scroll-mt-20 bg-[#faf8f9]">
       <div className="container mx-auto px-6 py-12 sm:py-16 lg:py-20">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="grid items-center gap-10 overflow-visible lg:grid-cols-2 lg:gap-12">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent sm:text-xs">
               EINSATZGEBIET
@@ -113,13 +113,20 @@ export default function HesseStatsSection() {
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-[5/4] w-full max-w-lg lg:max-w-none">
-            <Image
-              src="/images/hessen-map.jpg"
-              alt="Einsatzgebiet AlltagsTeam in Hessen – Karte mit Marburg und weiteren Standorten"
-              fill
-              className="object-contain object-center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+          <div className="relative overflow-hidden pb-1 lg:min-h-[23rem]">
+            <div className="relative mx-auto aspect-[5/4] w-full origin-center -translate-y-[15px] scale-[1.35] sm:scale-[1.5] lg:mx-0 lg:ml-auto lg:origin-right lg:w-[90%]">
+              <Image
+                src="/images/hessen-map.jpg"
+                alt="Einsatzgebiet AlltagsTeam in Hessen – Karte mit Marburg und weiteren Standorten"
+                fill
+                quality={95}
+                className="object-contain object-center mix-blend-multiply opacity-[0.97] [mask-image:radial-gradient(ellipse_90%_96%_at_58%_46%,#000_72%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_90%_96%_at_58%_46%,#000_72%,transparent_100%)]"
+                sizes="(max-width: 1024px) 100vw, 75vw"
+              />
+            </div>
+            <div
+              className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_bottom,#faf8f9_0%,transparent_16%),linear-gradient(to_top,#faf8f9_0%,transparent_20%),linear-gradient(to_right,#faf8f9_0%,transparent_14%),linear-gradient(to_left,#faf8f9_0%,transparent_28%)]"
+              aria-hidden
             />
           </div>
         </div>
@@ -171,6 +178,7 @@ export default function HesseStatsSection() {
                     alt={city.name}
                     width={logoSize.width}
                     height={logoSize.height}
+                    quality={95}
                     className={logoSize.className}
                   />
                 ) : (
@@ -193,9 +201,10 @@ export default function HesseStatsSection() {
           <div className="grid items-center gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] sm:gap-8">
             <div className="relative mx-auto aspect-[4/3] w-full max-w-xs sm:mx-0 sm:max-w-none sm:min-h-[12rem]">
               <Image
-                src="/images/WhatsApp Image 2026-08-26 at 11.25.16 PM - Copy.JPG"
+                src="/images/room.png"
                 alt=""
                 fill
+                quality={95}
                 className="object-cover object-center"
                 sizes="(max-width: 640px) 100vw, 320px"
               />

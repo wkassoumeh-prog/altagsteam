@@ -44,6 +44,7 @@ export default function Logo({
           alt={DEFAULT_LOGO.alt}
           width={DEFAULT_LOGO.width}
           height={DEFAULT_LOGO.height}
+          quality={95}
           className={logoImageClassName(DEFAULT_LOGO, variant)}
           priority={priority}
         />

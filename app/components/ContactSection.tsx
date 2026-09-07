@@ -107,10 +107,11 @@ export default function ContactSection() {
           <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
               <Image
-                src="/images/contact-hero.jpg"
+                src="/images/company.jpg"
                 alt="Persönliche Betreuung bei AlltagsTeam"
                 fill
-                className="object-cover object-[58%_42%]"
+                quality={95}
+                className="object-cover object-[70%_50%]"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
               <LeafOverlay className="pointer-events-none absolute bottom-6 left-5 h-24 w-28 text-white/70" />
@@ -161,6 +162,7 @@ export default function ContactSection() {
               src="/images/hessen-map.jpg"
               alt=""
               fill
+              quality={95}
               className="object-contain object-right"
               sizes="112px"
             />

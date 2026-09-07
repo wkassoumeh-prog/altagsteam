@@ -116,6 +116,7 @@ export default function Header() {
                   alt={DEFAULT_LOGO.alt}
                   width={DEFAULT_LOGO.width}
                   height={DEFAULT_LOGO.height}
+                  quality={95}
                   className={DEFAULT_LOGO.imageClassName}
                   priority
                 />

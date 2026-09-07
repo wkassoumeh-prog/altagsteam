@@ -81,7 +81,7 @@ export default function AboutSection() {
     <section id="about" className="scroll-mt-20">
       <div className="about-viewport-top relative overflow-hidden bg-white pb-10 pt-12 sm:pb-14 sm:pt-16">
         <div className="container mx-auto px-6">
-          <div className="about-top-grid grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+          <div className="about-top-grid grid items-center gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-12 xl:gap-16">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent sm:text-xs">
                 ÜBER UNS
@@ -124,12 +124,13 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end">
-              <div className="about-image-frame relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
+            <div className="relative mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none lg:justify-self-end">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.75rem] shadow-sm sm:rounded-3xl">
                 <Image
-                  src="/images/company.jpg"
-                  alt="Das Alltagsteam bei der Arbeit"
+                  src="/images/wir-sind-da-v3.png"
+                  alt="Das Alltagsteam – Wir sind da"
                   fill
+                  quality={95}
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 46vw"
                 />

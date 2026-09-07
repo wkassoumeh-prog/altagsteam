@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const supportLinks = [
@@ -64,84 +63,10 @@ const companyLinks = [
   { label: "Kontakt", href: "/#contact" },
 ];
 
-function LeafDecor({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" strokeWidth="0.75" className={className} aria-hidden>
-      <path d="M15 80c25-35 45-50 70-60" strokeLinecap="round" opacity="0.45" />
-      <ellipse cx="88" cy="22" rx="12" ry="6" transform="rotate(-15 88 22)" opacity="0.35" />
-      <ellipse cx="72" cy="30" rx="9" ry="4.5" transform="rotate(-40 72 30)" opacity="0.3" />
-      <path d="M82 28c6 10 9 18 8 28" strokeLinecap="round" opacity="0.35" />
-    </svg>
-  );
-}
-
-function FooterWave() {
-  return (
-    <div className="pointer-events-none absolute bottom-0 left-0 right-0 leading-[0]">
-      <svg
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-        className="block h-14 w-full sm:h-[4.5rem] lg:h-24"
-        aria-hidden
-      >
-        <path
-          fill="#1a4d3e"
-          d="M0,55 C360,95 720,25 1080,60 C1260,75 1380,70 1440,65 L1440,100 L0,100 Z"
-        />
-      </svg>
-    </div>
-  );
-}
-
-function HandsHeartIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.25" className={className} aria-hidden>
-      <path d="M24 38s-10-7-10-17a7 7 0 0 1 10-5 7 7 0 0 1 10 5c0 10-10 17-10 17Z" />
-      <path d="M16 22c-2-3-1-6 2-7M32 22c2-3 1-6-2-7" strokeLinecap="round" />
-      <path d="M12 30c3 2 6 3 12 3s9-1 12-3" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export default function Footer() {
   return (
     <footer className="bg-primary text-white">
-      <div className="relative overflow-hidden bg-[#faf8f9] pb-14 text-primary sm:pb-16 lg:pb-20">
-        <LeafDecor className="pointer-events-none absolute left-0 top-6 h-24 w-28 text-primary/20 sm:top-8 sm:h-32 sm:w-36" />
-
-        <div className="container relative mx-auto px-6 pt-12 sm:pt-16 lg:pt-20">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
-            <div className="relative z-10">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#b4904d]/40 bg-white/80 text-primary shadow-sm sm:h-[4.5rem] sm:w-[4.5rem]">
-                <HandsHeartIcon className="h-8 w-8 sm:h-9 sm:w-9" />
-              </div>
-              <h2 className="font-display mt-6 max-w-lg text-[1.75rem] font-semibold leading-[1.15] sm:text-3xl lg:text-4xl">
-                Gemeinsam für mehr Lebensqualität im Alltag.
-              </h2>
-              <p className="mt-4 max-w-md text-[15px] leading-relaxed text-foreground/80 sm:text-base">
-                Wir sind in ganz Hessen für Sie da und unterstützen Sie dort, wo
-                Sie uns brauchen.
-              </p>
-            </div>
-
-            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
-                <Image
-                  src="/images/footer-hero.jpg"
-                  alt="Gemütliche Wohnatmosphäre – AlltagsTeam"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <FooterWave />
-      </div>
-
-      <div className="container mx-auto px-6 pb-6 pt-4 sm:pb-8 sm:pt-6">
+      <div className="container mx-auto px-6 pb-6 pt-12 sm:pb-8 sm:pt-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div>
             <Link href="/" className="inline-flex flex-col">

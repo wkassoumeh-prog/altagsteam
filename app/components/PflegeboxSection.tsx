@@ -125,18 +125,19 @@ export default function PflegeboxSection() {
           <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
               <Image
-                src="/images/pflegebox.jpg"
+                src="/images/pflegebox-box.jpg"
                 alt="AlltagsTeam Pflegebox mit Pflegehilfsmitteln"
                 fill
+                quality={95}
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
             </div>
-            <div className="absolute -bottom-4 -right-2 flex max-w-[220px] items-center gap-3 rounded-full bg-primary px-4 py-3 text-white shadow-lg sm:-bottom-5 sm:-right-4 sm:max-w-[260px] sm:px-5 sm:py-4">
+            <div className="absolute -bottom-[40px] right-[20px] z-10 flex w-max max-w-none items-center gap-3 rounded-full bg-primary px-4 py-3 text-white shadow-lg sm:px-5 sm:py-4">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-[#b4904d]">
                 <GoldHeart className="h-5 w-5" />
               </span>
-              <p className="text-xs leading-snug font-medium sm:text-sm">
+              <p className="whitespace-nowrap text-xs font-medium sm:text-sm">
                 Wir sind für Sie da – persönlich und zuverlässig.
               </p>
             </div>

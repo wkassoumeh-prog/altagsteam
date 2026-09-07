@@ -40,27 +40,6 @@ const qualifications = [
   "Verschwiegenheit und ein respektvoller Umgang sind für uns selbstverständlich",
 ];
 
-function TeamHeartGraphic({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 160 140"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      className={className}
-      aria-hidden
-    >
-      <path d="M80 118s-28-19-28-48a22 22 0 0 1 28-14 22 22 0 0 1 28 14c0 29-28 48-28 48Z" />
-      <circle cx="62" cy="58" r="4" />
-      <circle cx="98" cy="58" r="4" />
-      <path d="M68 72c4 4 10 6 12 6s8-2 12-6" strokeLinecap="round" />
-      <path d="M118 38c8 6 14 14 16 24" strokeLinecap="round" opacity="0.8" />
-      <ellipse cx="128" cy="28" rx="8" ry="4" transform="rotate(20 128 28)" opacity="0.7" />
-      <ellipse cx="138" cy="36" rx="6" ry="3" transform="rotate(-10 138 36)" opacity="0.6" />
-    </svg>
-  );
-}
-
 function BadgeArcText({
   text,
   radius,
@@ -147,45 +126,52 @@ function QualificationBadge() {
   );
 }
 
+function TeamIntro() {
+  return (
+    <div>
+      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#b4904d] sm:text-xs">
+        UNSER TEAM
+      </p>
+      <h2 className="font-display mt-3 text-[2rem] font-semibold leading-[1.12] sm:mt-4 sm:text-4xl lg:text-3xl xl:text-4xl">
+        Menschen, die mit Herz unterstützen.
+      </h2>
+      <div className="mt-5 max-w-2xl space-y-4 text-[15px] leading-relaxed text-white/85 sm:mt-6 sm:text-base lg:text-sm xl:text-[15px]">
+        <p>
+          Bei AlltagsTeam geht es um mehr als praktische Hilfe. Es geht um
+          Menschen, die zuhören, mitdenken und verlässlich an Ihrer Seite sind.
+        </p>
+        <p>
+          Unsere Mitarbeitenden unterstützen Sie persönlich und respektvoll in
+          Ihrem gewohnten Umfeld – mit Zeit, Aufmerksamkeit und einem offenen Ohr.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function TeamSection() {
   return (
     <section id="team" className="scroll-mt-20 bg-cream">
-      <div className="relative aspect-[16/10] w-full sm:aspect-[16/9] lg:aspect-[21/9]">
-        <Image
-          src="/images/team-section.jpg"
-          alt="Das AlltagsTeam – engagierte Mitarbeitende"
-          fill
-          className="object-cover object-[60%_center]"
-          sizes="100vw"
-          priority={false}
-        />
+      <div className="container mx-auto px-6 pt-12 sm:pt-16 lg:pt-20">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl sm:aspect-[16/9] lg:aspect-[21/9]">
+          <Image
+            src="/images/team.jpg"
+            alt="Das AlltagsTeam – engagierte Mitarbeitende"
+            fill
+            quality={95}
+            className="object-cover object-[60%_35%]"
+            sizes="100vw"
+            priority={false}
+          />
+          <div className="absolute inset-y-0 left-0 hidden w-[32%] items-center bg-primary/90 px-8 text-white lg:flex xl:px-10">
+            <TeamIntro />
+          </div>
+        </div>
       </div>
 
-      <div className="bg-primary text-white">
-        <div className="container mx-auto px-6 py-12 sm:py-16 lg:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-14">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#b4904d] sm:text-xs">
-                UNSER TEAM
-              </p>
-              <h2 className="font-display mt-3 text-[2rem] font-semibold leading-[1.12] sm:mt-4 sm:text-4xl lg:text-5xl">
-                Menschen, die mit Herz unterstützen.
-              </h2>
-              <div className="mt-5 max-w-2xl space-y-4 text-[15px] leading-relaxed text-white/85 sm:mt-6 sm:text-base">
-                <p>
-                  Bei AlltagsTeam geht es um mehr als praktische Hilfe. Es geht um
-                  Menschen, die zuhören, mitdenken und verlässlich an Ihrer Seite sind.
-                </p>
-                <p>
-                  Unsere Mitarbeitenden unterstützen Sie persönlich und respektvoll in
-                  Ihrem gewohnten Umfeld – mit Zeit, Aufmerksamkeit und einem offenen Ohr.
-                </p>
-              </div>
-            </div>
-            <div className="hidden justify-center lg:flex">
-              <TeamHeartGraphic className="h-40 w-44 text-[#b4904d]/90 xl:h-48 xl:w-52" />
-            </div>
-          </div>
+      <div className="container mx-auto px-6 lg:hidden">
+        <div className="mt-6 rounded-3xl bg-primary px-6 py-10 text-white sm:mt-8 sm:px-8 sm:py-12">
+          <TeamIntro />
         </div>
       </div>
 

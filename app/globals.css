@@ -170,12 +170,6 @@ html[data-motion="disabled"] *::after {
   .about-top-grid {
     align-items: center;
   }
-
-  .about-image-frame {
-    min-height: min(72dvh, 42rem);
-    aspect-ratio: auto;
-    height: 100%;
-  }
 }
 
 html[data-motion="disabled"] .group:hover *,

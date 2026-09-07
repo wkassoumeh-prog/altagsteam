@@ -99,7 +99,7 @@ export default function FinanzierungSection() {
   return (
     <section id="finanzierung" className="scroll-mt-20 bg-white">
       <div className="container mx-auto px-6 py-12 sm:py-16 lg:py-20">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-12 xl:gap-16">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#b4904d] sm:text-xs">
               FINANZIERUNG & PFLEGEKASSE
@@ -132,13 +132,14 @@ export default function FinanzierungSection() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
+          <div className="relative mx-auto w-full max-w-lg lg:ml-auto lg:mr-0 lg:max-w-none lg:justify-self-end">
+            <div className="relative aspect-[11/10] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
               <Image
-                src="/images/finanzierung-hero.jpg"
+                src="/images/finanzierung-hero-new.png"
                 alt="Persönliche Beratung zu Finanzierung und Pflegekasse"
                 fill
-                className="object-cover object-[62%_42%]"
+                quality={95}
+                className="object-cover object-[50%_38%] scale-[0.8]"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
             </div>

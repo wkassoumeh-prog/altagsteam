@@ -142,14 +142,16 @@ export default function KarriereSection() {
             </a>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
+          <div className="relative mx-auto w-full max-w-[480px] lg:mx-0 lg:max-w-xl lg:justify-self-end">
+            <div className="relative aspect-[4/3.2] sm:aspect-[4/3.1] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
               <Image
                 src="/images/karriere-hero.jpg"
                 alt="Das AlltagsTeam – engagierte Mitarbeitende"
                 fill
-                className="object-cover object-[60%_center]"
-                sizes="(max-width: 1024px) 100vw, 45vw"
+                priority
+                quality={95}
+                className="object-cover object-[80%_center]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             <div className="absolute -left-2 top-8 max-w-[180px] rounded-full bg-[#f5f0e8] px-4 py-3 text-center shadow-sm sm:-left-4 sm:max-w-[200px] sm:px-5 sm:py-3.5">

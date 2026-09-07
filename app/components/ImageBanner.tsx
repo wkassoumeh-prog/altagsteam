@@ -76,6 +76,7 @@ export default function ImageBanner({
               src={image}
               alt={alt}
               fill
+              quality={95}
               className={`object-cover ${imageClassName} ${
                 isSiteMotionEnabled()
                   ? "transition-transform duration-[2000ms] group-hover:scale-105"

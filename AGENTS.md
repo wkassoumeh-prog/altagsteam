@@ -1,3 +1,7 @@
+## Images
+
+Always set `quality={95}` on every `next/image` `<Image>` component (photos, banners, logos, maps). Configure allowed qualities in `next.config.ts` (`images.qualities` must include `95`).
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
