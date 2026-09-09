@@ -1,4 +1,6 @@
 import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { contactImageSizes } from "./imageSizes";
 import ContactForm from "./ContactForm";
 
 const contactCards = [
@@ -105,19 +107,11 @@ export default function ContactSection() {
           </div>
 
           <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
-              <Image
-                src="/images/company.jpg"
-                alt="Persönliche Betreuung bei AlltagsTeam"
-                fill
-                quality={95}
-                className="object-cover object-[70%_50%]"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
+            <PhotoFrame variant="portrait" src="/images/company.jpg" alt="Alltagshelferin im persönlichen Gespräch mit einer Seniorin" focalPosition="70% 50%" sizes={contactImageSizes}>
               <LeafOverlay className="pointer-events-none absolute bottom-6 left-5 h-24 w-28 text-white/70" />
               <LeafOverlay className="pointer-events-none absolute right-5 top-5 h-20 w-24 scale-x-[-1] text-white/60" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
-            </div>
+            </PhotoFrame>
           </div>
         </div>
 

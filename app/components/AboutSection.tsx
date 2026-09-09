@@ -1,4 +1,5 @@
-import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { splitImageSizes } from "./imageSizes";
 
 const highlights = [
   {
@@ -81,7 +82,7 @@ export default function AboutSection() {
     <section id="about" className="scroll-mt-20">
       <div className="about-viewport-top relative overflow-hidden bg-white pb-10 pt-12 sm:pb-14 sm:pt-16">
         <div className="container mx-auto px-6">
-          <div className="about-top-grid grid items-center gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-12 xl:gap-16">
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent sm:text-xs">
                 ÜBER UNS
@@ -124,17 +125,8 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none lg:justify-self-end">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.75rem] shadow-sm sm:rounded-3xl">
-                <Image
-                  src="/images/wir-sind-da-v3.png"
-                  alt="Das Alltagsteam – Wir sind da"
-                  fill
-                  quality={95}
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 46vw"
-                />
-              </div>
+            <div className="relative w-full">
+              <PhotoFrame src="/images/wir-sind-da-v3.png" alt="Alltagshelferin und Seniorin im Gespräch am Tisch" sizes={splitImageSizes} />
               <FloralAccent className="pointer-events-none absolute -bottom-3 -right-3 h-24 w-32 text-accent/35 sm:-bottom-4 sm:-right-4 sm:h-28 sm:w-36" />
             </div>
           </div>

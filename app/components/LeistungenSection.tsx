@@ -1,4 +1,5 @@
-import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { serviceImageSizes, consultationImageSizes } from "./imageSizes";
 
 const categoryColors = {
   haushalt: "#1a4d3e",
@@ -317,16 +318,7 @@ export default function LeistungenSection() {
               id={`leistung-${service.id}`}
               className="w-[72vw] shrink-0 scroll-mt-24 overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm sm:w-auto"
             >
-              <div className="relative h-36 sm:h-32 lg:h-28">
-                <Image
-                  src={service.image}
-                  alt={service.alt}
-                  fill
-                  quality={95}
-                  className="object-cover"
-                  sizes="(max-width: 640px) 72vw, (max-width: 1024px) 45vw, 20vw"
-                />
-              </div>
+              <PhotoFrame variant="card" src={service.image} alt={service.alt} sizes={serviceImageSizes} />
               <div className="relative px-4 pb-5 pt-9 text-center">
                 <div
                   className="absolute -top-6 left-1/2 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border-2 bg-white shadow-sm"
@@ -414,16 +406,7 @@ export default function LeistungenSection() {
 
         <div className="relative mt-10 overflow-hidden rounded-3xl bg-white sm:mt-12">
           <div className="grid items-center gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:gap-0">
-            <div className="relative aspect-[4/3] sm:aspect-auto sm:min-h-[280px]">
-              <Image
-                src="/images/hero.jpg"
-                alt="Persönliche Beratung bei AlltagsTeam"
-                fill
-                quality={95}
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 45vw"
-              />
-            </div>
+            <PhotoFrame src="/images/hero.jpg" alt="AlltagsTeam mit einer Seniorin zu Hause" sizes={consultationImageSizes} />
             <div className="relative px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
               <svg
                 viewBox="0 0 120 100"

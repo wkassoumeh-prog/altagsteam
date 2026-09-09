@@ -1,4 +1,5 @@
-import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { splitImageSizes } from "./imageSizes";
 
 const boxItems = [
   {
@@ -103,7 +104,7 @@ export default function PflegeboxSection() {
   return (
     <section id="pflegebox" className="scroll-mt-20 bg-cream">
       <div className="container mx-auto px-6 py-12 sm:py-16 lg:py-20">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#b4904d] sm:text-xs">
               PFLEGEHILFSMITTEL
@@ -122,22 +123,13 @@ export default function PflegeboxSection() {
             </p>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl">
-              <Image
-                src="/images/pflegebox-box.jpg"
-                alt="AlltagsTeam Pflegebox mit Pflegehilfsmitteln"
-                fill
-                quality={95}
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
-            </div>
-            <div className="absolute -bottom-[40px] right-[20px] z-10 flex w-max max-w-none items-center gap-3 rounded-full bg-primary px-4 py-3 text-white shadow-lg sm:px-5 sm:py-4">
+          <div className="relative w-full">
+            <PhotoFrame src="/images/pflegebox-box.jpg" alt="AlltagsTeam Pflegebox mit Pflegehilfsmitteln" sizes={splitImageSizes} />
+            <div className="mt-4 flex w-fit max-w-full items-center gap-3 rounded-full bg-primary px-4 py-3 text-white shadow-lg sm:px-5 sm:py-4">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 text-[#b4904d]">
                 <GoldHeart className="h-5 w-5" />
               </span>
-              <p className="whitespace-nowrap text-xs font-medium sm:text-sm">
+              <p className="text-xs font-medium sm:text-sm">
                 Wir sind für Sie da – persönlich und zuverlässig.
               </p>
             </div>

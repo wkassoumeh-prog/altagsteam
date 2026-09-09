@@ -1,4 +1,6 @@
 import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { enquiryImageSizes } from "./imageSizes";
 
 const stats = [
   {
@@ -113,8 +115,8 @@ export default function HesseStatsSection() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden pb-1 lg:min-h-[23rem]">
-            <div className="relative mx-auto aspect-[5/4] w-full origin-center -translate-y-[15px] scale-[1.35] sm:scale-[1.5] lg:mx-0 lg:ml-auto lg:origin-right lg:w-[90%]">
+          <div className="relative overflow-hidden py-8 sm:py-12 lg:min-h-[23rem]">
+            <div className="relative mx-auto aspect-[5/4] w-full origin-center scale-[1.35] sm:scale-[1.5] lg:mx-0 lg:ml-auto lg:origin-right lg:w-[90%]">
               <Image
                 src="/images/hessen-map.jpg"
                 alt="Einsatzgebiet AlltagsTeam in Hessen – Karte mit Marburg und weiteren Standorten"
@@ -125,7 +127,7 @@ export default function HesseStatsSection() {
               />
             </div>
             <div
-              className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_bottom,#faf8f9_0%,transparent_16%),linear-gradient(to_top,#faf8f9_0%,transparent_20%),linear-gradient(to_right,#faf8f9_0%,transparent_14%),linear-gradient(to_left,#faf8f9_0%,transparent_28%)]"
+              className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_bottom,#faf8f9_0%,transparent_4%),linear-gradient(to_top,#faf8f9_0%,transparent_4%),linear-gradient(to_right,#faf8f9_0%,transparent_14%),linear-gradient(to_left,#faf8f9_0%,transparent_28%)]"
               aria-hidden
             />
           </div>
@@ -199,16 +201,8 @@ export default function HesseStatsSection() {
 
         <div className="mt-6 overflow-hidden rounded-3xl bg-cream sm:mt-8">
           <div className="grid items-center gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] sm:gap-8">
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-xs sm:mx-0 sm:max-w-none sm:min-h-[12rem]">
-              <Image
-                src="/images/room.png"
-                alt=""
-                fill
-                quality={95}
-                className="object-cover object-center"
-                sizes="(max-width: 640px) 100vw, 320px"
-              />
-              <div className="absolute inset-0 rounded-3xl ring-1 ring-border/40 sm:rounded-none sm:ring-0" />
+            <div className="mx-auto w-full max-w-xs sm:mx-0 sm:max-w-none">
+              <PhotoFrame src="/images/room.png" alt="" sizes={enquiryImageSizes} />
             </div>
 
             <div className="px-5 pb-8 sm:px-8 sm:py-8 sm:pb-8">

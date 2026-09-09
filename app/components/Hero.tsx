@@ -71,10 +71,11 @@ export default function Hero({
         src={image}
         alt={alt}
         fill
-        priority
+        loading="eager"
+        fetchPriority="high"
         quality={95}
         className={`object-cover ${imageClassName}`}
-        sizes="(max-width: 768px) 100vw, 1920px"
+        sizes="100vw"
       />
       <div className="hero-overlay absolute inset-0" />
       <div className="hero-overlay-top absolute inset-0" aria-hidden="true" />

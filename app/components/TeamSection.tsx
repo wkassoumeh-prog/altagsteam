@@ -1,4 +1,5 @@
-import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { bannerImageSizes } from "./imageSizes";
 
 const values = [
   {
@@ -153,20 +154,11 @@ export default function TeamSection() {
   return (
     <section id="team" className="scroll-mt-20 bg-cream">
       <div className="container mx-auto px-6 pt-12 sm:pt-16 lg:pt-20">
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-3xl sm:aspect-[16/9] lg:aspect-[21/9]">
-          <Image
-            src="/images/team.jpg"
-            alt="Das AlltagsTeam – engagierte Mitarbeitende"
-            fill
-            quality={95}
-            className="object-cover object-[60%_35%]"
-            sizes="100vw"
-            priority={false}
-          />
+        <PhotoFrame variant="banner" src="/images/team.jpg" alt="Mitarbeitende des AlltagsTeams gemeinsam im Wohnbereich" focalPosition="60% 35%" sizes={bannerImageSizes}>
           <div className="absolute inset-y-0 left-0 hidden w-[32%] items-center bg-primary/90 px-8 text-white lg:flex xl:px-10">
             <TeamIntro />
           </div>
-        </div>
+        </PhotoFrame>
       </div>
 
       <div className="container mx-auto px-6 lg:hidden">

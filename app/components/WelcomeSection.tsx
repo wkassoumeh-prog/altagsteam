@@ -1,4 +1,5 @@
-import Image from "next/image";
+import PhotoFrame from "./PhotoFrame";
+import { splitImageSizes } from "./imageSizes";
 
 const values = [
   {
@@ -36,7 +37,7 @@ export default function WelcomeSection() {
   return (
     <section id="welcome" className="relative overflow-hidden bg-cream">
       <div className="relative z-10 container mx-auto px-6 py-12 sm:py-16 lg:py-20">
-        <div className="grid items-stretch gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent sm:text-xs">
               WILLKOMMEN BEI ALLTAGSTEAM
@@ -61,16 +62,7 @@ export default function WelcomeSection() {
             </div>
           </div>
 
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] sm:rounded-3xl md:aspect-auto md:h-full md:min-h-[16rem]">
-            <Image
-              src="/images/welcome-still-life.jpg"
-              alt=""
-              fill
-              quality={95}
-              className="object-cover object-[75%_55%]"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
+          <PhotoFrame src="/images/home.png" alt="" focalPosition="100% 50%" sizes={splitImageSizes} />
         </div>
 
         <div className="mt-10 sm:mt-12 lg:mt-14">
