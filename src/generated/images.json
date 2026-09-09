@@ -1,0 +1,149 @@
+{
+  "/Frankfurt.png": {
+    "width": 1536,
+    "height": 1024,
+    "quality": 95,
+    "src": "/generated/images/frankfurt-09ce975cda7323bd-256.webp",
+    "srcSet": "/generated/images/frankfurt-09ce975cda7323bd-48.webp 48w, /generated/images/frankfurt-09ce975cda7323bd-64.webp 64w, /generated/images/frankfurt-09ce975cda7323bd-96.webp 96w, /generated/images/frankfurt-09ce975cda7323bd-128.webp 128w, /generated/images/frankfurt-09ce975cda7323bd-192.webp 192w, /generated/images/frankfurt-09ce975cda7323bd-256.webp 256w, /generated/images/frankfurt-09ce975cda7323bd-384.webp 384w, /generated/images/frankfurt-09ce975cda7323bd-512.webp 512w"
+  },
+  "/Gießen.png": {
+    "width": 1337,
+    "height": 1176,
+    "quality": 95,
+    "src": "/generated/images/gie-en-6670dbef6836d96c-256.webp",
+    "srcSet": "/generated/images/gie-en-6670dbef6836d96c-48.webp 48w, /generated/images/gie-en-6670dbef6836d96c-64.webp 64w, /generated/images/gie-en-6670dbef6836d96c-96.webp 96w, /generated/images/gie-en-6670dbef6836d96c-128.webp 128w, /generated/images/gie-en-6670dbef6836d96c-192.webp 192w, /generated/images/gie-en-6670dbef6836d96c-256.webp 256w, /generated/images/gie-en-6670dbef6836d96c-384.webp 384w, /generated/images/gie-en-6670dbef6836d96c-512.webp 512w"
+  },
+  "/Kassel.png": {
+    "width": 1536,
+    "height": 1024,
+    "quality": 95,
+    "src": "/generated/images/kassel-8a0968838a6c2a01-256.webp",
+    "srcSet": "/generated/images/kassel-8a0968838a6c2a01-48.webp 48w, /generated/images/kassel-8a0968838a6c2a01-64.webp 64w, /generated/images/kassel-8a0968838a6c2a01-96.webp 96w, /generated/images/kassel-8a0968838a6c2a01-128.webp 128w, /generated/images/kassel-8a0968838a6c2a01-192.webp 192w, /generated/images/kassel-8a0968838a6c2a01-256.webp 256w, /generated/images/kassel-8a0968838a6c2a01-384.webp 384w, /generated/images/kassel-8a0968838a6c2a01-512.webp 512w"
+  },
+  "/Logo Familie mit Hause.png": {
+    "width": 817,
+    "height": 802,
+    "quality": 95,
+    "src": "/generated/images/logo-familie-mit-hause-73d2de4bcc93485d-256.webp",
+    "srcSet": "/generated/images/logo-familie-mit-hause-73d2de4bcc93485d-48.webp 48w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-64.webp 64w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-96.webp 96w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-128.webp 128w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-192.webp 192w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-256.webp 256w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-384.webp 384w, /generated/images/logo-familie-mit-hause-73d2de4bcc93485d-512.webp 512w"
+  },
+  "/Marburg.png": {
+    "width": 1323,
+    "height": 1189,
+    "quality": 95,
+    "src": "/generated/images/marburg-72a2571a5359a550-256.webp",
+    "srcSet": "/generated/images/marburg-72a2571a5359a550-48.webp 48w, /generated/images/marburg-72a2571a5359a550-64.webp 64w, /generated/images/marburg-72a2571a5359a550-96.webp 96w, /generated/images/marburg-72a2571a5359a550-128.webp 128w, /generated/images/marburg-72a2571a5359a550-192.webp 192w, /generated/images/marburg-72a2571a5359a550-256.webp 256w, /generated/images/marburg-72a2571a5359a550-384.webp 384w, /generated/images/marburg-72a2571a5359a550-512.webp 512w"
+  },
+  "/Wetzler.png": {
+    "width": 1402,
+    "height": 1122,
+    "quality": 95,
+    "src": "/generated/images/wetzler-6836d9752a1225c2-256.webp",
+    "srcSet": "/generated/images/wetzler-6836d9752a1225c2-48.webp 48w, /generated/images/wetzler-6836d9752a1225c2-64.webp 64w, /generated/images/wetzler-6836d9752a1225c2-96.webp 96w, /generated/images/wetzler-6836d9752a1225c2-128.webp 128w, /generated/images/wetzler-6836d9752a1225c2-192.webp 192w, /generated/images/wetzler-6836d9752a1225c2-256.webp 256w, /generated/images/wetzler-6836d9752a1225c2-384.webp 384w, /generated/images/wetzler-6836d9752a1225c2-512.webp 512w"
+  },
+  "/images/cleaning.jpg": {
+    "width": 2752,
+    "height": 1536,
+    "quality": 95,
+    "src": "/generated/images/cleaning-5185594b6d2259c5-1280.webp",
+    "srcSet": "/generated/images/cleaning-5185594b6d2259c5-320.webp 320w, /generated/images/cleaning-5185594b6d2259c5-480.webp 480w, /generated/images/cleaning-5185594b6d2259c5-640.webp 640w, /generated/images/cleaning-5185594b6d2259c5-828.webp 828w, /generated/images/cleaning-5185594b6d2259c5-1080.webp 1080w, /generated/images/cleaning-5185594b6d2259c5-1280.webp 1280w, /generated/images/cleaning-5185594b6d2259c5-1600.webp 1600w, /generated/images/cleaning-5185594b6d2259c5-1920.webp 1920w, /generated/images/cleaning-5185594b6d2259c5-2560.webp 2560w"
+  },
+  "/images/company.jpg": {
+    "width": 2752,
+    "height": 1536,
+    "quality": 95,
+    "src": "/generated/images/company-cdb464f4450b52ba-1280.webp",
+    "srcSet": "/generated/images/company-cdb464f4450b52ba-320.webp 320w, /generated/images/company-cdb464f4450b52ba-480.webp 480w, /generated/images/company-cdb464f4450b52ba-640.webp 640w, /generated/images/company-cdb464f4450b52ba-828.webp 828w, /generated/images/company-cdb464f4450b52ba-1080.webp 1080w, /generated/images/company-cdb464f4450b52ba-1280.webp 1280w, /generated/images/company-cdb464f4450b52ba-1600.webp 1600w, /generated/images/company-cdb464f4450b52ba-1920.webp 1920w, /generated/images/company-cdb464f4450b52ba-2560.webp 2560w"
+  },
+  "/images/finanzierung-hero-new.png": {
+    "width": 1944,
+    "height": 809,
+    "quality": 95,
+    "src": "/generated/images/finanzierung-hero-new-a873879189d9a5c2-1280.webp",
+    "srcSet": "/generated/images/finanzierung-hero-new-a873879189d9a5c2-320.webp 320w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-480.webp 480w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-640.webp 640w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-828.webp 828w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-1080.webp 1080w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-1280.webp 1280w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-1600.webp 1600w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-1920.webp 1920w, /generated/images/finanzierung-hero-new-a873879189d9a5c2-1944.webp 1944w"
+  },
+  "/images/gardening.jpg": {
+    "width": 2752,
+    "height": 1536,
+    "quality": 95,
+    "src": "/generated/images/gardening-1758477881d79cac-1280.webp",
+    "srcSet": "/generated/images/gardening-1758477881d79cac-320.webp 320w, /generated/images/gardening-1758477881d79cac-480.webp 480w, /generated/images/gardening-1758477881d79cac-640.webp 640w, /generated/images/gardening-1758477881d79cac-828.webp 828w, /generated/images/gardening-1758477881d79cac-1080.webp 1080w, /generated/images/gardening-1758477881d79cac-1280.webp 1280w, /generated/images/gardening-1758477881d79cac-1600.webp 1600w, /generated/images/gardening-1758477881d79cac-1920.webp 1920w, /generated/images/gardening-1758477881d79cac-2560.webp 2560w"
+  },
+  "/images/hero.jpg": {
+    "width": 2752,
+    "height": 1536,
+    "quality": 95,
+    "src": "/generated/images/hero-417829ef25874bd4-1280.webp",
+    "srcSet": "/generated/images/hero-417829ef25874bd4-320.webp 320w, /generated/images/hero-417829ef25874bd4-480.webp 480w, /generated/images/hero-417829ef25874bd4-640.webp 640w, /generated/images/hero-417829ef25874bd4-828.webp 828w, /generated/images/hero-417829ef25874bd4-1080.webp 1080w, /generated/images/hero-417829ef25874bd4-1280.webp 1280w, /generated/images/hero-417829ef25874bd4-1600.webp 1600w, /generated/images/hero-417829ef25874bd4-1920.webp 1920w, /generated/images/hero-417829ef25874bd4-2560.webp 2560w"
+  },
+  "/images/hessen-map.jpg": {
+    "width": 1024,
+    "height": 576,
+    "quality": 95,
+    "src": "/generated/images/hessen-map-3fd83b45093bfcda-1024.webp",
+    "srcSet": "/generated/images/hessen-map-3fd83b45093bfcda-320.webp 320w, /generated/images/hessen-map-3fd83b45093bfcda-480.webp 480w, /generated/images/hessen-map-3fd83b45093bfcda-640.webp 640w, /generated/images/hessen-map-3fd83b45093bfcda-828.webp 828w, /generated/images/hessen-map-3fd83b45093bfcda-1024.webp 1024w"
+  },
+  "/images/karriere-hero.jpg": {
+    "width": 1024,
+    "height": 576,
+    "quality": 95,
+    "src": "/generated/images/karriere-hero-01ce27dd2558b2af-1024.webp",
+    "srcSet": "/generated/images/karriere-hero-01ce27dd2558b2af-320.webp 320w, /generated/images/karriere-hero-01ce27dd2558b2af-480.webp 480w, /generated/images/karriere-hero-01ce27dd2558b2af-640.webp 640w, /generated/images/karriere-hero-01ce27dd2558b2af-828.webp 828w, /generated/images/karriere-hero-01ce27dd2558b2af-1024.webp 1024w"
+  },
+  "/images/laundry.jpg": {
+    "width": 2752,
+    "height": 1536,
+    "quality": 95,
+    "src": "/generated/images/laundry-3528c0f2c4d9b31d-1280.webp",
+    "srcSet": "/generated/images/laundry-3528c0f2c4d9b31d-320.webp 320w, /generated/images/laundry-3528c0f2c4d9b31d-480.webp 480w, /generated/images/laundry-3528c0f2c4d9b31d-640.webp 640w, /generated/images/laundry-3528c0f2c4d9b31d-828.webp 828w, /generated/images/laundry-3528c0f2c4d9b31d-1080.webp 1080w, /generated/images/laundry-3528c0f2c4d9b31d-1280.webp 1280w, /generated/images/laundry-3528c0f2c4d9b31d-1600.webp 1600w, /generated/images/laundry-3528c0f2c4d9b31d-1920.webp 1920w, /generated/images/laundry-3528c0f2c4d9b31d-2560.webp 2560w"
+  },
+  "/images/pflegebox-box.jpg": {
+    "width": 1024,
+    "height": 576,
+    "quality": 95,
+    "src": "/generated/images/pflegebox-box-357b5e701ba35601-1024.webp",
+    "srcSet": "/generated/images/pflegebox-box-357b5e701ba35601-320.webp 320w, /generated/images/pflegebox-box-357b5e701ba35601-480.webp 480w, /generated/images/pflegebox-box-357b5e701ba35601-640.webp 640w, /generated/images/pflegebox-box-357b5e701ba35601-828.webp 828w, /generated/images/pflegebox-box-357b5e701ba35601-1024.webp 1024w"
+  },
+  "/images/room.png": {
+    "width": 1672,
+    "height": 941,
+    "quality": 95,
+    "src": "/generated/images/room-7988f64e5b2201ec-1280.webp",
+    "srcSet": "/generated/images/room-7988f64e5b2201ec-320.webp 320w, /generated/images/room-7988f64e5b2201ec-480.webp 480w, /generated/images/room-7988f64e5b2201ec-640.webp 640w, /generated/images/room-7988f64e5b2201ec-828.webp 828w, /generated/images/room-7988f64e5b2201ec-1080.webp 1080w, /generated/images/room-7988f64e5b2201ec-1280.webp 1280w, /generated/images/room-7988f64e5b2201ec-1600.webp 1600w, /generated/images/room-7988f64e5b2201ec-1672.webp 1672w"
+  },
+  "/images/team.jpg": {
+    "width": 2730,
+    "height": 1536,
+    "quality": 95,
+    "src": "/generated/images/team-1f22d8bf71baea0e-1280.webp",
+    "srcSet": "/generated/images/team-1f22d8bf71baea0e-320.webp 320w, /generated/images/team-1f22d8bf71baea0e-480.webp 480w, /generated/images/team-1f22d8bf71baea0e-640.webp 640w, /generated/images/team-1f22d8bf71baea0e-828.webp 828w, /generated/images/team-1f22d8bf71baea0e-1080.webp 1080w, /generated/images/team-1f22d8bf71baea0e-1280.webp 1280w, /generated/images/team-1f22d8bf71baea0e-1600.webp 1600w, /generated/images/team-1f22d8bf71baea0e-1920.webp 1920w, /generated/images/team-1f22d8bf71baea0e-2560.webp 2560w"
+  },
+  "/images/welcome-still-life.jpg": {
+    "width": 1024,
+    "height": 576,
+    "quality": 95,
+    "src": "/generated/images/welcome-still-life-2ddf2081152e9263-1024.webp",
+    "srcSet": "/generated/images/welcome-still-life-2ddf2081152e9263-320.webp 320w, /generated/images/welcome-still-life-2ddf2081152e9263-480.webp 480w, /generated/images/welcome-still-life-2ddf2081152e9263-640.webp 640w, /generated/images/welcome-still-life-2ddf2081152e9263-828.webp 828w, /generated/images/welcome-still-life-2ddf2081152e9263-1024.webp 1024w"
+  },
+  "/images/wir-sind-da-v3.png": {
+    "width": 1194,
+    "height": 672,
+    "quality": 95,
+    "src": "/generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-1194.webp",
+    "srcSet": "/generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-320.webp 320w, /generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-480.webp 480w, /generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-640.webp 640w, /generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-828.webp 828w, /generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-1080.webp 1080w, /generated/images/wir-sind-da-v3-d44fb2dc54c9a4d6-1194.webp 1194w"
+  },
+  "/logo-icon.png": {
+    "width": 565,
+    "height": 484,
+    "quality": 95,
+    "src": "/generated/images/logo-icon-8123b712dabe3213-256.webp",
+    "srcSet": "/generated/images/logo-icon-8123b712dabe3213-48.webp 48w, /generated/images/logo-icon-8123b712dabe3213-64.webp 64w, /generated/images/logo-icon-8123b712dabe3213-96.webp 96w, /generated/images/logo-icon-8123b712dabe3213-128.webp 128w, /generated/images/logo-icon-8123b712dabe3213-192.webp 192w, /generated/images/logo-icon-8123b712dabe3213-256.webp 256w, /generated/images/logo-icon-8123b712dabe3213-384.webp 384w, /generated/images/logo-icon-8123b712dabe3213-512.webp 512w"
+  },
+  "/old logo without a house.png": {
+    "width": 1374,
+    "height": 1145,
+    "quality": 95,
+    "src": "/generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-256.webp",
+    "srcSet": "/generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-48.webp 48w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-64.webp 64w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-96.webp 96w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-128.webp 128w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-192.webp 192w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-256.webp 256w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-384.webp 384w, /generated/images/old-logo-without-a-house-4b0e63ac5c4ced97-512.webp 512w"
+  }
+}

@@ -1,0 +1,123 @@
+{"message":"Enabling sessions with filesystem storage","label":"@astrojs/node","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Generated 3ms","label":"types","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":" astro  v7.3.1 ready in 6998 ms\n┃ Local    http://127.0.0.1:3000/","label":"SKIP_FORMAT","level":"info"}
+{"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[optimizer] bundling dependencies...","label":"vite","level":"info"}
+{"message":"[200] / 401ms","label":null,"level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"ENOENT: no such file or directory, open 'C:\\Users\\wasim\\Documents\\Altagsteam\\node_modules\\tailwindcss\\index.css'\n  Stack trace:\n    at async open (node:internal/fs/promises:642:25)\n    [...] See full stack trace in the browser, or rerun with --verbose.","label":null,"level":"error"}
+{"message":"ENOENT: no such file or directory, open 'C:\\Users\\wasim\\Documents\\Altagsteam\\node_modules\\tailwindcss\\index.css'\n  Stack trace:\n    at async open (node:internal/fs/promises:642:25)\n    [...] See full stack trace in the browser, or rerun with --verbose.","label":null,"level":"error"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"Configuration file removed. Restarting...","label":null,"level":"info"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"Missing pages directory: src/pages","label":null,"level":"warn"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/components/ContactForm.tsx","label":"watch","level":"info"}
+{"message":"/src/components/ContactSection.tsx","label":"watch","level":"info"}
+{"message":"/src/components/Header.tsx","label":"watch","level":"info"}
+{"message":"/src/components/Header.tsx","label":"watch","level":"info"}
+{"message":"/src/components/Hero.tsx","label":"watch","level":"info"}
+{"message":"/src/components/Image.tsx","label":"watch","level":"info"}
+{"message":"src/components/useSiteMotion.ts","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"src/config/motion.ts","label":"watch","level":"info"}
+{"message":"/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/components/legal/datenschutz.tsx","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/config/motion.ts","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/layouts/Layout.astro","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/lib/contact.ts","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/pages/api/contact.ts","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/pages/datenschutz.astro","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/src/styles/globals.css","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/tests/contact.test.ts","label":"watch","level":"info"}
+{"message":"changed tsconfig file detected: C:/Users/wasim/Documents/Altagsteam/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"changed tsconfig file detected: C:/Users/wasim/Documents/altagsteam/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.","label":"vite","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/AGENTS.md","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/README.md","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/tsconfig.json","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/eslint.config.mjs","label":"watch","level":"info"}
+{"message":"C:/Users/wasim/Documents/altagsteam/package.json","label":"watch","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"[404] / 38ms","label":null,"level":"info"}
+{"message":"[404] / 39ms","label":null,"level":"info"}
+{"message":"[404] / 39ms","label":null,"level":"info"}
+{"message":"[404] / 39ms","label":null,"level":"info"}
+{"message":"[404] / 39ms","label":null,"level":"info"}
+{"message":"[404] / 39ms","label":null,"level":"info"}
+{"message":"[404] / 39ms","label":null,"level":"info"}
+{"message":"[404] / 1ms","label":null,"level":"info"}
+{"message":"An error happened during full reload\nFailed to load url file:///C:/Users/wasim/Documents/Altagsteam/src/pages/index.astro (resolved id: C:/Users/wasim/Documents/Altagsteam/src/pages/index.astro) in \u0000virtual:astro:page:src/pages/index@_@astro. Does the file exist?\nError: Failed to load url file:///C:/Users/wasim/Documents/Altagsteam/src/pages/index.astro (resolved id: C:/Users/wasim/Documents/Altagsteam/src/pages/index.astro) in \u0000virtual:astro:page:src/pages/index@_@astro. Does the file exist?\n    at loadAndTransform (file:///C:/Users/wasim/Documents/Altagsteam/node_modules/vite/dist/node/chunks/node.js:20660:31)\n    at async fetchModule (file:///C:/Users/wasim/Documents/Altagsteam/node_modules/vite/dist/node/chunks/node.js:34343:15)\n    at async handleInvoke (file:///C:/Users/wasim/Documents/Altagsteam/node_modules/vite/dist/node/chunks/node.js:26886:21)\n    at async EventEmitter.listenerForInvokeHandler (file:///C:/Users/wasim/Documents/Altagsteam/node_modules/vite/dist/node/chunks/node.js:26941:13)","label":"vite","level":"error"}
+{"message":"program reload","label":"vite","level":"info"}
+{"message":"connected.","label":"vite","level":"info"}
+{"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
+{"message":"server restarted.","label":"vite","level":"info"}
+{"message":".next/server/app/datenschutz.html","label":"watch","level":"info"}
+{"message":".next/server/app/impressum.html","label":"watch","level":"info"}
+{"message":".next/server/app/index.html","label":"watch","level":"info"}
+{"message":".next/server/app/_global-error.html","label":"watch","level":"info"}
+{"message":".next/server/app/_not-found.html","label":"watch","level":"info"}
+{"message":".next/server/pages/404.html","label":"watch","level":"info"}
+{"message":".next/server/pages/500.html","label":"watch","level":"info"}
+{"message":".next/server/app/_global-error.html","label":"watch","level":"info"}
+{"message":".next/server/app/_global-error.html","label":"watch","level":"info"}
+{"message":".next/server/app/datenschutz.html","label":"watch","level":"info"}
+{"message":".next/server/app/impressum.html","label":"watch","level":"info"}
+{"message":".next/server/app/index.html","label":"watch","level":"info"}
+{"message":".next/server/app/_not-found.html","label":"watch","level":"info"}
+{"message":".next/server/pages/404.html","label":"watch","level":"info"}
+{"message":".next/server/pages/500.html","label":"watch","level":"info"}

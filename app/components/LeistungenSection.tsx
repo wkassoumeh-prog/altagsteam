@@ -113,8 +113,8 @@ const services = [
     id: "einkaufen",
     title: "Einkaufen & Erledigungen",
     color: categoryColors.einkaufen,
-    image: "/images/gardening.jpg",
-    alt: "Pflanzenpflege und Alltagshilfe",
+    image: "/images/einkaufen-erledigungen.png",
+    alt: "Alltagshelferin übergibt einer Seniorin ihre Einkäufe",
     description: "Wir übernehmen Besorgungen und organisatorische Unterstützung.",
     icon: navItems[1].icon,
     features: [
@@ -310,33 +310,7 @@ export default function LeistungenSection() {
           </p>
         </header>
 
-        <nav
-          aria-label="Leistungskategorien"
-          className="mt-10 flex gap-4 overflow-x-auto pb-2 sm:mt-12 sm:justify-center sm:gap-6 sm:overflow-visible sm:pb-0"
-        >
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#leistung-${item.id}`}
-              className="flex min-w-[5.5rem] shrink-0 flex-col items-center gap-2 text-center sm:min-w-0 sm:flex-1 sm:max-w-[8.5rem]"
-            >
-              <span
-                className="flex h-10 w-10 items-center justify-center sm:h-11 sm:w-11"
-                style={{ color: item.color }}
-              >
-                <span className="h-6 w-6 sm:h-7 sm:w-7">{item.icon}</span>
-              </span>
-              <span
-                className="text-[9px] font-bold leading-tight tracking-[0.08em] sm:text-[10px]"
-                style={{ color: item.color }}
-              >
-                {item.label}
-              </span>
-            </a>
-          ))}
-        </nav>
-
-        <div className="mt-8 flex gap-4 overflow-x-auto pb-4 sm:mt-10 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 lg:grid-cols-5 lg:gap-4">
+        <div className="mt-10 flex gap-4 overflow-x-auto pb-4 sm:mt-12 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:pb-0 lg:grid-cols-5 lg:gap-4">
           {services.map((service) => (
             <article
               key={service.id}
