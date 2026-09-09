@@ -5,7 +5,6 @@ const variants = {
   standard: "aspect-[4/3] rounded-3xl",
   card: "aspect-video",
   banner: "aspect-[16/10] rounded-3xl sm:aspect-video lg:aspect-[21/9]",
-  portrait: "aspect-[4/5] rounded-3xl",
 } as const;
 
 type PhotoFrameProps = Pick<ImageProps, "src" | "alt" | "loading" | "fetchPriority"> & {

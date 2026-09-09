@@ -5,10 +5,9 @@ adding a client boundary, with quality 95 and lazy loading by default. Always
 provide an accurate `sizes` value. Shared slot calculations live in `imageSizes.ts`.
 
 - `standard`: 4:3, 24px corners. Welcome, About, Pflegebox, Financing, Careers,
-  and the consultation/enquiry photos.
+  Contact, and the consultation/enquiry photos.
 - `card`: 16:9, clipped by the service card's 16px outer corners.
 - `banner`: 16:10 below 640px, 16:9 from 640px, 21:9 from 1024px; 24px corners.
-- `portrait`: 4:5, 24px corners; contact photo remains hidden below 1024px.
 - Hero stays separate: full width, minimum 100dvh, existing responsive focal
   positions/overlays, eager loading and high fetch priority, `sizes="100vw"`.
 
