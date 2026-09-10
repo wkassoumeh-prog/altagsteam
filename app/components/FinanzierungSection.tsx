@@ -228,6 +228,10 @@ export default function FinanzierungSection() {
             Telefon 0641 32051318
           </a>
           <span>·</span>
+          <a href="tel:+491792248163" className="font-semibold text-primary hover:opacity-80">
+            Mobil 0179 2248163
+          </a>
+          <span>·</span>
           <a href="mailto:info@alltagsteam.com" className="font-semibold text-primary hover:opacity-80">
             E-Mail info@alltagsteam.com
           </a>

@@ -9,6 +9,7 @@ const contactCards = [
     subtitle: "Persönlich mit uns sprechen",
     value: "0641 32051318",
     href: "tel:+4964132051318",
+    extraLink: { value: "0179 2248163", href: "tel:+491792248163" },
     note: "Mo – Fr 8:00 – 18:00 Uhr",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
@@ -127,12 +128,22 @@ export default function ContactSection() {
               <div className="min-w-0 flex-1 sm:w-full">
                 <h3 className="font-semibold text-primary">{card.title}</h3>
                 <p className="mt-1 text-sm text-foreground/70">{card.subtitle}</p>
-                <a
-                  href={card.href}
-                  className="mt-3 inline-block text-sm font-bold text-primary transition-opacity hover:opacity-80 sm:text-base"
-                >
-                  {card.value}
-                </a>
+                <div className="mt-3 space-y-1">
+                  <a
+                    href={card.href}
+                    className="inline-block text-sm font-bold text-primary transition-opacity hover:opacity-80 sm:text-base"
+                  >
+                    {card.value}
+                  </a>
+                  {"extraLink" in card && card.extraLink && (
+                    <a
+                      href={card.extraLink.href}
+                      className="block text-sm font-bold text-primary transition-opacity hover:opacity-80 sm:text-base"
+                    >
+                      {card.extraLink.value}
+                    </a>
+                  )}
+                </div>
                 {card.note && (
                   <p className="mt-2 text-xs text-muted">{card.note}</p>
                 )}

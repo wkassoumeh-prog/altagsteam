@@ -150,6 +150,17 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="tel:+491792248163" className="flex items-center gap-3 transition-colors hover:text-white">
+                  <span className="text-[#b4904d]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4" aria-hidden>
+                      <rect x="8" y="2.5" width="8" height="19" rx="1.8" />
+                      <path d="M11 18.5h2" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                  0179 2248163
+                </a>
+              </li>
+              <li>
                 <a href="mailto:info@alltagsteam.com" className="flex items-center gap-3 transition-colors hover:text-white">
                   <span className="text-[#b4904d]">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-4 w-4" aria-hidden>

@@ -50,6 +50,14 @@ export default function DatenschutzPage() {
             0641 32051318
           </a>
           <br />
+          Mobil:{" "}
+          <a
+            href="tel:+491792248163"
+            className="font-medium text-primary transition-colors hover:text-primary-light"
+          >
+            0179 2248163
+          </a>
+          <br />
           E-Mail:{" "}
           <a
             href="mailto:info@alltagsteam.com"
