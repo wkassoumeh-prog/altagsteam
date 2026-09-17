@@ -8,14 +8,16 @@ export const metadata: Metadata = {
 };
 
 function Section({
+  id,
   heading,
   children,
 }: {
+  id?: string;
   heading: string;
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section id={id} className="scroll-mt-24">
       <h2 className="font-display text-2xl font-semibold text-primary">
         {heading}
       </h2>
@@ -100,35 +102,48 @@ export default function DatenschutzPage() {
         </p>
       </Section>
 
-      <Section heading="4. Kontaktformular und Kontaktaufnahme">
+      <Section id="kontaktformular" heading="4. Kontaktformular und Kontaktaufnahme">
         <p>
           Wenn Sie uns über das Kontaktformular oder per E-Mail Anfragen
           zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der
           von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der
           Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
-          Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+          Im Formular sind Name, E-Mail-Adresse und Nachricht erforderlich,
+          damit wir Ihre Anfrage zuordnen und beantworten können. Die Angabe
+          einer Telefonnummer ist freiwillig. Ohne die Pflichtangaben können
+          Sie das Formular nicht absenden; alternativ können Sie uns anrufen.
+          Bitte übermitteln Sie keine Gesundheitsdaten, Diagnosen oder
+          Versicherungsnummern über das Kontaktformular.
         </p>
         <p>
-          Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung
-          vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO
-          (berechtigtes Interesse an der Beantwortung Ihrer Anfrage).
+          Betrifft Ihre Anfrage einen Vertrag oder vorvertragliche Maßnahmen,
+          ist Art. 6 Abs. 1 lit. b DSGVO die Rechtsgrundlage. Sonstige Anfragen
+          bearbeiten wir auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO; unser
+          berechtigtes Interesse besteht darin, Ihre Anliegen zu beantworten.
+          Die Angaben werden nicht für Newsletter oder Werbung verwendet.
         </p>
         <p>
-          Für den Versand der Nachrichten aus dem Kontaktformular setzen wir
-          den E-Mail-Dienst Resend der Plus Five Five, Inc., 2261 Market
-          Street #5039, San Francisco, CA 94114, USA, als Auftragsverarbeiter
-          gemäß Art. 28 DSGVO ein. Dabei werden die von Ihnen im Formular
-          angegebenen Daten (Name, E-Mail-Adresse, ggf. Telefonnummer und
-          Nachrichteninhalt) an Server von Resend übermittelt, die sich auch
-          in den USA befinden können.
+          Für den Versand und Empfang der Nachrichten nutzen wir den E-Mail-Dienst
+          der IONOS SE, Elgendorfer Straße 57, 56410 Montabaur, Deutschland.
+          Dabei werden Name, E-Mail-Adresse, die freiwillige Telefonnummer und
+          der Nachrichteninhalt sowie die zur Zustellung erforderlichen
+          technischen Daten durch IONOS verarbeitet. Die Übertragung vom
+          Webserver an den Mailserver erfolgt TLS-verschlüsselt.
+          Eine zusätzliche Speicherung der Formulardaten in einer
+          Website-Datenbank findet nicht statt.
         </p>
         <p>
-          Die Übermittlung in die USA erfolgt auf Grundlage der
-          EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO), die
-          Bestandteil des mit Resend geschlossenen
-          Auftragsverarbeitungsvertrags sind. Resend ist zudem unter dem
-          EU-US Data Privacy Framework zertifiziert, sodass insoweit ein
-          Angemessenheitsbeschluss der EU-Kommission besteht (Art. 45 DSGVO).
+          Soweit IONOS personenbezogene Daten in unserem Auftrag verarbeitet,
+          erfolgt dies auf Grundlage einer Vereinbarung zur Auftragsverarbeitung
+          nach Art. 28 DSGVO. Weitere Informationen finden Sie in der{" "}
+          <a href="https://www.ionos.de/terms-gtc/datenschutzerklaerung/" className="text-primary underline">Datenschutzerklärung von IONOS</a>.
+        </p>
+        <p>
+          Zum Schutz vor automatisierten Anfragen prüfen wir ein für Menschen
+          nicht sichtbares Formularfeld sowie technische Anfrageinformationen.
+          Dafür werden keine zusätzlichen Cookies und kein externer
+          CAPTCHA-Dienst eingesetzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+          DSGVO (berechtigtes Interesse am Schutz vor Missbrauch).
         </p>
       </Section>
 
@@ -138,6 +153,11 @@ export default function DatenschutzPage() {
           für die genannten Zwecke erforderlich ist oder gesetzliche
           Aufbewahrungsfristen dies verlangen. Nach Wegfall des Zwecks bzw.
           Ablauf der Fristen werden die Daten gelöscht.
+          Kontaktanfragen werden gelöscht, sobald die Bearbeitung einschließlich
+          möglicher Rückfragen abgeschlossen ist und keine gesetzlichen
+          Aufbewahrungspflichten oder Gründe zur Geltendmachung, Ausübung oder
+          Verteidigung von Rechtsansprüchen entgegenstehen. Dies betrifft auch
+          die im E-Mail-Postfach gespeicherten Nachrichten.
         </p>
       </Section>
 

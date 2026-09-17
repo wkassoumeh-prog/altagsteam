@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
@@ -41,6 +42,11 @@ export default function ImpressumPage() {
       </Section>
 
       <Section heading="Kontakt">
+        <p>
+          Sie können uns auch über unser <Link href="/#contact" className="text-primary underline">Kontaktformular</Link> erreichen.
+          Informationen zur Verarbeitung Ihrer Angaben finden Sie in der{" "}
+          <Link href="/datenschutz#kontaktformular" className="text-primary underline">Datenschutzerklärung</Link>.
+        </p>
         <p>
           Telefon:{" "}
           <a

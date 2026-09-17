@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 type FieldErrors = {
   name?: string;
   email?: string;
+  phone?: string;
   message?: string;
 };
 
@@ -17,17 +18,18 @@ function validateForm(data: FormData): FieldErrors {
   const email = (data.get("email") as string)?.trim();
   const message = (data.get("message") as string)?.trim();
 
-  if (!name || name.length < 2) {
+  if (!name || name.length < 2 || name.length > 100 || /[\r\n]/.test(name)) {
     errors.name = "Bitte geben Sie Ihren Namen ein.";
   }
 
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
   }
 
-  if (!message || message.length < 10) {
-    errors.message = "Bitte beschreiben Sie Ihr Anliegen (mindestens 10 Zeichen).";
+  if (!message || message.length < 10 || message.length > 5000) {
+    errors.message = "Bitte beschreiben Sie Ihr Anliegen (10 bis 5.000 Zeichen).";
   }
+  if (String(data.get("phone") || "").length > 50) errors.phone = "Bitte verwenden Sie höchstens 50 Zeichen.";
 
   return errors;
 }
@@ -49,9 +51,12 @@ export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [errorMessage, setErrorMessage] = useState("");
+  const submitting = useRef(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting.current) return;
+    setState("idle");
     setFieldErrors({});
     setErrorMessage("");
 
@@ -61,14 +66,18 @@ export default function ContactForm() {
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
+      const firstField = form.elements.namedItem(Object.keys(errors)[0]);
+      if (firstField instanceof HTMLElement) firstField.focus();
       return;
     }
 
     setState("submitting");
+    submitting.current = true;
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
+        signal: AbortSignal.timeout(60_000),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: (data.get("name") as string).trim(),
@@ -79,9 +88,9 @@ export default function ContactForm() {
         }),
       });
 
-      const result = (await response.json()) as { error?: string };
+      const result = (await response.json()) as { error?: string; success?: boolean };
 
-      if (!response.ok) {
+      if (!response.ok || result.success !== true) {
         setErrorMessage(
           result.error ??
             "Die Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.",
@@ -97,6 +106,8 @@ export default function ContactForm() {
         "Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
       );
       setState("error");
+    } finally {
+      submitting.current = false;
     }
   }
 
@@ -124,7 +135,8 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+    <form onSubmit={handleSubmit} noValidate aria-busy={state === "submitting"} aria-describedby="contact-privacy" className="space-y-5">
+      <p className="text-sm text-muted">Mit * markierte Felder sind Pflichtfelder.</p>
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input
@@ -144,6 +156,9 @@ export default function ContactForm() {
           <input
             id="name"
             name="name"
+            maxLength={100}
+            aria-invalid={Boolean(fieldErrors.name)}
+            aria-describedby={fieldErrors.name ? "name-error" : undefined}
             type="text"
             required
             autoComplete="name"
@@ -152,7 +167,7 @@ export default function ContactForm() {
             placeholder="Ihr Name"
           />
           {fieldErrors.name && (
-            <p className="mt-1.5 text-sm text-red-600">{fieldErrors.name}</p>
+            <p id="name-error" className="mt-1.5 text-sm text-red-600">{fieldErrors.name}</p>
           )}
         </div>
 
@@ -163,6 +178,9 @@ export default function ContactForm() {
           <input
             id="email"
             name="email"
+            maxLength={254}
+            aria-invalid={Boolean(fieldErrors.email)}
+            aria-describedby={fieldErrors.email ? "email-error" : undefined}
             type="email"
             required
             autoComplete="email"
@@ -171,7 +189,7 @@ export default function ContactForm() {
             placeholder="ihre@email.de"
           />
           {fieldErrors.email && (
-            <p className="mt-1.5 text-sm text-red-600">{fieldErrors.email}</p>
+            <p id="email-error" className="mt-1.5 text-sm text-red-600">{fieldErrors.email}</p>
           )}
         </div>
       </div>
@@ -183,12 +201,16 @@ export default function ContactForm() {
         <input
           id="phone"
           name="phone"
+          maxLength={50}
+          aria-invalid={Boolean(fieldErrors.phone)}
+          aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
           type="tel"
           autoComplete="tel"
           disabled={state === "submitting"}
           className={`${inputClassName} mt-2`}
           placeholder="Ihre Telefonnummer"
         />
+        {fieldErrors.phone && <p id="phone-error" className="mt-1.5 text-sm text-red-600">{fieldErrors.phone}</p>}
       </div>
 
       <div>
@@ -198,6 +220,10 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
+          minLength={10}
+          maxLength={5000}
+          aria-invalid={Boolean(fieldErrors.message)}
+          aria-describedby={fieldErrors.message ? "message-hint message-error" : "message-hint"}
           required
           rows={5}
           disabled={state === "submitting"}
@@ -205,13 +231,15 @@ export default function ContactForm() {
           placeholder="Wie können wir Ihnen helfen?"
         />
         {fieldErrors.message && (
-          <p className="mt-1.5 text-sm text-red-600">{fieldErrors.message}</p>
+          <p id="message-error" className="mt-1.5 text-sm text-red-600">{fieldErrors.message}</p>
         )}
+        <p id="message-hint" className="mt-2 text-xs text-muted">10 bis 5.000 Zeichen. Bitte senden Sie keine Diagnosen, Gesundheitsdaten oder Versicherungsnummern. Für persönliche Details vereinbaren wir gerne ein Gespräch.</p>
       </div>
 
       {state === "error" && errorMessage && (
-        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          {errorMessage}
+        <p role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {errorMessage}{" "}
+          Sie erreichen uns auch unter <a className="underline" href="tel:+4964132051318">0641 32051318</a> oder <a className="underline" href="mailto:info@alltagsteam.com">info@alltagsteam.com</a>.
         </p>
       )}
 
@@ -224,17 +252,19 @@ export default function ContactForm() {
           {state === "submitting" ? "Wird gesendet …" : "Anfrage senden"}
           {state !== "submitting" && <ArrowIcon />}
         </button>
-        <p className="mt-4 flex items-start gap-2 text-xs text-muted">
+        <p id="contact-privacy" className="mt-4 flex items-start gap-2 text-xs text-muted">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mt-0.5 h-4 w-4 shrink-0" aria-hidden>
             <rect x="5" y="11" width="14" height="10" rx="2" />
             <path d="M8 11V8a4 4 0 0 1 8 0v3" strokeLinecap="round" />
           </svg>
           <span>
             Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage
-            verarbeitet (Art. 6 Abs. 1 lit. b DSGVO). Weitere Informationen
+            verarbeitet. Pflichtangaben sind Name, E-Mail-Adresse und Nachricht;
+            die Telefonnummer ist freiwillig. Weitere Informationen zur
+            Verarbeitung und zum E-Mail-Versand über IONOS
             finden Sie in unserer{" "}
             <Link
-              href="/datenschutz"
+              href="/datenschutz#kontaktformular"
               className="font-medium text-primary underline-offset-2 transition-colors hover:text-primary-light hover:underline"
             >
               Datenschutzerklärung
