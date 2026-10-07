@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import LocalBusinessJsonLd from "./components/LocalBusinessJsonLd";
 import MotionRoot from "./components/MotionRoot";
+import { getSiteUrl, siteConfig } from "./config/site";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -16,9 +18,39 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Alltagsteam Marburg und ganz Hessen – Unterstützung für Pflegebedürftige",
-  description:
-    "Alltagsteam bietet professionelle Unterstützung für Pflegebedürftige in Marburg und ganz Hessen. Unser engagiertes Team sorgt für eine einfache Haushaltsführung und Betreuung, damit der Alltag leichter wird. Vertrauen Sie auf unsere herzliche und kompetente Hilfe.",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: siteConfig.defaultTitle,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: "/",
+    siteName: siteConfig.name,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImagePath,
+        alt: `${siteConfig.name} – Unterstützung im Alltag in Marburg und Hessen`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [siteConfig.ogImagePath],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -28,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${cormorant.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <LocalBusinessJsonLd />
         <MotionRoot />
         {children}
       </body>

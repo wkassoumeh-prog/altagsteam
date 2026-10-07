@@ -3,8 +3,9 @@ import Link from "next/link";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Impressum – Alltagsteam",
+  title: "Impressum",
   description: "Impressum und Anbieterkennzeichnung von Alltagsteam.",
+  alternates: { canonical: "/impressum" },
 };
 
 function Section({

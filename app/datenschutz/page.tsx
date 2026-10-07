@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import LegalPage from "../components/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung – Alltagsteam",
+  title: "Datenschutzerklärung",
   description:
     "Datenschutzerklärung von Alltagsteam – Informationen zur Verarbeitung personenbezogener Daten.",
+  alternates: { canonical: "/datenschutz" },
 };
 
 function Section({
