@@ -7,6 +7,7 @@ import {
   getOffline,
   getVisitCount,
   listVisits,
+  MAX_VISITS,
 } from "@/lib/site-admin";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default async function AdminDashboardPage() {
   const [offline, visits, totalVisits, redisStatus] = await Promise.all([
     getOffline(),
-    listVisits(200),
+    listVisits(MAX_VISITS),
     getVisitCount(),
     checkRedisConnection(),
   ]);
@@ -77,12 +78,11 @@ export default async function AdminDashboardPage() {
             Letzte Besuche
           </h2>
           <p className="mt-1 text-sm text-muted">
-            Neueste {visits.length} von {totalVisits} gespeicherten Zugriffen
-            (online und Offline-Versuche). Stadt wird auf Vercel aus der IP
-            abgeleitet; lokal oft nicht verfügbar.
+            Zugriffe filtern, sortieren und paginieren (online und
+            Offline-Versuche). Stadt wird auf Vercel aus der IP abgeleitet.
           </p>
 
-          <AdminVisitsTable visits={visits} />
+          <AdminVisitsTable visits={visits} totalStored={totalVisits} />
         </section>
       </main>
     </div>

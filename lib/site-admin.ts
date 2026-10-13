@@ -2,7 +2,7 @@ import { getRedis } from "./redis";
 
 const OFFLINE_KEY = "site:offline";
 const VISITS_KEY = "visits";
-const MAX_VISITS = 10_000;
+export const MAX_VISITS = 10_000;
 
 export type VisitRecord = {
   ip: string;
