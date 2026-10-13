@@ -11,13 +11,17 @@ function formatVisitTime(iso: string): { date: string; time: string } {
     return { date: iso, time: "" };
   }
 
+  const options = { timeZone: "Europe/Berlin" as const };
+
   return {
-    date: new Intl.DateTimeFormat("de-DE", { dateStyle: "medium" }).format(
-      value,
-    ),
-    time: new Intl.DateTimeFormat("de-DE", { timeStyle: "medium" }).format(
-      value,
-    ),
+    date: new Intl.DateTimeFormat("de-DE", {
+      ...options,
+      dateStyle: "medium",
+    }).format(value),
+    time: new Intl.DateTimeFormat("de-DE", {
+      ...options,
+      timeStyle: "medium",
+    }).format(value),
   };
 }
 
