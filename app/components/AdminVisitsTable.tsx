@@ -10,8 +10,13 @@ type AdminVisitsTableProps = {
 };
 
 type StatusFilter = "all" | "online" | "offline";
+type SortKey = "status" | "at" | "location" | "ip" | "path";
+type SortDir = "asc" | "desc";
 
 const PAGE_SIZES = [25, 50, 100, 200] as const;
+
+const cellFilter =
+  "w-full min-w-[4.5rem] rounded border border-border/80 bg-white px-1.5 py-1 text-xs text-foreground outline-none focus:border-primary";
 
 function formatVisitTime(iso: string): { date: string; time: string } {
   const value = new Date(iso);
@@ -52,23 +57,78 @@ function visitRowClass(offlineAttempt: boolean): string {
   return "border-l-4 border-l-emerald-600 bg-emerald-50/70 hover:bg-emerald-100/60";
 }
 
-const selectClassName =
-  "mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
+function sortIndicator(active: boolean, dir: SortDir): string {
+  if (!active) return "↕";
+  return dir === "asc" ? "↑" : "↓";
+}
 
-const inputClassName = selectClassName;
+function compareVisits(a: VisitRecord, b: VisitRecord, key: SortKey): number {
+  switch (key) {
+    case "status": {
+      const av = a.offlineAttempt === true ? 1 : 0;
+      const bv = b.offlineAttempt === true ? 1 : 0;
+      return av - bv;
+    }
+    case "at":
+      return a.at.localeCompare(b.at);
+    case "location":
+      return visitLocationKey(a).localeCompare(visitLocationKey(b), "de");
+    case "ip":
+      return a.ip.localeCompare(b.ip);
+    case "path":
+      return a.path.localeCompare(b.path);
+    default:
+      return 0;
+  }
+}
+
+type SortHeaderProps = {
+  label: string;
+  sortKey: SortKey;
+  activeKey: SortKey;
+  dir: SortDir;
+  onSort: (key: SortKey) => void;
+  className?: string;
+};
+
+function SortHeader({
+  label,
+  sortKey,
+  activeKey,
+  dir,
+  onSort,
+  className = "",
+}: SortHeaderProps) {
+  return (
+    <th className={`border-b border-border bg-cream/90 px-2 py-2 ${className}`}>
+      <button
+        type="button"
+        onClick={() => onSort(sortKey)}
+        className="flex w-full items-center justify-between gap-1 text-left text-[11px] font-semibold uppercase tracking-wide text-primary hover:text-primary-light"
+      >
+        <span>{label}</span>
+        <span className="tabular-nums text-muted" aria-hidden>
+          {sortIndicator(activeKey === sortKey, dir)}
+        </span>
+      </button>
+    </th>
+  );
+}
 
 export default function AdminVisitsTable({
   visits,
   totalStored,
 }: AdminVisitsTableProps) {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
-  const [cityFilter, setCityFilter] = useState<string>("all");
+  const [cityFilter, setCityFilter] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [pathQuery, setPathQuery] = useState("");
   const [ipQuery, setIpQuery] = useState("");
   const [pageSize, setPageSize] = useState<number>(25);
   const [page, setPage] = useState(1);
+  const [sortKey, setSortKey] = useState<SortKey>("at");
+  const [sortDir, setSortDir] = useState<SortDir>("desc");
 
   const cityOptions = useMemo(() => {
     const set = new Set<string>();
@@ -81,6 +141,7 @@ export default function AdminVisitsTable({
   const filtered = useMemo(() => {
     const pathNeedle = pathQuery.trim().toLowerCase();
     const ipNeedle = ipQuery.trim().toLowerCase();
+    const cityNeedle = cityFilter.trim().toLowerCase();
 
     return visits.filter((visit) => {
       const offline = visit.offlineAttempt === true;
@@ -89,7 +150,9 @@ export default function AdminVisitsTable({
       if (statusFilter === "offline" && !offline) return false;
 
       const location = visitLocationKey(visit);
-      if (cityFilter !== "all" && location !== cityFilter) return false;
+      if (cityNeedle && !location.toLowerCase().includes(cityNeedle)) {
+        return false;
+      }
 
       const day = berlinDateKey(visit.at);
       if (dateFrom && day && day < dateFrom) return false;
@@ -114,7 +177,16 @@ export default function AdminVisitsTable({
     ipQuery,
   ]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const sorted = useMemo(() => {
+    const copy = [...filtered];
+    copy.sort((a, b) => {
+      const base = compareVisits(a, b, sortKey);
+      return sortDir === "asc" ? base : -base;
+    });
+    return copy;
+  }, [filtered, sortKey, sortDir]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
 
   useEffect(() => {
     if (page > totalPages) setPage(totalPages);
@@ -123,8 +195,18 @@ export default function AdminVisitsTable({
   const pageRows = useMemo(() => {
     const currentPage = Math.min(page, totalPages);
     const start = (currentPage - 1) * pageSize;
-    return filtered.slice(start, start + pageSize);
-  }, [filtered, page, pageSize, totalPages]);
+    return sorted.slice(start, start + pageSize);
+  }, [sorted, page, pageSize, totalPages]);
+
+  function handleSort(key: SortKey) {
+    if (sortKey === key) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDir(key === "at" ? "desc" : "asc");
+    }
+    setPage(1);
+  }
 
   function resetPage() {
     setPage(1);
@@ -132,13 +214,21 @@ export default function AdminVisitsTable({
 
   function clearFilters() {
     setStatusFilter("all");
-    setCityFilter("all");
+    setCityFilter("");
     setDateFrom("");
     setDateTo("");
     setPathQuery("");
     setIpQuery("");
     setPage(1);
   }
+
+  const hasFilters =
+    statusFilter !== "all" ||
+    cityFilter.trim() !== "" ||
+    dateFrom !== "" ||
+    dateTo !== "" ||
+    pathQuery.trim() !== "" ||
+    ipQuery.trim() !== "";
 
   if (visits.length === 0) {
     return (
@@ -150,124 +240,23 @@ export default function AdminVisitsTable({
   }
 
   return (
-    <div className="mt-6 space-y-4">
-      <div className="flex flex-wrap gap-4 text-xs text-muted">
-        <span className="inline-flex items-center gap-2">
-          <span className="h-3 w-3 rounded-sm border border-emerald-700/30 bg-emerald-50" />
-          Online — Seite erreichbar
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <span className="h-3 w-3 rounded-sm border border-red-500/30 bg-red-50" />
-          Offline — Zugriff während 404-Abschaltung
-        </span>
-      </div>
-
-      <div className="rounded-xl border border-border bg-cream/40 p-4">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <p className="text-sm font-semibold text-primary">Filter</p>
-          <button
-            type="button"
-            onClick={clearFilters}
-            className="text-xs font-semibold text-muted underline-offset-2 hover:text-primary hover:underline"
-          >
-            Filter zurücksetzen
-          </button>
+    <div className="mt-6 space-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
+        <div className="flex flex-wrap gap-3">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-sm bg-emerald-100 ring-1 ring-emerald-700/25" />
+            Online
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-sm bg-red-50 ring-1 ring-red-500/30" />
+            Offline
+          </span>
         </div>
-
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <label className="block text-xs font-medium text-muted">
-            Status
+        <div className="flex flex-wrap items-center gap-2">
+          <label className="inline-flex items-center gap-1.5">
+            Zeilen
             <select
-              className={selectClassName}
-              value={statusFilter}
-              onChange={(e) => {
-                setStatusFilter(e.target.value as StatusFilter);
-                resetPage();
-              }}
-            >
-              <option value="all">Alle</option>
-              <option value="online">Online</option>
-              <option value="offline">Offline</option>
-            </select>
-          </label>
-
-          <label className="block text-xs font-medium text-muted">
-            Stadt / Region
-            <select
-              className={selectClassName}
-              value={cityFilter}
-              onChange={(e) => {
-                setCityFilter(e.target.value);
-                resetPage();
-              }}
-            >
-              <option value="all">Alle</option>
-              {cityOptions.map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="block text-xs font-medium text-muted">
-            Datum von (DE)
-            <input
-              type="date"
-              className={inputClassName}
-              value={dateFrom}
-              onChange={(e) => {
-                setDateFrom(e.target.value);
-                resetPage();
-              }}
-            />
-          </label>
-
-          <label className="block text-xs font-medium text-muted">
-            Datum bis (DE)
-            <input
-              type="date"
-              className={inputClassName}
-              value={dateTo}
-              onChange={(e) => {
-                setDateTo(e.target.value);
-                resetPage();
-              }}
-            />
-          </label>
-
-          <label className="block text-xs font-medium text-muted">
-            Seite (Pfad)
-            <input
-              type="search"
-              placeholder="z. B. /impressum"
-              className={inputClassName}
-              value={pathQuery}
-              onChange={(e) => {
-                setPathQuery(e.target.value);
-                resetPage();
-              }}
-            />
-          </label>
-
-          <label className="block text-xs font-medium text-muted">
-            IP-Adresse
-            <input
-              type="search"
-              placeholder="Teil der IP"
-              className={inputClassName}
-              value={ipQuery}
-              onChange={(e) => {
-                setIpQuery(e.target.value);
-                resetPage();
-              }}
-            />
-          </label>
-
-          <label className="block text-xs font-medium text-muted">
-            Einträge pro Seite
-            <select
-              className={selectClassName}
+              className={`${cellFilter} w-auto min-w-[3.25rem]`}
               value={pageSize}
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
@@ -281,106 +270,241 @@ export default function AdminVisitsTable({
               ))}
             </select>
           </label>
+          {hasFilters && (
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="font-semibold text-primary underline-offset-2 hover:underline"
+            >
+              Filter löschen
+            </button>
+          )}
         </div>
-
-        <p className="mt-4 text-xs text-muted">
-          {filtered.length} Treffer nach Filter · Seite{" "}
-          {Math.min(page, totalPages)} von {totalPages} · {visits.length} von{" "}
-          {totalStored} gespeicherten
-          Einträgen geladen
-          {visits.length < totalStored
-            ? " (ältere Einträge nicht im Speicher dieser Ansicht)"
-            : ""}
-        </p>
       </div>
 
-      {filtered.length === 0 ? (
-        <p className="text-sm text-muted">
-          Keine Einträge für die gewählten Filter.
-        </p>
-      ) : (
-        <>
-          <div className="overflow-hidden rounded-xl border border-border">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[44rem] border-collapse text-sm">
-                <thead>
-                  <tr className="bg-cream/80 text-left text-xs uppercase tracking-wide text-muted">
-                    <th className="px-4 py-3 font-semibold">Status</th>
-                    <th className="px-4 py-3 font-semibold">Datum</th>
-                    <th className="px-4 py-3 font-semibold">Uhrzeit</th>
-                    <th className="px-4 py-3 font-semibold">Stadt / Region</th>
-                    <th className="px-4 py-3 font-semibold">IP-Adresse</th>
-                    <th className="px-4 py-3 font-semibold">Seite</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/50">
-                  {pageRows.map((visit, index) => {
-                    const { date, time } = formatVisitTime(visit.at);
-                    const location = visitLocationKey(visit);
-                    const offlineAttempt = visit.offlineAttempt === true;
+      <p className="text-xs text-muted">
+        {sorted.length} Treffer · Seite {Math.min(page, totalPages)} /{" "}
+        {totalPages} · {visits.length}/{totalStored} geladen
+      </p>
 
-                    return (
-                      <tr
-                        key={`${visit.at}-${visit.ip}-${index}`}
-                        className={`transition-colors ${visitRowClass(offlineAttempt)}`}
-                      >
-                        <td className="whitespace-nowrap px-4 py-3.5">
-                          <span
-                            className={
-                              offlineAttempt
-                                ? "inline-flex rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-semibold text-red-800"
-                                : "inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-900"
-                            }
-                          >
-                            {offlineAttempt ? "Offline" : "Online"}
-                          </span>
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-3.5 text-foreground">
-                          {date}
-                        </td>
-                        <td className="whitespace-nowrap px-4 py-3.5 tabular-nums text-foreground/80">
-                          {time}
-                        </td>
-                        <td className="px-4 py-3.5 text-foreground">
-                          {location}
-                        </td>
-                        <td className="px-4 py-3.5 font-mono text-xs text-foreground/90">
-                          {visit.ip}
-                        </td>
-                        <td className="max-w-[12rem] truncate px-4 py-3.5 text-foreground/80">
-                          {visit.path}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <div className="overflow-hidden rounded-lg border border-border shadow-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[52rem] border-collapse text-sm">
+            <thead>
+              <tr>
+                <SortHeader
+                  label="Status"
+                  sortKey="status"
+                  activeKey={sortKey}
+                  dir={sortDir}
+                  onSort={handleSort}
+                  className="w-[6.5rem]"
+                />
+                <SortHeader
+                  label="Datum"
+                  sortKey="at"
+                  activeKey={sortKey}
+                  dir={sortDir}
+                  onSort={handleSort}
+                  className="w-[7.5rem]"
+                />
+                <SortHeader
+                  label="Uhrzeit"
+                  sortKey="at"
+                  activeKey={sortKey}
+                  dir={sortDir}
+                  onSort={handleSort}
+                  className="w-[6.5rem]"
+                />
+                <SortHeader
+                  label="Stadt"
+                  sortKey="location"
+                  activeKey={sortKey}
+                  dir={sortDir}
+                  onSort={handleSort}
+                />
+                <SortHeader
+                  label="IP"
+                  sortKey="ip"
+                  activeKey={sortKey}
+                  dir={sortDir}
+                  onSort={handleSort}
+                  className="w-[8.5rem]"
+                />
+                <SortHeader
+                  label="Seite"
+                  sortKey="path"
+                  activeKey={sortKey}
+                  dir={sortDir}
+                  onSort={handleSort}
+                />
+              </tr>
+              <tr className="bg-white">
+                <th className="border-b border-border px-2 py-1.5">
+                  <select
+                    className={cellFilter}
+                    value={statusFilter}
+                    onChange={(e) => {
+                      setStatusFilter(e.target.value as StatusFilter);
+                      resetPage();
+                    }}
+                    aria-label="Status filtern"
+                  >
+                    <option value="all">Alle</option>
+                    <option value="online">On</option>
+                    <option value="offline">Off</option>
+                  </select>
+                </th>
+                <th className="border-b border-border px-2 py-1.5" colSpan={2}>
+                  <div className="flex gap-1">
+                    <input
+                      type="date"
+                      className={cellFilter}
+                      value={dateFrom}
+                      onChange={(e) => {
+                        setDateFrom(e.target.value);
+                        resetPage();
+                      }}
+                      aria-label="Datum von"
+                      title="Von"
+                    />
+                    <input
+                      type="date"
+                      className={cellFilter}
+                      value={dateTo}
+                      onChange={(e) => {
+                        setDateTo(e.target.value);
+                        resetPage();
+                      }}
+                      aria-label="Datum bis"
+                      title="Bis"
+                    />
+                  </div>
+                </th>
+                <th className="border-b border-border px-2 py-1.5">
+                  <input
+                    type="search"
+                    list="visit-city-options"
+                    className={cellFilter}
+                    placeholder="Stadt…"
+                    value={cityFilter}
+                    onChange={(e) => {
+                      setCityFilter(e.target.value);
+                      resetPage();
+                    }}
+                    aria-label="Stadt filtern"
+                  />
+                  <datalist id="visit-city-options">
+                    {cityOptions.map((city) => (
+                      <option key={city} value={city} />
+                    ))}
+                  </datalist>
+                </th>
+                <th className="border-b border-border px-2 py-1.5">
+                  <input
+                    type="search"
+                    className={cellFilter}
+                    placeholder="IP…"
+                    value={ipQuery}
+                    onChange={(e) => {
+                      setIpQuery(e.target.value);
+                      resetPage();
+                    }}
+                    aria-label="IP filtern"
+                  />
+                </th>
+                <th className="border-b border-border px-2 py-1.5">
+                  <input
+                    type="search"
+                    className={cellFilter}
+                    placeholder="/…"
+                    value={pathQuery}
+                    onChange={(e) => {
+                      setPathQuery(e.target.value);
+                      resetPage();
+                    }}
+                    aria-label="Seite filtern"
+                  />
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/40">
+              {pageRows.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={6}
+                    className="px-4 py-8 text-center text-sm text-muted"
+                  >
+                    Keine Einträge für die gewählten Filter.
+                  </td>
+                </tr>
+              ) : (
+                pageRows.map((visit, index) => {
+                  const { date, time } = formatVisitTime(visit.at);
+                  const location = visitLocationKey(visit);
+                  const offlineAttempt = visit.offlineAttempt === true;
 
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <button
-              type="button"
-              disabled={page <= 1}
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              className="rounded-full border border-border px-4 py-2 text-sm font-semibold text-muted transition-colors enabled:hover:border-primary enabled:hover:text-primary disabled:opacity-40"
-            >
-              Zurück
-            </button>
-            <span className="text-sm text-muted">
-              {pageRows.length} Einträge auf dieser Seite
-            </span>
-            <button
-              type="button"
-              disabled={page >= totalPages}
-              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              className="rounded-full border border-border px-4 py-2 text-sm font-semibold text-muted transition-colors enabled:hover:border-primary enabled:hover:text-primary disabled:opacity-40"
-            >
-              Weiter
-            </button>
-          </div>
-        </>
-      )}
+                  return (
+                    <tr
+                      key={`${visit.at}-${visit.ip}-${index}`}
+                      className={`transition-colors ${visitRowClass(offlineAttempt)}`}
+                    >
+                      <td className="whitespace-nowrap px-2 py-2">
+                        <span
+                          className={
+                            offlineAttempt
+                              ? "inline-flex rounded px-1.5 py-0.5 text-[11px] font-semibold text-red-800"
+                              : "inline-flex rounded px-1.5 py-0.5 text-[11px] font-semibold text-emerald-900"
+                          }
+                        >
+                          {offlineAttempt ? "Off" : "On"}
+                        </span>
+                      </td>
+                      <td className="whitespace-nowrap px-2 py-2 text-xs">
+                        {date}
+                      </td>
+                      <td className="whitespace-nowrap px-2 py-2 text-xs tabular-nums text-muted">
+                        {time}
+                      </td>
+                      <td className="max-w-[10rem] truncate px-2 py-2 text-xs">
+                        {location}
+                      </td>
+                      <td className="whitespace-nowrap px-2 py-2 font-mono text-[11px]">
+                        {visit.ip}
+                      </td>
+                      <td className="max-w-[10rem] truncate px-2 py-2 text-xs text-muted">
+                        {visit.path}
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
+        <button
+          type="button"
+          disabled={page <= 1}
+          onClick={() => setPage((p) => Math.max(1, p - 1))}
+          className="rounded border border-border px-3 py-1.5 font-semibold enabled:hover:border-primary enabled:hover:text-primary disabled:opacity-40"
+        >
+          ← Zurück
+        </button>
+        <span>
+          {pageRows.length} von {sorted.length} angezeigt
+        </span>
+        <button
+          type="button"
+          disabled={page >= totalPages}
+          onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+          className="rounded border border-border px-3 py-1.5 font-semibold enabled:hover:border-primary enabled:hover:text-primary disabled:opacity-40"
+        >
+          Weiter →
+        </button>
+      </div>
     </div>
   );
 }
