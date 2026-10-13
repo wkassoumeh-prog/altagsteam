@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AdminOfflineSwitch from "../components/AdminOfflineSwitch";
+import AdminVisitsTable from "../components/AdminVisitsTable";
 import {
   checkRedisConnection,
   getOffline,
@@ -12,15 +13,6 @@ export const metadata: Metadata = {
   title: "Admin",
   robots: { index: false, follow: false },
 };
-
-function formatVisitTime(iso: string): string {
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return iso;
-  return new Intl.DateTimeFormat("de-DE", {
-    dateStyle: "medium",
-    timeStyle: "medium",
-  }).format(date);
-}
 
 export default async function AdminDashboardPage() {
   const [offline, visits, totalVisits, redisStatus] = await Promise.all([
@@ -85,43 +77,12 @@ export default async function AdminDashboardPage() {
             Letzte Besuche
           </h2>
           <p className="mt-1 text-sm text-muted">
-            Neueste {visits.length} Einträge (IP, Datum und Uhrzeit).
+            Neueste {visits.length} von {totalVisits} gespeicherten Besuchen.
+            Stadt wird auf Vercel aus der IP abgeleitet; lokal oft nicht
+            verfügbar.
           </p>
 
-          {visits.length === 0 ? (
-            <p className="mt-6 text-sm text-muted">
-              Noch keine Besuche erfasst. Stellen Sie sicher, dass Upstash Redis
-              konfiguriert ist.
-            </p>
-          ) : (
-            <div className="mt-6 overflow-x-auto">
-              <table className="w-full min-w-[32rem] text-left text-sm">
-                <thead>
-                  <tr className="border-b border-border text-muted">
-                    <th className="pb-3 pr-4 font-semibold">Datum &amp; Uhrzeit</th>
-                    <th className="pb-3 pr-4 font-semibold">IP-Adresse</th>
-                    <th className="pb-3 font-semibold">Seite</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visits.map((visit, index) => (
-                    <tr
-                      key={`${visit.at}-${visit.ip}-${index}`}
-                      className="border-b border-border/60 last:border-0"
-                    >
-                      <td className="py-3 pr-4 whitespace-nowrap">
-                        {formatVisitTime(visit.at)}
-                      </td>
-                      <td className="py-3 pr-4 font-mono text-xs sm:text-sm">
-                        {visit.ip}
-                      </td>
-                      <td className="py-3 text-muted">{visit.path}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+          <AdminVisitsTable visits={visits} />
         </section>
       </main>
     </div>

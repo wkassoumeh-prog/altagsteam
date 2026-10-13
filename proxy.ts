@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getClientIp } from "./lib/client-ip";
+import { getRequestGeo } from "./lib/client-geo";
 import { getOffline, recordVisit } from "./lib/site-admin";
 
 const OFFLINE_REWRITE_PATH = "/site-offline";
@@ -37,10 +38,12 @@ export async function proxy(request: NextRequest) {
 
   if (shouldLogVisit(pathname)) {
     const ip = getClientIp(request.headers);
+    const geo = getRequestGeo(request.headers);
     void recordVisit({
       ip,
       at: new Date().toISOString(),
       path: pathname,
+      ...geo,
     });
   }
 

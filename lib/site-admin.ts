@@ -8,12 +8,43 @@ export type VisitRecord = {
   ip: string;
   at: string;
   path: string;
+  city?: string;
+  country?: string;
 };
 
 export type RedisConnectionStatus = "ok" | "missing" | "error";
 
 function isOfflineFlag(value: unknown): boolean {
   return value === true || value === "true";
+}
+
+function parseVisitEntry(item: unknown): VisitRecord | null {
+  let record: unknown = item;
+
+  if (typeof item === "string") {
+    try {
+      record = JSON.parse(item) as unknown;
+    } catch {
+      return null;
+    }
+  }
+
+  if (!record || typeof record !== "object") return null;
+
+  const { ip, at, path, city, country } = record as VisitRecord;
+
+  if (typeof ip !== "string" || typeof at !== "string" || typeof path !== "string") {
+    return null;
+  }
+
+  return {
+    ip,
+    at,
+    path,
+    city: typeof city === "string" && city.trim() ? city.trim() : undefined,
+    country:
+      typeof country === "string" && country.trim() ? country.trim() : undefined,
+  };
 }
 
 async function withRedis<T>(
@@ -66,29 +97,19 @@ export async function setOffline(offline: boolean): Promise<void> {
 
 export async function recordVisit(entry: VisitRecord): Promise<void> {
   await withRedis(undefined, async (redis) => {
-    await redis.lpush(VISITS_KEY, JSON.stringify(entry));
+    await redis.lpush(VISITS_KEY, entry);
     await redis.ltrim(VISITS_KEY, 0, MAX_VISITS - 1);
   });
 }
 
 export async function listVisits(limit = 200): Promise<VisitRecord[]> {
   return withRedis([], async (redis) => {
-    const raw = await redis.lrange<string>(VISITS_KEY, 0, limit - 1);
+    const raw = await redis.lrange(VISITS_KEY, 0, limit - 1);
     const visits: VisitRecord[] = [];
 
     for (const item of raw) {
-      try {
-        const parsed = JSON.parse(item) as VisitRecord;
-        if (
-          typeof parsed.ip === "string" &&
-          typeof parsed.at === "string" &&
-          typeof parsed.path === "string"
-        ) {
-          visits.push(parsed);
-        }
-      } catch {
-        // Skip malformed entries.
-      }
+      const parsed = parseVisitEntry(item);
+      if (parsed) visits.push(parsed);
     }
 
     return visits;
