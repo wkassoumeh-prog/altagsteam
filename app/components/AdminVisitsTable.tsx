@@ -457,7 +457,7 @@ export default function AdminVisitsTable({
                               : "inline-flex rounded px-1.5 py-0.5 text-[11px] font-semibold text-emerald-900"
                           }
                         >
-                          {offlineAttempt ? "Off" : "On"}
+                          {offlineAttempt ? "Offline" : "Online"}
                         </span>
                       </td>
                       <td className="whitespace-nowrap px-2 py-2 text-xs">
