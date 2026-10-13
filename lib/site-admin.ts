@@ -10,6 +10,8 @@ export type VisitRecord = {
   path: string;
   city?: string;
   country?: string;
+  /** True when the site was in offline (404) mode at request time. */
+  offlineAttempt?: boolean;
 };
 
 export type RedisConnectionStatus = "ok" | "missing" | "error";
@@ -31,7 +33,7 @@ function parseVisitEntry(item: unknown): VisitRecord | null {
 
   if (!record || typeof record !== "object") return null;
 
-  const { ip, at, path, city, country } = record as VisitRecord;
+  const { ip, at, path, city, country, offlineAttempt } = record as VisitRecord;
 
   if (typeof ip !== "string" || typeof at !== "string" || typeof path !== "string") {
     return null;
@@ -44,6 +46,7 @@ function parseVisitEntry(item: unknown): VisitRecord | null {
     city: typeof city === "string" && city.trim() ? city.trim() : undefined,
     country:
       typeof country === "string" && country.trim() ? country.trim() : undefined,
+    offlineAttempt: offlineAttempt === true,
   };
 }
 

@@ -77,9 +77,9 @@ export default async function AdminDashboardPage() {
             Letzte Besuche
           </h2>
           <p className="mt-1 text-sm text-muted">
-            Neueste {visits.length} von {totalVisits} gespeicherten Besuchen.
-            Stadt wird auf Vercel aus der IP abgeleitet; lokal oft nicht
-            verfügbar.
+            Neueste {visits.length} von {totalVisits} gespeicherten Zugriffen
+            (online und Offline-Versuche). Stadt wird auf Vercel aus der IP
+            abgeleitet; lokal oft nicht verfügbar.
           </p>
 
           <AdminVisitsTable visits={visits} />

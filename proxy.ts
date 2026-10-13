@@ -19,6 +19,24 @@ function shouldLogVisit(pathname: string): boolean {
   return true;
 }
 
+function logVisit(
+  request: NextRequest,
+  pathname: string,
+  offlineAttempt: boolean,
+): void {
+  if (!shouldLogVisit(pathname)) return;
+
+  const ip = getClientIp(request.headers);
+  const geo = getRequestGeo(request.headers);
+  void recordVisit({
+    ip,
+    at: new Date().toISOString(),
+    path: pathname,
+    offlineAttempt,
+    ...geo,
+  });
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const requestHeaders = new Headers(request.headers);
@@ -26,6 +44,8 @@ export async function proxy(request: NextRequest) {
 
   if (!shouldBypass(pathname)) {
     const offline = await getOffline();
+    logVisit(request, pathname, offline);
+
     if (offline) {
       const url = request.nextUrl.clone();
       url.pathname = OFFLINE_REWRITE_PATH;
@@ -34,17 +54,6 @@ export async function proxy(request: NextRequest) {
         status: 404,
       });
     }
-  }
-
-  if (shouldLogVisit(pathname)) {
-    const ip = getClientIp(request.headers);
-    const geo = getRequestGeo(request.headers);
-    void recordVisit({
-      ip,
-      at: new Date().toISOString(),
-      path: pathname,
-      ...geo,
-    });
   }
 
   return NextResponse.next({
