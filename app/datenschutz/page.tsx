@@ -101,6 +101,16 @@ export default function DatenschutzPage() {
           auf Grundlage eines Vertrags über Auftragsverarbeitung gemäß
           Art. 28 DSGVO.
         </p>
+        <p>
+          Für den passwortgeschützten Admin-Bereich protokollieren wir
+          technisch Zugriffe auf öffentliche Seiten (IP-Adresse, aufgerufene
+          Seite, Zeitpunkt), um Missbrauch zu erkennen und den Betrieb zu
+          steuern. Es werden höchstens die letzten 10.000 Einträge in einer
+          von Upstash betriebenen Redis-Datenbank gespeichert. Rechtsgrundlage
+          ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+          IT-Sicherheit und Betrieb). Nur autorisierte Administratoren haben
+          Zugriff auf diese Auswertung.
+        </p>
       </Section>
 
       <Section id="kontaktformular" heading="4. Kontaktformular und Kontaktaufnahme">
